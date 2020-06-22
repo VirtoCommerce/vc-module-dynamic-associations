@@ -1,0 +1,28 @@
+{
+  "virtoCommerce.dynamicAssociationsModule": {
+    "blades": {
+      "hello-world": {
+        "title": "Hello world blade"
+      }
+    }
+  },
+  "permissions": {
+    "virtoCommerceDynamicAssociationsModule:access": "Open VirtoCommerceDynamicAssociationsModule menu",
+    "virtoCommerceDynamicAssociationsModule:create": "Create VirtoCommerceDynamicAssociationsModule related data",
+    "virtoCommerceDynamicAssociationsModule:read": "View VirtoCommerceDynamicAssociationsModule related data",
+    "virtoCommerceDynamicAssociationsModule:update": "Update VirtoCommerceDynamicAssociationsModule related data",
+    "virtoCommerceDynamicAssociationsModule:delete": "Delete VirtoCommerceDynamicAssociationsModule related data"
+  },
+  "settings": {
+    "VirtoCommerceDynamicAssociationsModule": {
+      "VirtoCommerceDynamicAssociationsModulePassword": {
+        "title": "VirtoCommerceDynamicAssociationsModule Password",
+        "description": "VirtoCommerceDynamicAssociationsModule Password setting"
+      },
+      "VirtoCommerceDynamicAssociationsModuleEnabled": {
+        "title": "VirtoCommerceDynamicAssociationsModule Enabled",
+        "description": "VirtoCommerceDynamicAssociationsModule Enabled setting"
+      }
+    }
+  }
+}
