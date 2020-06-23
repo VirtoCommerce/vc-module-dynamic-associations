@@ -1,61 +1,73 @@
-using System.Linq;
+using System;
+using System.IO;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
+using VirtoCommerce.CatalogModule.Data.Search;
+using VirtoCommerce.CatalogModule.Data.Search.Indexing;
+using VirtoCommerce.CatalogModule.Data.Services;
+using VirtoCommerce.CatalogModule.Web.Authorization;
+using VirtoCommerce.CatalogModule.Web.JsonConverters;
+using VirtoCommerce.CoreModule.Core.Conditions;
+using VirtoCommerce.DynamicAssociationsModule.Core.Model;
+using VirtoCommerce.DynamicAssociationsModule.Core.Search;
+using VirtoCommerce.DynamicAssociationsModule.Core.Services;
+using VirtoCommerce.DynamicAssociationsModule.Data.ExportImport;
+using VirtoCommerce.Platform.Core.Common;
+using VirtoCommerce.Platform.Core.ExportImport;
 using VirtoCommerce.Platform.Core.Modularity;
-using VirtoCommerce.Platform.Core.Security;
-using VirtoCommerce.Platform.Core.Settings;
-using VirtoCommerce.DynamicAssociationsModule.Core;
-using VirtoCommerce.DynamicAssociationsModule.Data.Repositories;
 
-
-namespace VirtoCommerce.DynamicAssociationsModule.Web
+namespace VirtoCommerce.CatalogModule.Web
 {
-	public class Module : IModule
-	{
-		public ManifestModuleInfo ModuleInfo { get; set; }
+    public class Module : IModule, IExportSupport, IImportSupport
+    {
+        private IApplicationBuilder _appBuilder;
 
-		public void Initialize(IServiceCollection serviceCollection)
-		{
-			// database initialization
-			var configuration = serviceCollection.BuildServiceProvider().GetRequiredService<IConfiguration>();
-			var connectionString = configuration.GetConnectionString("VirtoCommerce.VirtoCommerceDynamicAssociationsModule") ?? configuration.GetConnectionString("VirtoCommerce");
-			serviceCollection.AddDbContext<VirtoCommerceDynamicAssociationsModuleDbContext>(options => options.UseSqlServer(connectionString));
-		}
+        public ManifestModuleInfo ModuleInfo { get; set; }
 
-		public void PostInitialize(IApplicationBuilder appBuilder)
-		{
-			// register settings
-			var settingsRegistrar = appBuilder.ApplicationServices.GetRequiredService<ISettingsRegistrar>();
-			settingsRegistrar.RegisterSettings(ModuleConstants.Settings.AllSettings, ModuleInfo.Id);
+        public void Initialize(IServiceCollection serviceCollection)
+        {
+            serviceCollection.AddTransient<IDynamicAssociationService, DynamicAssociationService>();
+            serviceCollection.AddTransient<IDynamicAssociationSearchService, DynamicAssociationSearchService>();
+            serviceCollection.AddTransient<IAuthorizationHandler, DynamicAssociationAuthorizationHandler>();
+            serviceCollection.AddTransient<IDynamicAssociationEvaluator, DynamicAssociationEvaluator>();
+            serviceCollection.AddTransient<IDynamicAssociationConditionSelector, DynamicAssociationConditionsSelector>();
+            serviceCollection.AddTransient<DynamicAssociationSearchRequestBuilder>();
+            serviceCollection.AddTransient<IDynamicAssociationConditionEvaluator, DynamicAssociationConditionEvaluator>();
+        }
 
-			// register permissions
-			var permissionsProvider = appBuilder.ApplicationServices.GetRequiredService<IPermissionsRegistrar>();
-			permissionsProvider.RegisterPermissions(ModuleConstants.Security.Permissions.AllPermissions.Select(x =>
-				new Permission()
-				{
-					GroupName = "VirtoCommerceDynamicAssociationsModule",
-					ModuleId = ModuleInfo.Id,
-					Name = x
-				}).ToArray());
+        public void PostInitialize(IApplicationBuilder appBuilder)
+        {
+            _appBuilder = appBuilder;
 
-			// Ensure that any pending migrations are applied
-			using (var serviceScope = appBuilder.ApplicationServices.CreateScope())
-			{
-				using (var dbContext = serviceScope.ServiceProvider.GetRequiredService<VirtoCommerceDynamicAssociationsModuleDbContext>())
-				{
-					dbContext.Database.EnsureCreated();
-					dbContext.Database.Migrate();
-				}
-			}
-		}
+            var mvcJsonOptions = appBuilder.ApplicationServices.GetService<IOptions<MvcNewtonsoftJsonOptions>>();
+            mvcJsonOptions.Value.SerializerSettings.Converters.Add(new PolymorphicDynamicAssociationsJsonConverter());
 
-		public void Uninstall()
-		{
-			// do nothing in here
-		}
+            //Register the resulting trees expressions into the AbstractFactory<IConditionTree> 
+            foreach (var conditionTree in AbstractTypeFactory<DynamicAssociationRuleTreePrototype>.TryCreateInstance().Traverse<IConditionTree>(x => x.AvailableChildren))
+            {
+                AbstractTypeFactory<IConditionTree>.RegisterType(conditionTree.GetType());
+            }
+        }
 
-	}
+        public void Uninstall()
+        {
+            // Method intentionally left empty.
+        }
 
+        public async Task ExportAsync(Stream outStream, ExportImportOptions options, Action<ExportImportProgressInfo> progressCallback,
+            ICancellationToken cancellationToken)
+        {
+            await _appBuilder.ApplicationServices.GetRequiredService<DynamicAssociationsExportImport>().DoExportAsync(outStream, progressCallback, cancellationToken);
+        }
+
+        public async Task ImportAsync(Stream inputStream, ExportImportOptions options, Action<ExportImportProgressInfo> progressCallback,
+            ICancellationToken cancellationToken)
+        {
+            await _appBuilder.ApplicationServices.GetRequiredService<DynamicAssociationsExportImport>().DoImportAsync(inputStream, progressCallback, cancellationToken);
+        }
+    }
 }
