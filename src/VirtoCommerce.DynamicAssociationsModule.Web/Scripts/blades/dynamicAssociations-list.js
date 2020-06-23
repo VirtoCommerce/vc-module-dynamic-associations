@@ -1,5 +1,5 @@
-angular.module('virtoCommerce.catalogModule')
-    .controller('virtoCommerce.catalogModule.dynamicAssociationsListController', ['$scope', 'virtoCommerce.catalogModule.dynamicAssociations', 'platformWebApp.dialogService', 'platformWebApp.bladeUtils', 'platformWebApp.uiGridHelper', '$timeout', 
+angular.module('virtoCommerce.dynamicAssociationsModule')
+    .controller('virtoCommerce.dynamicAssociationsModule.dynamicAssociationsListController', ['$scope', 'virtoCommerce.catalogModule.dynamicAssociations', 'platformWebApp.dialogService', 'platformWebApp.bladeUtils', 'platformWebApp.uiGridHelper', '$timeout', 
         function ($scope, associations, dialogService, bladeUtils, uiGridHelper, $timeout) {
             var blade = $scope.blade;
             var bladeNavigationService = bladeUtils.bladeNavigationService;
