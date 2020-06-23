@@ -176,7 +176,7 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
                         };
                         bladeNavigationService.showBlade(viewerBlade, blade);
                     },
-                    canExecuteMethod: () => blade.editedPropertiesCount > 0
+                    canExecuteMethod: () => blade.categoryCount > 0
                 }
             ];
         }]);
