@@ -20,7 +20,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Data.Model
         [StringLength(1024)]
         public string Description { get; set; }
 
-        public DateTime StartDate { get; set; }
+        public DateTime? StartDate { get; set; }
 
         public DateTime? EndDate { get; set; }
 
