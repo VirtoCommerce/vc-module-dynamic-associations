@@ -76,6 +76,9 @@
           "picture": "Pic",
           "name": "Name"
         }
+      },
+      "dynamicAssociation-ruleCreation": {
+        "title": "Create products {{ ruleType }} rule"
       }
     },
     "dialogs": {
@@ -95,20 +98,10 @@
     }
   },
   "export": {
-    "types": {
-      "VirtoCommerce.DynamicAssociationsModule.Core.Model.Export.ExportableProduct": {
-        "name": "Products",
-        "description": "Catalog products data with related objects. Supports JSON and CSV"
-      },
-      "VirtoCommerce.DynamicAssociationsModule.Core.Model.Export.ExportableCatalogFull": {
-        "name": "Catalog",
-        "description": "Catalog data with related objects. Supports JSON"
-      }
-    },
     "groups": {
       "VirtoCommerce.DynamicAssociationsModule.Core.Model.Export": {
-        "name": "Catalog",
-        "description": "Catalogs, Categories, Products"
+        "name": "DynamicAssociations",
+        "description": "Rules"
       }
     }
   }
