@@ -7,14 +7,14 @@
             <form class="form" name="formScope">
                 <fieldset ng-init="setForm(formScope)">
                     <div class="form-group __info list">
-                        <label class="form-label">{{ 'catalog.blades.dynamicAssociation-detail.labels.name' | translate }}</label>
+                        <label class="form-label">{{ 'dynamicAssociations.blades.dynamicAssociation-detail.labels.name' | translate }}</label>
                         <div class="form-input">
-                            <input ng-model="blade.currentEntity.name" focus-on="" required ng-maxlength="128" placeholder="{{ 'catalog.blades.dynamicAssociation-detail.placeholders.name' | translate }}">
+                            <input ng-model="blade.currentEntity.name" focus-on="" required ng-maxlength="128" placeholder="{{ 'dynamicAssociations.blades.dynamicAssociation-detail.placeholders.name' | translate }}">
                         </div>
-                        <div class="list-descr">{{ 'catalog.blades.dynamicAssociation-detail.descriptions.name' | translate }}</div>
+                        <div class="list-descr">{{ 'dynamicAssociations.blades.dynamicAssociation-detail.descriptions.name' | translate }}</div>
                     </div>
                     <div class="form-group __info list">
-                        <label class="form-label">{{ 'catalog.blades.dynamicAssociation-detail.labels.description' | translate }}</label>
+                        <label class="form-label">{{ 'dynamicAssociations.blades.dynamicAssociation-detail.labels.description' | translate }}</label>
                         <div class="form-input">
                             <textarea cols="30" rows="5" ng-model="blade.currentEntity.description"></textarea>
                         </div>
@@ -25,29 +25,29 @@
                     <ul class="list __items">
                         <li class="list-item" ng-click="mainParameters()">
                             <i class="list-ico fa fa-cogs"></i>
-                            <span class="list-t">{{ 'catalog.blades.dynamicAssociation-detail.labels.main-parameters' | translate }}</span>
-                            <span class="list-descr">{{ 'catalog.blades.dynamicAssociation-detail.descriptions.main-parameters' | translate: {count: filledPropertiesCount, total: totalPropertiesCount} }}</span>
+                            <span class="list-t">{{ 'dynamicAssociations.blades.dynamicAssociation-detail.labels.main-parameters' | translate }}</span>
+                            <span class="list-descr">{{ 'dynamicAssociations.blades.dynamicAssociation-detail.descriptions.main-parameters' | translate: {count: filledPropertiesCount, total: totalPropertiesCount} }}</span>
                         </li>
                         <li class="list-item"
                             ng-click="createProductFilter(BlockMatchingRules)"
-                            ng-class="{'__disabled': blade.currentEntity.catalogId == null}">
+                            ng-class="{'__disabled': blade.currentEntity.dynamicAssociationsId == null}">
                             <i class="list-ico fa fa-file-text"></i>
-                            <span class="list-t">{{ 'catalog.blades.dynamicAssociation-detail.labels.productsToMatch' | translate }}</span>
-                            <span class="list-descr">{{ 'catalog.blades.dynamicAssociation-detail.descriptions.productsToMatch' | translate: {count: productsToMatchCount} }}</span>
+                            <span class="list-t">{{ 'dynamicAssociations.blades.dynamicAssociation-detail.labels.productsToMatch' | translate }}</span>
+                            <span class="list-descr">{{ 'dynamicAssociations.blades.dynamicAssociation-detail.descriptions.productsToMatch' | translate: {count: productsToMatchCount} }}</span>
                         </li>
                         <li class="list-item"
                             ng-click="createProductFilter(BlockResultingRules)"
                             ng-class="{'__disabled': !blade.isMatchingRulesExist}">
                             <i class="list-ico fa fa-file-text"></i>
-                            <span class="list-t">{{ 'catalog.blades.dynamicAssociation-detail.labels.productsToDisplay' | translate }}</span>
-                            <span class="list-descr">{{ 'catalog.blades.dynamicAssociation-detail.descriptions.productsToDisplay' | translate: {count: productsToDisplayCount} }}</span>
+                            <span class="list-t">{{ 'dynamicAssociations.blades.dynamicAssociation-detail.labels.productsToDisplay' | translate }}</span>
+                            <span class="list-descr">{{ 'dynamicAssociations.blades.dynamicAssociation-detail.descriptions.productsToDisplay' | translate: {count: productsToDisplayCount} }}</span>
                         </li>
                         <li class="list-item"
                             ng-click="outputTuning()"
                             ng-class="{'__disabled': !blade.isResultingRulesExist || !blade.isMatchingRulesExist}">
                             <i class="list-ico fa fa-cogs"></i>
-                            <span class="list-t">{{ 'catalog.blades.dynamicAssociation-detail.labels.outputTuning' | translate }}</span>
-                            <span class="list-descr">{{ 'catalog.blades.dynamicAssociation-detail.descriptions.outputTuning' | translate }}</span>
+                            <span class="list-t">{{ 'dynamicAssociations.blades.dynamicAssociation-detail.labels.outputTuning' | translate }}</span>
+                            <span class="list-descr">{{ 'dynamicAssociations.blades.dynamicAssociation-detail.descriptions.outputTuning' | translate }}</span>
                         </li>
                     </ul>
                 </div>

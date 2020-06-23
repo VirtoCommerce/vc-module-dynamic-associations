@@ -1,5 +1,5 @@
-angular.module('virtoCommerce.catalogModule')
-    .controller('virtoCommerce.catalogModule.ruleCreationController', [
+angular.module('virtoCommerce.dynamicAssociationsModule')
+    .controller('virtoCommerce.dynamicAssociationsModule.ruleCreationController', [
         '$scope',
         'platformWebApp.bladeNavigationService',
         'virtoCommerce.catalogModule.categories',
@@ -135,8 +135,8 @@ angular.module('virtoCommerce.catalogModule')
                             executeMethod: (pickingBlade) => {
                                 var viewerBlade = {
                                     id: 'propertiesSelector',
-                                    controller: 'virtoCommerce.catalogModule.dynamicAssociationViewerController',
-                                    template: 'Modules/$(virtoCommerce.catalog)/Scripts/blades/dynamicAssociations/dynamicAssociation-viewer.tpl.html',
+                                    controller: 'virtoCommerce.dynamicAssociationsModule.dynamicAssociationViewerController',
+                                    template: 'Modules/$(virtoCommerce.dynamicAssociations)/Scripts/blades/dynamicAssociations/dynamicAssociation-viewer.tpl.html',
                                     categoryIds: blade.categoryIds,
                                     properties: pickingBlade.currentEntities
                                 };
@@ -168,9 +168,9 @@ angular.module('virtoCommerce.catalogModule')
                     executeMethod: () => {
                         var viewerBlade = {
                             id: 'propertiesSelector',
-                            controller: 'virtoCommerce.catalogModule.dynamicAssociationViewerController',
+                            controller: 'virtoCommerce.dynamicAssociationsModule.dynamicAssociationViewerController',
                             template:
-                                'Modules/$(virtoCommerce.catalog)/Scripts/blades/dynamicAssociations/dynamicAssociation-viewer.tpl.html',
+                                'Modules/$(virtoCommerce.dynamicAssociations)/Scripts/blades/dynamicAssociations/dynamicAssociation-viewer.tpl.html',
                             categoryIds: blade.categoryIds,
                             properties: blade.editedProperties
                         };

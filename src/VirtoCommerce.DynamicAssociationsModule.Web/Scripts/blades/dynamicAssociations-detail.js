@@ -1,5 +1,5 @@
-angular.module('virtoCommerce.catalogModule')
-    .controller('virtoCommerce.catalogModule.dynamicAssociationDetailController', ['$scope', 'platformWebApp.bladeNavigationService', 'virtoCommerce.catalogModule.dynamicAssociations', 'virtoCommerce.storeModule.stores', function ($scope, bladeNavigationService, associations, stores) {
+angular.module('virtoCommerce.dynamicAssociationsModule')
+    .controller('virtoCommerce.dynamicAssociationsModule.dynamicAssociationDetailController', ['$scope', 'platformWebApp.bladeNavigationService', 'virtoCommerce.dynamicAssociationsModule.dynamicAssociations', 'virtoCommerce.storeModule.stores', function ($scope, bladeNavigationService, associations, stores) {
         var blade = $scope.blade;
         var formScope;
         $scope.setForm = (form) => { formScope = form; };
@@ -81,10 +81,10 @@ angular.module('virtoCommerce.catalogModule')
             const categoryCondition = $scope.getCondition(rulesBlock, $scope.ConditionCategoryIs);
             const newBlade = {
                 id: "outputTuning",
-                title: "catalog.blades.dynamicAssociation-outputTuning.title",
-                subtitle: 'catalog.blades.dynamicAssociation-outputTuning.subtitle',
-                controller: 'virtoCommerce.catalogModule.outputTuningController',
-                template: 'Modules/$(VirtoCommerce.Catalog)/Scripts/blades/dynamicAssociations/outputTuning.tpl.html',
+                title: "dynamicAssociations.blades.dynamicAssociation-outputTuning.title",
+                subtitle: 'dynamicAssociations.blades.dynamicAssociation-outputTuning.subtitle',
+                controller: 'virtoCommerce.dynamicAssociationsModule.outputTuningController',
+                template: 'Modules/$(VirtoCommerce.dynamicAssociations)/Scripts/blades/dynamicAssociations/outputTuning.tpl.html',
                 categoryIds: categoryCondition.categoryIds,
                 originalEntity: blade.currentEntity,
                 onSelected: function (newSortingRules) {
@@ -101,10 +101,10 @@ angular.module('virtoCommerce.catalogModule')
         $scope.mainParameters = function() {
             const parametersBlade = {
                 id: "mainParameters",
-                title: "catalog.blades.dynamicAssociation-parameters.title",
-                subtitle: 'catalog.blades.dynamicAssociation-parameters.subtitle',
-                controller: 'virtoCommerce.catalogModule.dynamicAssociationParametersController',
-                template: 'Modules/$(VirtoCommerce.Catalog)/Scripts/blades/dynamicAssociations/mainParameters.tpl.html',
+                title: "dynamicAssociations.blades.dynamicAssociation-parameters.title",
+                subtitle: 'dynamicAssociations.blades.dynamicAssociation-parameters.subtitle',
+                controller: 'virtoCommerce.dynamicAssociationsModule.dynamicAssociationParametersController',
+                template: 'Modules/$(VirtoCommerce.dynamicAssociations)/Scripts/blades/dynamicAssociations/mainParameters.tpl.html',
                 originalEntity: blade.currentEntity,
                 onSelected: function (entity) {
                     blade.currentEntity = entity;
@@ -205,8 +205,8 @@ angular.module('virtoCommerce.catalogModule')
             
             var ruleCreationBlade = {
                 id: "createDynamicAssociationRule",
-                controller: 'virtoCommerce.catalogModule.ruleCreationController',
-                template: 'Modules/$(virtoCommerce.catalog)/Scripts/blades/dynamicAssociations/rule-creation.tpl.html',
+                controller: 'virtoCommerce.dynamicAssociationsModule.ruleCreationController',
+                template: 'Modules/$(virtoCommerce.dynamicAssociations)/Scripts/blades/dynamicAssociations/rule-creation.tpl.html',
                 categoryIds: categoryCondition.categoryIds,
                 editedProperties: propertyCondition.properties,
                 catalogId: blade.currentEntity.catalogId,

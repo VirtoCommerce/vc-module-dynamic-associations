@@ -1,5 +1,5 @@
-angular.module('virtoCommerce.catalogModule')
-    .controller('virtoCommerce.catalogModule.outputTuningController', ['$scope', 'platformWebApp.bladeNavigationService', 'virtoCommerce.catalogModule.categories' , function ($scope, bladeNavigationService, categories) {
+angular.module('virtoCommerce.dynamicAssociationsModule')
+    .controller('virtoCommerce.dynamicAssociationsModule.outputTuningController', ['$scope', 'platformWebApp.bladeNavigationService', 'virtoCommerce.catalogModule.categories' , function ($scope, bladeNavigationService, categories) {
         var blade = $scope.blade;
         blade.isLoading = true;
         blade.headIcon = 'fa-area-chart';

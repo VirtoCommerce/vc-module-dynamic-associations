@@ -7,14 +7,14 @@
                     <div class="form-group clearfix">
                         <div class="column">
                             <div class="form-group __info list">
-                                <label class="form-label">{{ 'catalog.blades.dynamicAssociation-parameters.labels.is-active' | translate }}</label>
+                                <label class="form-label">{{ 'dynamicAssociations.blades.dynamicAssociation-parameters.labels.is-active' | translate }}</label>
                                 <div class="form-input">
                                     <label class="form-label __switch">
                                         <input type="checkbox" ng-model="blade.currentEntity.isActive" />
                                         <span class="switch"></span>
                                     </label>
                                 </div>
-                                <div class="list-descr">{{ 'catalog.blades.dynamicAssociation-parameters.descriptions.is-active' | translate }}</div>
+                                <div class="list-descr">{{ 'dynamicAssociations.blades.dynamicAssociation-parameters.descriptions.is-active' | translate }}</div>
                             </div>
                         </div>
                     </div>
@@ -22,9 +22,9 @@
                     <div class="form-group clearfix">
                         <div class="column">
                             <div class="form-group __info list">
-                                <label class="form-label __info list">{{ 'catalog.blades.dynamicAssociation-parameters.labels.start-date' | translate }}</label>
+                                <label class="form-label __info list">{{ 'dynamicAssociations.blades.dynamicAssociation-parameters.labels.start-date' | translate }}</label>
                                 <div class="form-input __calendar">
-                                    <input placeholder="{{ 'catalog.blades.dynamicAssociation-parameters.placeholders.start-date' | translate }}" ng-model="blade.currentEntity.startDate" datepicker-popup="" is-open="datepickers.str"/>
+                                    <input placeholder="{{ 'dynamicAssociations.blades.dynamicAssociation-parameters.placeholders.start-date' | translate }}" ng-model="blade.currentEntity.startDate" datepicker-popup="" is-open="datepickers.str"/>
                                     <button class="btn" type="button" ng-click="open($event,'str')">
                                         <i class="btn-ico fa fa-calendar"></i>
                                     </button>
@@ -33,9 +33,9 @@
                         </div>
                         <div class="column">
                             <div class="form-group __info list">
-                                <label class="form-label __info list">{{ 'catalog.blades.dynamicAssociation-parameters.labels.expiration-date' | translate }}</label>
+                                <label class="form-label __info list">{{ 'dynamicAssociations.blades.dynamicAssociation-parameters.labels.expiration-date' | translate }}</label>
                                 <div class="form-input __calendar">
-                                    <input placeholder="{{ 'catalog.blades.dynamicAssociation-parameters.placeholders.expiration-date' | translate }}" ng-model="blade.currentEntity.endDate" datepicker-popup="" is-open="datepickers.end"/>
+                                    <input placeholder="{{ 'dynamicAssociations.blades.dynamicAssociation-parameters.placeholders.expiration-date' | translate }}" ng-model="blade.currentEntity.endDate" datepicker-popup="" is-open="datepickers.end"/>
                                     <button class="btn" type="button" ng-click="open($event,'end')">
                                         <i class="btn-ico fa fa-calendar"></i>
                                     </button>
@@ -47,16 +47,16 @@
                     <div class="form-group clearfix">
                         <div class="column">
                             <div class="form-group __info list">
-                                <label class="form-label">{{ 'catalog.blades.dynamicAssociation-parameters.labels.store' | translate }}</label>
+                                <label class="form-label">{{ 'dynamicAssociations.blades.dynamicAssociation-parameters.labels.store' | translate }}</label>
                                 <div class="form-input">
                                     <ui-select ng-model="blade.currentEntity.storeId" required on-select="onStoreSelected($item)">
-                                        <ui-select-match placeholder="{{'catalog.blades.dynamicAssociation-parameters.placeholders.store' | translate}}">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-match placeholder="{{'dynamicAssociations.blades.dynamicAssociation-parameters.placeholders.store' | translate}}">{{$select.selected.name}}</ui-select-match>
                                         <ui-select-choices repeat="x.id as x in stores">
                                             <span ng-bind-html="x.name | highlight: $select.search"></span>
                                         </ui-select-choices>
                                     </ui-select>
                                 </div>
-                                <div class="list-descr">{{ 'catalog.blades.dynamicAssociation-parameters.descriptions.store' | translate }}</div>
+                                <div class="list-descr">{{ 'dynamicAssociations.blades.dynamicAssociation-parameters.descriptions.store' | translate }}</div>
                             </div>
                         </div>
                     </div>
@@ -80,11 +80,11 @@
                         </div>
                         <div class="column">
                             <div class="form-group __info list">
-                                <label class="form-label">{{ 'catalog.blades.dynamicAssociation-parameters.labels.priority' | translate }}</label>
+                                <label class="form-label">{{ 'dynamicAssociations.blades.dynamicAssociation-parameters.labels.priority' | translate }}</label>
                                 <div class="form-input __number">
                                     <input smart-float num-type="integer" ng-disabled="blade.currentEntity.isExclusive" required  min="1" ng-model="blade.currentEntity.priority" type="number" />
                                 </div>
-                                <div class="list-descr">{{ 'catalog.blades.dynamicAssociation-parameters.descriptions.priority' | translate }}</div>
+                                <div class="list-descr">{{ 'dynamicAssociations.blades.dynamicAssociation-parameters.descriptions.priority' | translate }}</div>
                             </div>
                         </div>
                     </div>
