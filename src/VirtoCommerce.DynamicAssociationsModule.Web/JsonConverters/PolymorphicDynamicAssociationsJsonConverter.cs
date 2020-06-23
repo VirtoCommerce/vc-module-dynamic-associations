@@ -6,7 +6,7 @@ using VirtoCommerce.DynamicAssociationsModule.Core.Model;
 using VirtoCommerce.DynamicAssociationsModule.Core.Model.Search;
 using VirtoCommerce.Platform.Core.Common;
 
-namespace VirtoCommerce.CatalogModule.Web.JsonConverters
+namespace VirtoCommerce.DynamicAssociationsModule.Web.JsonConverters
 {
     public class PolymorphicDynamicAssociationsJsonConverter : JsonConverter
     {

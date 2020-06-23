@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using VirtoCommerce.CatalogModule.Data.Repositories;
 
 namespace VirtoCommerce.DynamicAssociationsModule.Data.Repositories
 {

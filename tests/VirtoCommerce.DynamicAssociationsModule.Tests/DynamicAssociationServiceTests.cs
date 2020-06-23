@@ -4,17 +4,17 @@ using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Moq;
-using VirtoCommerce.CatalogModule.Data.Model;
-using VirtoCommerce.CatalogModule.Data.Repositories;
-using VirtoCommerce.CatalogModule.Data.Services;
 using VirtoCommerce.DynamicAssociationsModule.Core.Model;
+using VirtoCommerce.DynamicAssociationsModule.Data.Model;
+using VirtoCommerce.DynamicAssociationsModule.Data.Repositories;
+using VirtoCommerce.DynamicAssociationsModule.Data.Services;
 using VirtoCommerce.Platform.Caching;
 using VirtoCommerce.Platform.Core.Common;
 using VirtoCommerce.Platform.Core.Domain;
 using VirtoCommerce.Platform.Core.Events;
 using Xunit;
 
-namespace VirtoCommerce.CatalogModule.Tests
+namespace VirtoCommerce.DynamicAssociationsModule.Tests
 {
     public class DynamicAssociationServiceTests
     {

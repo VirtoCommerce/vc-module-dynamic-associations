@@ -3,7 +3,7 @@ using System.Linq;
 using VirtoCommerce.Platform.Core.Common;
 using VirtoCommerce.SearchModule.Core.Model;
 
-namespace VirtoCommerce.CatalogModule.Data.Search.Indexing
+namespace VirtoCommerce.DynamicAssociationsModule.Data.Services
 {
     public class DynamicAssociationSearchRequestBuilder
     {

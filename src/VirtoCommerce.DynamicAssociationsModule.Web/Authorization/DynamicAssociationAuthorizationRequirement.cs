@@ -1,6 +1,6 @@
 using VirtoCommerce.Platform.Security.Authorization;
 
-namespace VirtoCommerce.CatalogModule.Data.Authorization
+namespace VirtoCommerce.DynamicAssociationsModule.Web.Authorization
 {
     public class DynamicAssociationAuthorizationRequirement : PermissionAuthorizationRequirement
     {

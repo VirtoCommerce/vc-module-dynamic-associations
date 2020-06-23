@@ -1,8 +1,8 @@
 using EntityFrameworkCore.Triggers;
 using Microsoft.EntityFrameworkCore;
-using VirtoCommerce.CatalogModule.Data.Model;
+using VirtoCommerce.DynamicAssociationsModule.Data.Model;
 
-namespace VirtoCommerce.CatalogModule.Data.Repositories
+namespace VirtoCommerce.DynamicAssociationsModule.Data.Repositories
 {
     public class DynamicAssociationsModuleDbContext : DbContextWithTriggers
     {

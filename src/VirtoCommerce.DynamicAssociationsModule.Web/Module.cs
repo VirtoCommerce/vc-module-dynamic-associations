@@ -6,21 +6,20 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-using VirtoCommerce.CatalogModule.Data.Search;
-using VirtoCommerce.CatalogModule.Data.Search.Indexing;
-using VirtoCommerce.CatalogModule.Data.Services;
-using VirtoCommerce.CatalogModule.Web.Authorization;
-using VirtoCommerce.CatalogModule.Web.JsonConverters;
 using VirtoCommerce.CoreModule.Core.Conditions;
 using VirtoCommerce.DynamicAssociationsModule.Core.Model;
 using VirtoCommerce.DynamicAssociationsModule.Core.Search;
 using VirtoCommerce.DynamicAssociationsModule.Core.Services;
 using VirtoCommerce.DynamicAssociationsModule.Data.ExportImport;
+using VirtoCommerce.DynamicAssociationsModule.Data.Search;
+using VirtoCommerce.DynamicAssociationsModule.Data.Services;
+using VirtoCommerce.DynamicAssociationsModule.Web.Authorization;
+using VirtoCommerce.DynamicAssociationsModule.Web.JsonConverters;
 using VirtoCommerce.Platform.Core.Common;
 using VirtoCommerce.Platform.Core.ExportImport;
 using VirtoCommerce.Platform.Core.Modularity;
 
-namespace VirtoCommerce.CatalogModule.Web
+namespace VirtoCommerce.DynamicAssociationsModule.Web
 {
     public class Module : IModule, IExportSupport, IImportSupport
     {

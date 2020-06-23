@@ -1,6 +1,6 @@
 using VirtoCommerce.Platform.Core.Caching;
 
-namespace VirtoCommerce.CatalogModule.Data.Caching
+namespace VirtoCommerce.DynamicAssociationsModule.Data.Caching
 {
     public class DynamicAssociationSearchCacheRegion : CancellableCacheRegion<DynamicAssociationSearchCacheRegion>
     {

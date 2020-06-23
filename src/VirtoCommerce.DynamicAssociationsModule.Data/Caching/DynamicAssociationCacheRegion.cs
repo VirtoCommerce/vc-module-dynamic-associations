@@ -7,7 +7,7 @@ using Microsoft.Extensions.Primitives;
 using VirtoCommerce.DynamicAssociationsModule.Core.Model;
 using VirtoCommerce.Platform.Core.Caching;
 
-namespace VirtoCommerce.CatalogModule.Data.Caching
+namespace VirtoCommerce.DynamicAssociationsModule.Data.Caching
 {
     public class DynamicAssociationCacheRegion : CancellableCacheRegion<DynamicAssociationCacheRegion>
     {

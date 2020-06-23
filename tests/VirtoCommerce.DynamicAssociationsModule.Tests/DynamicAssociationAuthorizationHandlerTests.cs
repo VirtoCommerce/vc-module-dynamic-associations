@@ -12,10 +12,10 @@ using Newtonsoft.Json.Linq;
 using VirtoCommerce.CatalogModule.Core.Model;
 using VirtoCommerce.CatalogModule.Core.Services;
 using VirtoCommerce.CatalogModule.Data.Authorization;
-using VirtoCommerce.CatalogModule.Web.Authorization;
 using VirtoCommerce.CoreModule.Core.Outlines;
 using VirtoCommerce.DynamicAssociationsModule.Core.Model;
 using VirtoCommerce.DynamicAssociationsModule.Core.Model.Search;
+using VirtoCommerce.DynamicAssociationsModule.Web.Authorization;
 using VirtoCommerce.Platform.Core.Common;
 using VirtoCommerce.Platform.Core.DynamicProperties;
 using VirtoCommerce.Platform.Core.Security;
@@ -24,7 +24,7 @@ using VirtoCommerce.StoreModule.Core.Model;
 using VirtoCommerce.StoreModule.Core.Services;
 using Xunit;
 
-namespace VirtoCommerce.CatalogModule.Tests
+namespace VirtoCommerce.DynamicAssociationsModule.Tests
 {
     public class DynamicAssociationAuthorizationHandlerTests
     {

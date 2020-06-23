@@ -13,7 +13,7 @@ using VirtoCommerce.Platform.Core.Security;
 using VirtoCommerce.Platform.Security.Authorization;
 using VirtoCommerce.StoreModule.Core.Services;
 
-namespace VirtoCommerce.CatalogModule.Web.Authorization
+namespace VirtoCommerce.DynamicAssociationsModule.Web.Authorization
 {
     public class DynamicAssociationAuthorizationHandler : PermissionAuthorizationHandlerBase<DynamicAssociationAuthorizationRequirement>
     {

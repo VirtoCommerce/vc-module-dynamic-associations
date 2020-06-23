@@ -1,9 +1,9 @@
 using System.Linq;
 using System.Threading.Tasks;
-using VirtoCommerce.CatalogModule.Data.Model;
+using VirtoCommerce.DynamicAssociationsModule.Data.Model;
 using VirtoCommerce.Platform.Core.Common;
 
-namespace VirtoCommerce.CatalogModule.Data.Repositories
+namespace VirtoCommerce.DynamicAssociationsModule.Data.Repositories
 {
     public interface IDynamicAssociationsRepository : IRepository
     {

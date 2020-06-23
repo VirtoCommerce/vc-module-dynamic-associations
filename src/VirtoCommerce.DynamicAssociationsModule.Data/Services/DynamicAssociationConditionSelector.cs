@@ -9,7 +9,7 @@ using VirtoCommerce.DynamicAssociationsModule.Core.Search;
 using VirtoCommerce.DynamicAssociationsModule.Core.Services;
 using VirtoCommerce.Platform.Core.Common;
 
-namespace VirtoCommerce.CatalogModule.Data.Services
+namespace VirtoCommerce.DynamicAssociationsModule.Data.Services
 {
     public class DynamicAssociationConditionsSelector : IDynamicAssociationConditionSelector
     {

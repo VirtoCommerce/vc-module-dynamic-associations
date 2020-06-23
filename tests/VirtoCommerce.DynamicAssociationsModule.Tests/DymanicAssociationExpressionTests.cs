@@ -4,7 +4,7 @@ using VirtoCommerce.CoreModule.Core.Outlines;
 using VirtoCommerce.DynamicAssociationsModule.Core.Model;
 using Xunit;
 
-namespace VirtoCommerce.CatalogModule.Tests
+namespace VirtoCommerce.DynamicAssociationsModule.Tests
 {
     public class DymanicAssociationExpressionTests
     {

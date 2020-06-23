@@ -2,11 +2,11 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using VirtoCommerce.CatalogModule.Data.Model;
+using VirtoCommerce.DynamicAssociationsModule.Data.Model;
 using VirtoCommerce.Platform.Core.Common;
 using VirtoCommerce.Platform.Data.Infrastructure;
 
-namespace VirtoCommerce.CatalogModule.Data.Repositories
+namespace VirtoCommerce.DynamicAssociationsModule.Data.Repositories
 {
     public class DynamicAssociationsRepositoryImpl : DbContextRepositoryBase<DynamicAssociationsModuleDbContext>, IDynamicAssociationsRepository
     {

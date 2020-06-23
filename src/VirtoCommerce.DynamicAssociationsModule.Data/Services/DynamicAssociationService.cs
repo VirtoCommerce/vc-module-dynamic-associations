@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Caching.Memory;
-using VirtoCommerce.CatalogModule.Data.Caching;
-using VirtoCommerce.CatalogModule.Data.Model;
-using VirtoCommerce.CatalogModule.Data.Repositories;
 using VirtoCommerce.DynamicAssociationsModule.Core.Events;
 using VirtoCommerce.DynamicAssociationsModule.Core.Model;
 using VirtoCommerce.DynamicAssociationsModule.Core.Services;
+using VirtoCommerce.DynamicAssociationsModule.Data.Caching;
+using VirtoCommerce.DynamicAssociationsModule.Data.Model;
+using VirtoCommerce.DynamicAssociationsModule.Data.Repositories;
 using VirtoCommerce.Platform.Core.Caching;
 using VirtoCommerce.Platform.Core.Common;
 using VirtoCommerce.Platform.Core.Events;
 using VirtoCommerce.Platform.Data.Infrastructure;
 
-namespace VirtoCommerce.CatalogModule.Data.Services
+namespace VirtoCommerce.DynamicAssociationsModule.Data.Services
 {
     public class DynamicAssociationService : IDynamicAssociationService
     {

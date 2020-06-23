@@ -9,7 +9,7 @@ using VirtoCommerce.DynamicAssociationsModule.Core.Services;
 using VirtoCommerce.Platform.Core.Common;
 using VirtoCommerce.StoreModule.Core.Services;
 
-namespace VirtoCommerce.CatalogModule.Data.Services
+namespace VirtoCommerce.DynamicAssociationsModule.Data.Services
 {
     public class DynamicAssociationEvaluator : IDynamicAssociationEvaluator
     {

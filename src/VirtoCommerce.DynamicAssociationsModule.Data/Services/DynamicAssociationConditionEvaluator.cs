@@ -1,12 +1,11 @@
 using System.Linq;
 using System.Threading.Tasks;
-using VirtoCommerce.CatalogModule.Data.Search.Indexing;
 using VirtoCommerce.DynamicAssociationsModule.Core.Model;
 using VirtoCommerce.DynamicAssociationsModule.Core.Services;
 using VirtoCommerce.SearchModule.Core.Model;
 using VirtoCommerce.SearchModule.Core.Services;
 
-namespace VirtoCommerce.CatalogModule.Data.Services
+namespace VirtoCommerce.DynamicAssociationsModule.Data.Services
 {
     public class DynamicAssociationConditionEvaluator : IDynamicAssociationConditionEvaluator
     {

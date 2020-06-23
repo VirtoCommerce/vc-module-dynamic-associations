@@ -4,15 +4,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using VirtoCommerce.CatalogModule.Data.Authorization;
 using VirtoCommerce.DynamicAssociationsModule.Core.Model;
 using VirtoCommerce.DynamicAssociationsModule.Core.Model.Search;
 using VirtoCommerce.DynamicAssociationsModule.Core.Search;
 using VirtoCommerce.DynamicAssociationsModule.Core.Services;
+using VirtoCommerce.DynamicAssociationsModule.Web.Authorization;
 using VirtoCommerce.Platform.Core.Common;
 using CatalogModuleConstants = VirtoCommerce.CatalogModule.Core.ModuleConstants;
 
-namespace VirtoCommerce.CatalogModule.Web.Controllers.Api
+namespace VirtoCommerce.DynamicAssociationsModule.Web.Controllers.Api
 {
     [Route("api/catalog/products/dynamicassociations")]
     [Authorize]
