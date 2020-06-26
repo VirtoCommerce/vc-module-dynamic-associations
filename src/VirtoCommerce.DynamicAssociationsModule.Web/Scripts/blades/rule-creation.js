@@ -161,7 +161,6 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
             };
 
             $scope.blade.headIcon = 'fa-upload';
-            $scope.blade.title = 'Create matching rule';
 
             initializeBlade();
 

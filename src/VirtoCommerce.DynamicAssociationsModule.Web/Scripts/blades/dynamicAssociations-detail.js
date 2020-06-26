@@ -206,6 +206,7 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
             var ruleCreationBlade = {
                 id: "createDynamicAssociationRule",
                 controller: 'virtoCommerce.dynamicAssociationsModule.ruleCreationController',
+                title: `Create rule for ${rulesBlockName === $scope.BlockMatchingRules ? 'matching' : 'display'} products`,
                 template: 'Modules/$(virtoCommerce.dynamicAssociations)/Scripts/blades/dynamicAssociations/rule-creation.tpl.html',
                 categoryIds: categoryCondition.categoryIds,
                 editedProperties: propertyCondition.properties,
