@@ -27,6 +27,10 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
 
                 blade.editedProperties = $scope.prepareProperties(blade.editedProperties, false);
                 blade.editedPropertiesCount = blade.editedProperties.length;
+
+                blade.originalCategoryIds = angular.copy(blade.categoryIds);
+                blade.originalEditedProperties = angular.copy(blade.editedProperties);
+
                 $scope.selectCategories();
                 blade.isLoading = false;
             }
@@ -151,6 +155,14 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
 
                 };
                 bladeNavigationService.showBlade(newBlade, blade);
+            };
+
+            $scope.isDirty = () => {
+                return !angular.equals(blade.originalCategoryIds, blade.categoryIds) || !angular.equals(blade.originalEditedProperties, blade.editedProperties);
+            };
+
+            $scope.canSave = () => {
+                return $scope.isDirty() && blade.categoryCount !== 0;
             };
 
             $scope.saveRule = function() {
