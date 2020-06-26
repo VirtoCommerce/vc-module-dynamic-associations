@@ -214,6 +214,7 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
                     propertyCondition.properties = editedProperties;
                     categoryCondition.categoryIds = selectedCategoryIds;
                     $scope.checkExistingRules();
+                    $scope.GetMatchingProductsCount();
                 }
             };
             bladeNavigationService.showBlade(ruleCreationBlade, blade);
@@ -255,7 +256,7 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
                 categoryIds: categoryIds,
                 propertyValues: propertyValues,
                 skip: 0,
-                take: 100
+                take: 1000
             };
             return dataQuery;
 
