@@ -19,18 +19,18 @@ namespace VirtoCommerce.DynamicAssociationsModule.Data.Search
 {
     public class DynamicAssociationSearchService : IDynamicAssociationSearchService
     {
-        private readonly Func<IDynamicAssociationsRepository> _catalogRepositoryFactory;
+        private readonly Func<IDynamicAssociationsRepository> _dynamicAssociationsRepositoryFactory;
         private readonly IPlatformMemoryCache _platformMemoryCache;
         private readonly IDynamicAssociationService _dynamicAssociationService;
 
-        public DynamicAssociationSearchService(Func<IDynamicAssociationsRepository> catalogRepositoryFactory, IPlatformMemoryCache platformMemoryCache, IDynamicAssociationService dynamicAssociationService)
+        public DynamicAssociationSearchService(Func<IDynamicAssociationsRepository> dynamicAssociationsRepositoryFactory, IPlatformMemoryCache platformMemoryCache, IDynamicAssociationService dynamicAssociationService)
         {
-            _catalogRepositoryFactory = catalogRepositoryFactory;
+            _dynamicAssociationsRepositoryFactory = dynamicAssociationsRepositoryFactory;
             _platformMemoryCache = platformMemoryCache;
             _dynamicAssociationService = dynamicAssociationService;
         }
 
-        public async Task<DynamicAssociationSearchResult> SearchDynamicAssociationsAsync(DynamicAssociationSearchCriteria criteria)
+        public async virtual Task<DynamicAssociationSearchResult> SearchDynamicAssociationsAsync(DynamicAssociationSearchCriteria criteria)
         {
             ValidateParameters(criteria);
 
@@ -42,12 +42,12 @@ namespace VirtoCommerce.DynamicAssociationsModule.Data.Search
 
                 var result = AbstractTypeFactory<DynamicAssociationSearchResult>.TryCreateInstance();
 
-                using (var catalogRepository = _catalogRepositoryFactory())
+                using (var dynamicAssociationsRepository = _dynamicAssociationsRepositoryFactory())
                 {
                     //Optimize performance and CPU usage
-                    catalogRepository.DisableChangesTracking();
+                    dynamicAssociationsRepository.DisableChangesTracking();
                     var sortInfos = BuildSortExpression(criteria);
-                    var query = BuildQuery(catalogRepository, criteria);
+                    var query = BuildQuery(dynamicAssociationsRepository, criteria);
 
                     result.TotalCount = await query.CountAsync();
 
@@ -88,7 +88,8 @@ namespace VirtoCommerce.DynamicAssociationsModule.Data.Search
 
             if (criteria.IsActive != null)
             {
-                query = query.Where(x => x.IsActive == criteria.IsActive);
+                var utcNow = DateTime.UtcNow;
+                query = query.Where(x => x.IsActive == criteria.IsActive && (x.StartDate == null || utcNow >= x.StartDate) && (x.EndDate == null || x.EndDate >= utcNow));
             }
 
             return query;

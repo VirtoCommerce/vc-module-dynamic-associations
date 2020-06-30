@@ -42,7 +42,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Data.Services
             var expressionContext = AbstractTypeFactory<DynamicAssociationExpressionEvaluationContext>.TryCreateInstance();
             expressionContext.Products.Add(product);
 
-            foreach (var dynamicAssociationRule in dynamicAssociationRules.Where(IsNotExpired))
+            foreach (var dynamicAssociationRule in dynamicAssociationRules)
             {
                 var matchingRule = dynamicAssociationRule.ExpressionTree.Children.OfType<BlockMatchingRules>().FirstOrDefault()
                     ?? throw new InvalidOperationException($"Matching rules block for \"{dynamicAssociationRule.Name}\" dynamic association rule is missing");
@@ -67,14 +67,6 @@ namespace VirtoCommerce.DynamicAssociationsModule.Data.Services
             }
 
             return result;
-        }
-
-        protected virtual bool IsNotExpired(DynamicAssociation dynamicAssociation)
-        {
-            var startDate = dynamicAssociation.StartDate;
-            var endDate = dynamicAssociation.EndDate;
-
-            return startDate < DateTime.Now && (endDate == null || endDate > DateTime.Now);
         }
     }
 }

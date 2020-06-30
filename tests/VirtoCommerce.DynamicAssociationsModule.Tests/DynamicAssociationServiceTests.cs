@@ -19,13 +19,13 @@ namespace VirtoCommerce.DynamicAssociationsModule.Tests
     public class DynamicAssociationServiceTests
     {
         private readonly Mock<IEventPublisher> _eventPublisherMock;
-        private readonly Mock<IDynamicAssociationsRepository> _catalogRepositoryMock;
+        private readonly Mock<IDynamicAssociationsRepository> _dynamicAssociationsRepository;
         private readonly Mock<IUnitOfWork> _unityOfWorkMock;
 
         public DynamicAssociationServiceTests()
         {
             _eventPublisherMock = new Mock<IEventPublisher>();
-            _catalogRepositoryMock = new Mock<IDynamicAssociationsRepository>();
+            _dynamicAssociationsRepository = new Mock<IDynamicAssociationsRepository>();
             _unityOfWorkMock = new Mock<IUnitOfWork>();
         }
 
@@ -38,9 +38,9 @@ namespace VirtoCommerce.DynamicAssociationsModule.Tests
             var dynamicAssociationEntity = AbstractTypeFactory<DynamicAssociationEntity>.TryCreateInstance().FromModel(dynamicAssociation, new PrimaryKeyResolvingMap());
 
             var dynamicAssociationService = CreateDynamicAssociationService();
-            _catalogRepositoryMock.Setup(x => x.Add(dynamicAssociationEntity)).Callback(() =>
+            _dynamicAssociationsRepository.Setup(x => x.Add(dynamicAssociationEntity)).Callback(() =>
             {
-                _catalogRepositoryMock
+                _dynamicAssociationsRepository
                     .Setup(x => x.GetDynamicAssociationsByIdsAsync(new[] { id }))
                     .ReturnsAsync(new[] { dynamicAssociationEntity });
             });
@@ -59,9 +59,9 @@ namespace VirtoCommerce.DynamicAssociationsModule.Tests
         {
             var memoryCache = new MemoryCache(Options.Create(new MemoryCacheOptions()));
             var platformMemoryCache = new PlatformMemoryCache(memoryCache, Options.Create(new CachingOptions()), new Mock<ILogger<PlatformMemoryCache>>().Object);
-            _catalogRepositoryMock.Setup(x => x.UnitOfWork).Returns(_unityOfWorkMock.Object);
+            _dynamicAssociationsRepository.Setup(x => x.UnitOfWork).Returns(_unityOfWorkMock.Object);
 
-            var result = new DynamicAssociationService(() => _catalogRepositoryMock.Object, platformMemoryCache, _eventPublisherMock.Object);
+            var result = new DynamicAssociationService(() => _dynamicAssociationsRepository.Object, platformMemoryCache, _eventPublisherMock.Object);
 
             return result;
         }
