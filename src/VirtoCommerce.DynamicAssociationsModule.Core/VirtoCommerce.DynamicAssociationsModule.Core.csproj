@@ -12,7 +12,7 @@
 
   <ItemGroup>
     <Folder Include="Events\" />
-    <Folder Include="Notifications\" />
+    <Folder Include="Models\Conditions\" />
     <Folder Include="Services\" />
   </ItemGroup>
 
