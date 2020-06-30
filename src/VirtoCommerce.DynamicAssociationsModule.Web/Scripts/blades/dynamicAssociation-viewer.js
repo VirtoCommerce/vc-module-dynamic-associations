@@ -1,6 +1,6 @@
 angular.module('virtoCommerce.dynamicAssociationsModule')
     .controller('virtoCommerce.dynamicAssociationsModule.dynamicAssociationViewerController',
-        ['$localStorage', '$timeout', '$scope', 'platformWebApp.bladeUtils', 'platformWebApp.uiGridHelper', 'virtoCommerce.catalogModule.dynamicAssociations', 'virtoCommerce.catalogModule.items',
+        ['$localStorage', '$timeout', '$scope', 'platformWebApp.bladeUtils', 'platformWebApp.uiGridHelper', 'virtoCommerce.dynamicAssociationsModule.dynamicAssociations', 'virtoCommerce.catalogModule.items',
             function ($localStorage, $timeout, $scope, bladeUtils, uiGridHelper, associations, items) {
                 $scope.uiGridConstants = uiGridHelper.uiGridConstants;
                 $scope.hasMore = true;

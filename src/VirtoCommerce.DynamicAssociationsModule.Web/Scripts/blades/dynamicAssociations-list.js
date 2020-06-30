@@ -1,5 +1,5 @@
 angular.module('virtoCommerce.dynamicAssociationsModule')
-    .controller('virtoCommerce.dynamicAssociationsModule.dynamicAssociationsListController', ['$scope', 'virtoCommerce.catalogModule.dynamicAssociations', 'platformWebApp.dialogService', 'platformWebApp.bladeUtils', 'platformWebApp.uiGridHelper', '$timeout', 
+    .controller('virtoCommerce.dynamicAssociationsModule.dynamicAssociationsListController', ['$scope', 'virtoCommerce.dynamicAssociationsModule.dynamicAssociations', 'platformWebApp.dialogService', 'platformWebApp.bladeUtils', 'platformWebApp.uiGridHelper', '$timeout', 
         function ($scope, associations, dialogService, bladeUtils, uiGridHelper, $timeout) {
             var blade = $scope.blade;
             var bladeNavigationService = bladeUtils.bladeNavigationService;
@@ -63,8 +63,8 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
                     currentEntityId: node.id,
                     title: node.name,
                     subtitle: blade.subtitle,
-                    controller: 'virtoCommerce.catalogModule.dynamicAssociationDetailController',
-                    template: 'Modules/$(VirtoCommerce.Catalog)/Scripts/blades/dynamicAssociations/dynamicAssociations-detail.tpl.html'
+                    controller: 'virtoCommerce.dynamicAssociationsModule.dynamicAssociationDetailController',
+                    template: 'Modules/$(virtoCommerce.dynamicAssociationsModule)/Scripts/blades/dynamicAssociations-detail.tpl.html'
                 };
 
                 bladeNavigationService.showBlade(newBlade, blade);
@@ -73,8 +73,8 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
             $scope.deleteList = function (list) {
                 var dialog = {
                     id: "confirmDeleteItem",
-                    title: "catalog.dialogs.dynamic-association-delete.title",
-                    message: "catalog.dialogs.dynamic-association-delete.message",
+                    title: "dynamicAssociations.dialogs.dynamic-association-delete.title",
+                    message: "dynamicAssociations.dialogs.dynamic-association-delete.message",
                     callback: function (remove) {
                         if (remove) {
                             bladeNavigationService.closeChildrenBlades(blade, function () {
@@ -104,11 +104,11 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
                         bladeNavigationService.closeChildrenBlades(blade, function () {
                             var newBlade = {
                                 id: 'listItemChild',
-                                title: 'catalog.blades.dynamicAssociation-detail.title-new',
+                                title: 'dynamicAssociations.blades.dynamicAssociation-detail.title-new',
                                 subtitle: blade.subtitle,
                                 isNew: true,
-                                controller: 'virtoCommerce.catalogModule.dynamicAssociationDetailController',
-                                template: 'Modules/$(VirtoCommerce.Catalog)/Scripts/blades/dynamicAssociations/dynamicAssociations-detail.tpl.html'
+                                controller: 'virtoCommerce.dynamicAssociationsModule.dynamicAssociationDetailController',
+                                template: 'Modules/$(virtoCommerce.dynamicAssociationsModule)/Scripts/blades/dynamicAssociations-detail.tpl.html'
                             };
                             bladeNavigationService.showBlade(newBlade, blade);
                         });

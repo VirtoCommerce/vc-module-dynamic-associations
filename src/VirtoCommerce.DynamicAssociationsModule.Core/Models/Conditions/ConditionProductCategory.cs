@@ -3,10 +3,9 @@ using VirtoCommerce.CoreModule.Core.Conditions;
 
 namespace VirtoCommerce.DynamicAssociationsModule.Core.Model.Conditions
 {
-    public class ConditionCategoryIs : ConditionTree
+    public class ConditionProductCategory : ConditionTree
     {
         public string[] CategoryIds { get; set; }
-        public string[] CategoryNames { get; set; }
 
         public override bool IsSatisfiedBy(IEvaluationContext context)
         {

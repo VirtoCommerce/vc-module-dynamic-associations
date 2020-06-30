@@ -383,7 +383,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Tests
                             }
                         }
                     },
-                    new ConditionCategoryIs { CategoryIds = Array.Empty<string>(), }
+                    new ConditionProductCategory { CategoryIds = Array.Empty<string>(), }
                 }
             };
 
