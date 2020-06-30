@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -10,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using VirtoCommerce.CoreModule.Core.Conditions;
 using VirtoCommerce.DynamicAssociationsModule.Core.Model;
+using VirtoCommerce.DynamicAssociationsModule.Core.Model.Conditions;
 using VirtoCommerce.DynamicAssociationsModule.Core.Search;
 using VirtoCommerce.DynamicAssociationsModule.Core.Services;
 using VirtoCommerce.DynamicAssociationsModule.Data.ExportImport;
@@ -57,11 +59,12 @@ namespace VirtoCommerce.DynamicAssociationsModule.Web
 
             var mvcJsonOptions = appBuilder.ApplicationServices.GetService<IOptions<MvcNewtonsoftJsonOptions>>();
             mvcJsonOptions.Value.SerializerSettings.Converters.Add(new PolymorphicDynamicAssociationsJsonConverter());
+            mvcJsonOptions.Value.SerializerSettings.Converters.Add(new DynamicAssociationTreeJsonConverter());
 
             //Register the resulting trees expressions into the AbstractFactory<IConditionTree> 
-            foreach (var conditionTree in AbstractTypeFactory<DynamicAssociationRuleTreePrototype>.TryCreateInstance().Traverse<IConditionTree>(x => x.AvailableChildren))
+            foreach (var conditionTree in AbstractTypeFactory<DynamicAssociationRuleTreePrototype>.TryCreateInstance().Traverse<IDynamicAssociationTree>(x => x.AvailableChildren.OfType<IDynamicAssociationTree>()))
             {
-                AbstractTypeFactory<IConditionTree>.RegisterType(conditionTree.GetType());
+                AbstractTypeFactory<IDynamicAssociationTree>.RegisterType(conditionTree.GetType());
             }
 
             using (var serviceScope = appBuilder.ApplicationServices.CreateScope())

@@ -43,7 +43,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Tests
                             {
                                 Children = new []
                                 {
-                                    new Mock<IConditionTree>().Object
+                                    new Mock<IDynamicAssociationTree>().Object
                                 },
                             },
                         },
@@ -73,7 +73,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Tests
                         {
                             ExpressionTree = new DynamicAssociationRuleTree
                             {
-                                Children = new IConditionTree[]
+                                Children = new IDynamicAssociationTree[]
                                 {
                                     CreateBlockMatchingRulesMock().Object,
                                 },
@@ -106,7 +106,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Tests
                         {
                             ExpressionTree = new DynamicAssociationRuleTree
                             {
-                                Children = new IConditionTree[]
+                                Children = new IDynamicAssociationTree[]
                                 {
                                     CreateBlockMatchingRulesMock().Object,
                                     CreateBlockResultingRules()
@@ -156,7 +156,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Tests
                         {
                             ExpressionTree = new DynamicAssociationRuleTree
                             {
-                                Children = new IConditionTree[]
+                                Children = new IDynamicAssociationTree[]
                                 {
                                     CreateBlockMatchingRulesMock().Object,
                                     CreateBlockResultingRules(),
@@ -192,7 +192,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Tests
                         {
                             ExpressionTree = new DynamicAssociationRuleTree
                             {
-                                Children = new IConditionTree[]
+                                Children = new IDynamicAssociationTree[]
                                 {
                                     CreateBlockMatchingRulesMock().Object,
                                     CreateBlockResultingRules(),
@@ -204,7 +204,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Tests
                         {
                             ExpressionTree = new DynamicAssociationRuleTree
                             {
-                                Children = new IConditionTree[]
+                                Children = new IDynamicAssociationTree[]
                                 {
                                     matchingRuleMock.Object,
                                 },
@@ -223,6 +223,77 @@ namespace VirtoCommerce.DynamicAssociationsModule.Tests
             matchingRuleMock.Verify(x => x.IsSatisfiedBy(It.IsAny<IEvaluationContext>()), Times.Never);
         }
 
+        [Fact]
+        public async Task GetDynamicAssociationCondition_NotStarted_NullResult()
+        {
+            // Arrange
+            var matchingRule = CreateBlockMatchingRulesMock();
+
+            _dynamicAssociationSearchServiceMock
+                .Setup(x => x.SearchDynamicAssociationsAsync(It.IsAny<DynamicAssociationSearchCriteria>()))
+                .ReturnsAsync(new DynamicAssociationSearchResult
+                {
+                    Results = new[]
+                    {
+                        new DynamicAssociation
+                        {
+                            StartDate = DateTime.Now.AddMinutes(1),
+                            ExpressionTree = new DynamicAssociationRuleTree
+                            {
+                                Children = new IDynamicAssociationTree[]
+                                {
+                                    matchingRule.Object,
+                                },
+                            },
+                        },
+                    },
+                });
+
+            var selector = CreateDynamicAssociationConditionSelector();
+
+            // Act
+            var result = await selector.GetDynamicAssociationConditionAsync(_evaluationContext, _catalogProduct);
+
+            // Assert
+            Assert.Null(result);
+            matchingRule.Verify(x => x.IsSatisfiedBy(It.IsAny<IEvaluationContext>()), Times.Never());
+        }
+
+        [Fact]
+        public async Task GetDynamicAssociationCondition_AlreadyEnded_NullResult()
+        {
+            // Arrange
+            var matchingRule = CreateBlockMatchingRulesMock();
+
+            _dynamicAssociationSearchServiceMock
+                .Setup(x => x.SearchDynamicAssociationsAsync(It.IsAny<DynamicAssociationSearchCriteria>()))
+                .ReturnsAsync(new DynamicAssociationSearchResult
+                {
+                    Results = new[]
+                    {
+                        new DynamicAssociation
+                        {
+                            EndDate = DateTime.Now.AddMinutes(-1),
+                            ExpressionTree = new DynamicAssociationRuleTree
+                            {
+                                Children = new IDynamicAssociationTree[]
+                                {
+                                    matchingRule.Object,
+                                },
+                            },
+                        },
+                    },
+                });
+
+            var selector = CreateDynamicAssociationConditionSelector();
+
+            // Act
+            var result = await selector.GetDynamicAssociationConditionAsync(_evaluationContext, _catalogProduct);
+
+            // Assert
+            Assert.Null(result);
+            matchingRule.Verify(x => x.IsSatisfiedBy(It.IsAny<IEvaluationContext>()), Times.Never);
+        }
 
         [Theory]
         [InlineData(100, 101, 10, 0)]
@@ -241,7 +312,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Tests
                         {
                             ExpressionTree = new DynamicAssociationRuleTree
                             {
-                                Children = new IConditionTree[]
+                                Children = new IDynamicAssociationTree[]
                                 {
                                     CreateBlockMatchingRulesMock().Object,
                                     CreateBlockResultingRules(),
@@ -296,7 +367,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Tests
         {
             var result = new BlockResultingRules
             {
-                Children = new IConditionTree[]
+                Children = new IDynamicAssociationTree[]
                 {
                     new ConditionPropertyValues
                     {

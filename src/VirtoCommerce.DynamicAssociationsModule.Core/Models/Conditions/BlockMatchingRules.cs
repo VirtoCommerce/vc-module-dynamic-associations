@@ -1,12 +1,6 @@
-using VirtoCommerce.CoreModule.Core.Conditions;
-
 namespace VirtoCommerce.DynamicAssociationsModule.Core.Model.Conditions
 {
-    public class BlockMatchingRules : BlockConditionAndOr
+    public class BlockMatchingRules : BlockConditionRules
     {
-        public BlockMatchingRules()
-        {
-            All = true;
-        }
     }
 }

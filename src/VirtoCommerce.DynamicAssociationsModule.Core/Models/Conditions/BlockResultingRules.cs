@@ -1,17 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
-using VirtoCommerce.CoreModule.Core.Conditions;
 using VirtoCommerce.Platform.Core.Common;
 
 namespace VirtoCommerce.DynamicAssociationsModule.Core.Model.Conditions
 {
-    public class BlockResultingRules : BlockConditionAndOr
+    public class BlockResultingRules : BlockConditionRules
     {
-        public BlockResultingRules()
-        {
-            All = true;
-        }
-
         public virtual Dictionary<string, string[]> GetPropertyValues()
         {
             var result = new Dictionary<string, string[]>();

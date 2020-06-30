@@ -1,8 +1,8 @@
-using VirtoCommerce.CoreModule.Core.Conditions;
+using VirtoCommerce.DynamicAssociationsModule.Core.Model.Conditions;
 
 namespace VirtoCommerce.DynamicAssociationsModule.Core.Model
 {
-    public class DynamicAssociationRuleTree : ConditionTree
+    public class DynamicAssociationRuleTree : DynamicAssociationTree
     {
     }
 }

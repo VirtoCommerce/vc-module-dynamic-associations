@@ -1,17 +1,18 @@
+using System.Linq;
 using VirtoCommerce.CoreModule.Core.Common;
+using VirtoCommerce.Platform.Core.Common;
 
 namespace VirtoCommerce.DynamicAssociationsModule.Core.Model.Conditions
 {
-    public class ConditionProductCategory : DynamicAssociationTree
+    public class BlockConditionRules : DynamicAssociationTree
     {
-        public string[] CategoryIds { get; set; }
-
         public override bool IsSatisfiedBy(IEvaluationContext context)
         {
             var result = false;
-            if (context is DynamicAssociationExpressionEvaluationContext evaluationContext)
+
+            if (!Children.IsNullOrEmpty())
             {
-                result = evaluationContext.AreItemsInCategory(CategoryIds);
+                result = Children.All(ch => ch.IsSatisfiedBy(context));
             }
 
             return result;

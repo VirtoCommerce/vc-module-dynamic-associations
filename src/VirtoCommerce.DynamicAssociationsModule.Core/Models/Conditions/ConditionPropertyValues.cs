@@ -2,12 +2,11 @@ using System.Collections.Generic;
 using System.Linq;
 using VirtoCommerce.CatalogModule.Core.Model;
 using VirtoCommerce.CoreModule.Core.Common;
-using VirtoCommerce.CoreModule.Core.Conditions;
 using VirtoCommerce.Platform.Core.Common;
 
 namespace VirtoCommerce.DynamicAssociationsModule.Core.Model.Conditions
 {
-    public class ConditionPropertyValues : ConditionTree
+    public class ConditionPropertyValues : DynamicAssociationTree
     {
         public Property[] Properties { get; set; }
 
