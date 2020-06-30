@@ -144,7 +144,7 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
                                 var viewerBlade = {
                                     id: 'propertiesSelector',
                                     controller: 'virtoCommerce.dynamicAssociationsModule.dynamicAssociationViewerController',
-                                    template: 'Modules/$(virtoCommerce.dynamicAssociations)/Scripts/blades/dynamicAssociations/dynamicAssociation-viewer.tpl.html',
+                                    template: 'Modules/$(virtoCommerce.dynamicAssociationsModule)/Scripts/blades/dynamicAssociation-viewer.tpl.html',
                                     categoryIds: blade.categoryIds,
                                     properties: pickingBlade.currentEntities
                                 };
@@ -185,7 +185,7 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
                             id: 'propertiesSelector',
                             controller: 'virtoCommerce.dynamicAssociationsModule.dynamicAssociationViewerController',
                             template:
-                                'Modules/$(virtoCommerce.dynamicAssociations)/Scripts/blades/dynamicAssociations/dynamicAssociation-viewer.tpl.html',
+                                'Modules/$(virtoCommerce.dynamicAssociationsModule)/Scripts/blades/dynamicAssociation-viewer.tpl.html',
                             categoryIds: blade.categoryIds,
                             properties: blade.editedProperties
                         };

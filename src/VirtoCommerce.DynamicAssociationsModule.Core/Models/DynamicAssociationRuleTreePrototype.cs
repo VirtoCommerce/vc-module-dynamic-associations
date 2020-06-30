@@ -12,12 +12,12 @@ namespace VirtoCommerce.DynamicAssociationsModule.Core.Model
         {
             var matchingRules = new BlockMatchingRules()
                 .WithAvailConditions(
-                    new ConditionCategoryIs(),
+                    new ConditionProductCategory(),
                     new ConditionPropertyValues()
                 );
             var resultingRules = new BlockResultingRules()
                 .WithAvailConditions(
-                    new ConditionCategoryIs(),
+                    new ConditionProductCategory(),
                     new ConditionPropertyValues()
                 );
             var outputTuning = new BlockOutputTuning();

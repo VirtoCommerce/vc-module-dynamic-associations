@@ -14,7 +14,7 @@ using CatalogModuleConstants = VirtoCommerce.CatalogModule.Core.ModuleConstants;
 
 namespace VirtoCommerce.DynamicAssociationsModule.Web.Controllers.Api
 {
-    [Route("api/catalog/products/dynamicassociations")]
+    [Route("api/dynamicassociations")]
     [Authorize]
     public class CatalogModuleDynamicAssociationsController : Controller
     {

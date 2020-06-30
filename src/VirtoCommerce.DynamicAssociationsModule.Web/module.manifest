@@ -10,7 +10,7 @@
         <dependency id="VirtoCommerce.Store" version="3.0.0" />
     </dependencies>
 
-    <title>VirtoCommerce.DynamicAssociationsModule</title>
+    <title>Dynamic Associations</title>
     <description>Dynamic rule based product associations module</description>
     <authors>
         <author>Andrey Kozlov</author>

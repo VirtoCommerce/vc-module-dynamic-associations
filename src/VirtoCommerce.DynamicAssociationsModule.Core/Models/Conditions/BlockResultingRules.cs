@@ -34,7 +34,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Core.Model.Conditions
             if (!Children.IsNullOrEmpty())
             {
                 result = Children
-                    .OfType<ConditionCategoryIs>()
+                    .OfType<ConditionProductCategory>()
                     .SelectMany(x => x.CategoryIds).ToList();
             }
 

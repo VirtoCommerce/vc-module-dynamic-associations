@@ -8,9 +8,9 @@ using VirtoCommerce.Platform.Data.Infrastructure;
 
 namespace VirtoCommerce.DynamicAssociationsModule.Data.Repositories
 {
-    public class DynamicAssociationsRepositoryImpl : DbContextRepositoryBase<DynamicAssociationsModuleDbContext>, IDynamicAssociationsRepository
+    public class DynamicAssociationsRepository : DbContextRepositoryBase<DynamicAssociationsModuleDbContext>, IDynamicAssociationsRepository
     {
-        public DynamicAssociationsRepositoryImpl(DynamicAssociationsModuleDbContext dbContext)
+        public DynamicAssociationsRepository(DynamicAssociationsModuleDbContext dbContext)
             : base(dbContext)
         {
         }

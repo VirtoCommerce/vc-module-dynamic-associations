@@ -8,7 +8,7 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
         $scope.BlockResultingRules = 'BlockResultingRules';
         $scope.BlockOutputTuning = 'BlockOutputTuning';
         $scope.ConditionPropertyValues = 'ConditionPropertyValues';
-        $scope.ConditionCategoryIs = 'ConditionCategoryIs';
+        $scope.ConditionProductCategory = 'ConditionProductCategory';
 
         $scope.productsToMatchCount = 0;
         $scope.productsToDisplayCount = 0;
@@ -60,11 +60,11 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
 
         $scope.checkExistingRules = function() {
             const matchingRules = _.find(blade.currentEntity.expressionTree.children, x => x.id === $scope.BlockMatchingRules);
-            const matchingCondition = $scope.getCondition(matchingRules, $scope.ConditionCategoryIs);
+            const matchingCondition = $scope.getCondition(matchingRules, $scope.ConditionProductCategory);
             blade.isMatchingRulesExist = matchingCondition.categoryIds.length > 0;
 
             const resultingRules = _.find(blade.currentEntity.expressionTree.children, x => x.id === $scope.BlockResultingRules);
-            const resultingCondition = $scope.getCondition(resultingRules, $scope.ConditionCategoryIs);
+            const resultingCondition = $scope.getCondition(resultingRules, $scope.ConditionProductCategory);
             blade.isResultingRulesExist = resultingCondition.categoryIds.length > 0;
         };
 
@@ -73,18 +73,18 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
         };
 
         $scope.canSave = () => {
-            return $scope.isDirty() && formScope && formScope.$valid && blade.currentEntity.storeId && blade.currentEntity.associationType && blade.currentEntity.priority && blade.isMatchingRulesExist && blade.isResultingRulesExist;
+            return $scope.isDirty() && formScope && formScope.$valid && blade.currentEntity.storeId && blade.currentEntity.associationType && blade.currentEntity.priority !== undefined && blade.isMatchingRulesExist && blade.isResultingRulesExist;
         };
 
         $scope.outputTuning = function () {
             const rulesBlock = _.find(blade.currentEntity.expressionTree.children, x => x.id === $scope.BlockResultingRules);
-            const categoryCondition = $scope.getCondition(rulesBlock, $scope.ConditionCategoryIs);
+            const categoryCondition = $scope.getCondition(rulesBlock, $scope.ConditionProductCategory);
             const newBlade = {
                 id: "outputTuning",
                 title: "dynamicAssociations.blades.dynamicAssociation-outputTuning.title",
                 subtitle: 'dynamicAssociations.blades.dynamicAssociation-outputTuning.subtitle',
                 controller: 'virtoCommerce.dynamicAssociationsModule.outputTuningController',
-                template: 'Modules/$(VirtoCommerce.dynamicAssociations)/Scripts/blades/dynamicAssociations/outputTuning.tpl.html',
+                template: 'Modules/$(VirtoCommerce.dynamicAssociationsModule)/Scripts/blades/outputTuning.tpl.html',
                 categoryIds: categoryCondition.categoryIds,
                 originalEntity: blade.currentEntity,
                 onSelected: function (newSortingRules) {
@@ -104,7 +104,7 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
                 title: "dynamicAssociations.blades.dynamicAssociation-parameters.title",
                 subtitle: 'dynamicAssociations.blades.dynamicAssociation-parameters.subtitle',
                 controller: 'virtoCommerce.dynamicAssociationsModule.dynamicAssociationParametersController',
-                template: 'Modules/$(VirtoCommerce.dynamicAssociations)/Scripts/blades/dynamicAssociations/mainParameters.tpl.html',
+                template: 'Modules/$(VirtoCommerce.dynamicAssociationsModule)/Scripts/blades/mainParameters.tpl.html',
                 originalEntity: blade.currentEntity,
                 onSelected: function (entity) {
                     blade.currentEntity = entity;
@@ -176,14 +176,14 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
 
         /////
         $scope.getCondition = function(rulesBlock, conditionName) {
-            const conditionCategoryIs = { id: $scope.ConditionCategoryIs, categoryIds: [], categoryNames: [] };
+            const conditionProductCategory = { id: $scope.ConditionProductCategory, categoryIds: [], categoryNames: [] };
             const conditionPropertyValues = { id: $scope.ConditionPropertyValues, properties: [] };
 
             let categoryCondition = _.find(rulesBlock.children, x => x.id === conditionName);
             if (!categoryCondition) {
                 switch (conditionName) {
-                    case $scope.ConditionCategoryIs:
-                        rulesBlock.children.push(conditionCategoryIs);
+                    case $scope.ConditionProductCategory:
+                        rulesBlock.children.push(conditionProductCategory);
                         break;
 
                     case $scope.ConditionPropertyValues:
@@ -200,14 +200,14 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
         $scope.createProductFilter = function (rulesBlockName) {
 
             const rulesBlock = _.find(blade.currentEntity.expressionTree.children, x => x.id === rulesBlockName);
-            let categoryCondition = $scope.getCondition(rulesBlock, $scope.ConditionCategoryIs);
+            let categoryCondition = $scope.getCondition(rulesBlock, $scope.ConditionProductCategory);
             let propertyCondition = $scope.getCondition(rulesBlock, $scope.ConditionPropertyValues);
             
             var ruleCreationBlade = {
                 id: "createDynamicAssociationRule",
                 controller: 'virtoCommerce.dynamicAssociationsModule.ruleCreationController',
                 title: `Create rule for ${rulesBlockName === $scope.BlockMatchingRules ? 'matching' : 'display'} products`,
-                template: 'Modules/$(virtoCommerce.dynamicAssociations)/Scripts/blades/dynamicAssociations/rule-creation.tpl.html',
+                template: 'Modules/$(virtoCommerce.dynamicAssociationsModule)/Scripts/blades/rule-creation.tpl.html',
                 categoryIds: angular.copy(categoryCondition.categoryIds),
                 editedProperties: angular.copy(propertyCondition.properties),
                 catalogId: angular.copy(blade.currentEntity.catalogId),
@@ -242,7 +242,7 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
             const properties = $scope.getCondition(rule, $scope.ConditionPropertyValues).properties;
 
             let categoryIds = [];
-            const categoryCondition = $scope.getCondition(rule, $scope.ConditionCategoryIs);
+            const categoryCondition = $scope.getCondition(rule, $scope.ConditionProductCategory);
 
             if (categoryCondition.categoryIds) {
                 categoryIds = categoryCondition.categoryIds;

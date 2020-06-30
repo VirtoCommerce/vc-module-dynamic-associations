@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using VirtoCommerce.CoreModule.Core.Conditions;
@@ -11,6 +13,7 @@ using VirtoCommerce.DynamicAssociationsModule.Core.Model;
 using VirtoCommerce.DynamicAssociationsModule.Core.Search;
 using VirtoCommerce.DynamicAssociationsModule.Core.Services;
 using VirtoCommerce.DynamicAssociationsModule.Data.ExportImport;
+using VirtoCommerce.DynamicAssociationsModule.Data.Repositories;
 using VirtoCommerce.DynamicAssociationsModule.Data.Search;
 using VirtoCommerce.DynamicAssociationsModule.Data.Services;
 using VirtoCommerce.DynamicAssociationsModule.Web.Authorization;
@@ -18,6 +21,7 @@ using VirtoCommerce.DynamicAssociationsModule.Web.JsonConverters;
 using VirtoCommerce.Platform.Core.Common;
 using VirtoCommerce.Platform.Core.ExportImport;
 using VirtoCommerce.Platform.Core.Modularity;
+using VirtoCommerce.Platform.Data.Extensions;
 
 namespace VirtoCommerce.DynamicAssociationsModule.Web
 {
@@ -29,13 +33,22 @@ namespace VirtoCommerce.DynamicAssociationsModule.Web
 
         public void Initialize(IServiceCollection serviceCollection)
         {
+
+            var configuration = serviceCollection.BuildServiceProvider().GetRequiredService<IConfiguration>();
+            var connectionString = configuration.GetConnectionString("VirtoCommerce.DynamicAssociationsModule") ?? configuration.GetConnectionString("VirtoCommerce");
+
+
             serviceCollection.AddTransient<IDynamicAssociationService, DynamicAssociationService>();
+            serviceCollection.AddTransient<IDynamicAssociationsRepository, DynamicAssociationsRepository>();
             serviceCollection.AddTransient<IDynamicAssociationSearchService, DynamicAssociationSearchService>();
             serviceCollection.AddTransient<IAuthorizationHandler, DynamicAssociationAuthorizationHandler>();
             serviceCollection.AddTransient<IDynamicAssociationEvaluator, DynamicAssociationEvaluator>();
             serviceCollection.AddTransient<IDynamicAssociationConditionSelector, DynamicAssociationConditionsSelector>();
             serviceCollection.AddTransient<DynamicAssociationSearchRequestBuilder>();
             serviceCollection.AddTransient<IDynamicAssociationConditionEvaluator, DynamicAssociationConditionEvaluator>();
+
+            serviceCollection.AddDbContext<DynamicAssociationsModuleDbContext>(options => options.UseSqlServer(connectionString));
+            serviceCollection.AddTransient<Func<IDynamicAssociationsRepository>>(provider => () => provider.CreateScope().ServiceProvider.GetRequiredService<IDynamicAssociationsRepository>());
         }
 
         public void PostInitialize(IApplicationBuilder appBuilder)
@@ -49,6 +62,13 @@ namespace VirtoCommerce.DynamicAssociationsModule.Web
             foreach (var conditionTree in AbstractTypeFactory<DynamicAssociationRuleTreePrototype>.TryCreateInstance().Traverse<IConditionTree>(x => x.AvailableChildren))
             {
                 AbstractTypeFactory<IConditionTree>.RegisterType(conditionTree.GetType());
+            }
+
+            using (var serviceScope = appBuilder.ApplicationServices.CreateScope())
+            {
+                var dbContext = serviceScope.ServiceProvider.GetRequiredService<DynamicAssociationsModuleDbContext>();
+                dbContext.Database.EnsureCreated();
+                dbContext.Database.Migrate();
             }
         }
 
