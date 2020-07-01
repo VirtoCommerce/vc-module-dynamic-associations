@@ -1,7 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using VirtoCommerce.CoreModule.Core.Conditions;
-using VirtoCommerce.Platform.Core.Common;
 
 namespace VirtoCommerce.DynamicAssociationsModule.Core.Model.Conditions
 {
@@ -12,33 +12,23 @@ namespace VirtoCommerce.DynamicAssociationsModule.Core.Model.Conditions
             All = true;
         }
 
-        public virtual Dictionary<string, string[]> GetPropertyValues()
-        {
-            var result = new Dictionary<string, string[]>();
+        public virtual Dictionary<string, string[]> GetPropertyValues() =>
+            Children?.OfType<ConditionPropertyValues>()
+                .FirstOrDefault()
+                ?.GetPropertiesValues()
+                .ToDictionary(x => x.Key, y => y.Value)
+            ?? new Dictionary<string, string[]>();
 
-            if (!Children.IsNullOrEmpty())
-            {
-                result = Children
-                    .OfType<ConditionPropertyValues>()
-                    .SelectMany(x => x.GetPropertiesValues())
-                    .ToDictionary(x => x.Key, y => y.Value);
-            }
+        public virtual ICollection<string> GetCategoryIds() =>
+            Children?.OfType<ConditionProductCategory>()
+                .FirstOrDefault()
+                ?.CategoryIds
+            ?? Array.Empty<string>();
 
-            return result;
-        }
-
-        public virtual ICollection<string> GetCategoryIds()
-        {
-            var result = new List<string>();
-
-            if (!Children.IsNullOrEmpty())
-            {
-                result = Children
-                    .OfType<ConditionProductCategory>()
-                    .SelectMany(x => x.CategoryIds).ToList();
-            }
-
-            return result;
-        }
+        public virtual string GetCatalogId() =>
+            Children?.OfType<ConditionProductCategory>()
+                .FirstOrDefault()
+                ?.CatalogId
+            ?? null;
     }
 }

@@ -186,6 +186,7 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
                             controller: 'virtoCommerce.dynamicAssociationsModule.dynamicAssociationViewerController',
                             template:
                                 'Modules/$(virtoCommerce.dynamicAssociationsModule)/Scripts/blades/dynamicAssociation-viewer.tpl.html',
+                            catalogId: blade.catalogId,
                             categoryIds: blade.categoryIds,
                             properties: blade.editedProperties
                         };

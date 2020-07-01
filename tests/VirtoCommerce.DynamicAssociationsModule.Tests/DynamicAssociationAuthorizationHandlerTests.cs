@@ -28,6 +28,12 @@ namespace VirtoCommerce.DynamicAssociationsModule.Tests
 {
     public class DynamicAssociationAuthorizationHandlerTests
     {
+        public static object[][] EmptyCategories = new object[][]
+        {
+            new object[] { null },
+            new object[] { Array.Empty<string>() }
+        };
+
         private readonly IOptions<MvcNewtonsoftJsonOptions> _jsonOptions;
         private const string _permission = "test:permission";
 
@@ -443,6 +449,221 @@ namespace VirtoCommerce.DynamicAssociationsModule.Tests
             var authorizationHandler = CreateAuthorizationHandler(null, categoryServiceMock.Object);
             var evaluationRequest = new DynamicAssociationConditionEvaluationRequest
             {
+                CategoryIds = new[] { "testCategory1" }
+            };
+
+            var context = CreateAuthorizationHandlerContext(
+                $"{_permission}",
+                $"{_permission}|[{{\"catalogId\":\"testCatalog1\",\"type\":\"SelectedCatalogScope\",\"label\":\"Electronics\",\"scope\":\"testCatalog1\"}}]",
+                evaluationRequest);
+
+            // Act
+            await authorizationHandler.HandleAsync(context);
+
+            // Assert
+            Assert.False(context.HasSucceeded);
+        }
+
+        [Fact]
+        public async Task HandleRequirementAsync_ConditionEvaluationRequest_CategoryDoesNotExists_Succeeded()
+        {
+            // Arrage
+            var categoryServiceMock = CreateCategoryServiceMock();
+            categoryServiceMock
+                .Setup(x => x.GetByIdsAsync(It.IsAny<string[]>(), It.IsAny<string>(), It.IsAny<string>()))
+                .ReturnsAsync(Array.Empty<Category>);
+
+            var authorizationHandler = CreateAuthorizationHandler(null, categoryServiceMock.Object);
+            var evaluationRequest = new DynamicAssociationConditionEvaluationRequest
+            {
+                CategoryIds = new[] { "testCategory1" }
+            };
+
+            var context = CreateAuthorizationHandlerContext(
+                $"{_permission}",
+                $"{_permission}|[{{\"catalogId\":\"testCatalog1\",\"type\":\"SelectedCatalogScope\",\"label\":\"Electronics\",\"scope\":\"testCatalog1\"}}]",
+                evaluationRequest);
+
+            // Act
+            await authorizationHandler.HandleAsync(context);
+
+            // Assert
+            Assert.True(context.HasSucceeded);
+        }
+
+        [Theory]
+        [MemberData(nameof(EmptyCategories))]
+        public async Task HandleRequirementAsync_ConditionEvaluationRequest_EmptyCategoryList_Fails(string[] cetegoryIds)
+        {
+            // Arrage
+            var categoryServiceMock = CreateCategoryServiceMock();
+            categoryServiceMock
+                .Setup(x => x.GetByIdsAsync(It.IsAny<string[]>(), It.IsAny<string>(), It.IsAny<string>()))
+                .ReturnsAsync(new[]
+                {
+                    new Category
+                    {
+                        Id = "testCategory1",
+                        Outlines = new[]
+                        {
+                            new Outline
+                            {
+                                Items = new []
+                                {
+                                    new OutlineItem
+                                    {
+                                        Id = "testCatalog1",
+                                    },
+                                }
+                            },
+                        }
+                    },
+                });
+
+            var authorizationHandler = CreateAuthorizationHandler(null, categoryServiceMock.Object);
+            var evaluationRequest = new DynamicAssociationConditionEvaluationRequest
+            {
+                CategoryIds = cetegoryIds,
+            };
+
+            var context = CreateAuthorizationHandlerContext(
+                $"{_permission}",
+                $"{_permission}|[{{\"catalogId\":\"testCatalog1\",\"type\":\"SelectedCatalogScope\",\"label\":\"Electronics\",\"scope\":\"testCatalog1\"}}]",
+                evaluationRequest);
+
+            // Act
+            await authorizationHandler.HandleAsync(context);
+
+            // Assert
+            Assert.False(context.HasSucceeded);
+        }
+
+        [Fact]
+        public async Task HandleRequirementAsync_ConditionEvaluationRequest_NoCatalogSpecifiedAndValidCategories_Succeeded()
+        {
+            // Arrage
+            var categoryServiceMock = CreateCategoryServiceMock();
+            categoryServiceMock
+                .Setup(x => x.GetByIdsAsync(It.IsAny<string[]>(), It.IsAny<string>(), It.IsAny<string>()))
+                .ReturnsAsync(new[]
+                {
+                    new Category
+                    {
+                        Id = "testCategory1",
+                        Outlines = new[]
+                        {
+                            new Outline
+                            {
+                                Items = new []
+                                {
+                                    new OutlineItem
+                                    {
+                                        Id = "testCatalog1",
+                                    },
+                                }
+                            },
+                        }
+                    },
+                });
+
+            var authorizationHandler = CreateAuthorizationHandler(null, categoryServiceMock.Object);
+            var evaluationRequest = new DynamicAssociationConditionEvaluationRequest
+            {
+                CatalogId = null,
+                CategoryIds = new[] { "testCategory1" }
+            };
+
+            var context = CreateAuthorizationHandlerContext(
+                $"{_permission}",
+                $"{_permission}|[{{\"catalogId\":\"testCatalog1\",\"type\":\"SelectedCatalogScope\",\"label\":\"Electronics\",\"scope\":\"testCatalog1\"}}]",
+                evaluationRequest);
+
+            // Act
+            await authorizationHandler.HandleAsync(context);
+
+            // Assert
+            Assert.True(context.HasSucceeded);
+        }
+
+        [Fact]
+        public async Task HandleRequirementAsync_ConditionEvaluationRequest_ValidCatalogAndValidCategories_Succeeded()
+        {
+            // Arrage
+            var categoryServiceMock = CreateCategoryServiceMock();
+            categoryServiceMock
+                .Setup(x => x.GetByIdsAsync(It.IsAny<string[]>(), It.IsAny<string>(), It.IsAny<string>()))
+                .ReturnsAsync(new[]
+                {
+                    new Category
+                    {
+                        Id = "testCategory1",
+                        Outlines = new[]
+                        {
+                            new Outline
+                            {
+                                Items = new []
+                                {
+                                    new OutlineItem
+                                    {
+                                        Id = "testCatalog1",
+                                    },
+                                }
+                            },
+                        }
+                    },
+                });
+
+            var authorizationHandler = CreateAuthorizationHandler(null, categoryServiceMock.Object);
+            var evaluationRequest = new DynamicAssociationConditionEvaluationRequest
+            {
+                CatalogId = "testCatalog1",
+                CategoryIds = new[] { "testCategory1" }
+            };
+
+            var context = CreateAuthorizationHandlerContext(
+                $"{_permission}",
+                $"{_permission}|[{{\"catalogId\":\"testCatalog1\",\"type\":\"SelectedCatalogScope\",\"label\":\"Electronics\",\"scope\":\"testCatalog1\"}}]",
+                evaluationRequest);
+
+            // Act
+            await authorizationHandler.HandleAsync(context);
+
+            // Assert
+            Assert.True(context.HasSucceeded);
+        }
+
+        [Fact]
+        public async Task HandleRequirementAsync_ConditionEvaluationRequest_NotValidCatalogAndValidCategories_Fails()
+        {
+            // Arrage
+            var categoryServiceMock = CreateCategoryServiceMock();
+            categoryServiceMock
+                .Setup(x => x.GetByIdsAsync(It.IsAny<string[]>(), It.IsAny<string>(), It.IsAny<string>()))
+                .ReturnsAsync(new[]
+                {
+                    new Category
+                    {
+                        Id = "testCategory1",
+                        Outlines = new[]
+                        {
+                            new Outline
+                            {
+                                Items = new []
+                                {
+                                    new OutlineItem
+                                    {
+                                        Id = "testCatalog1",
+                                    },
+                                }
+                            },
+                        }
+                    },
+                });
+
+            var authorizationHandler = CreateAuthorizationHandler(null, categoryServiceMock.Object);
+            var evaluationRequest = new DynamicAssociationConditionEvaluationRequest
+            {
+                CatalogId = "testCatalog2",
                 CategoryIds = new[] { "testCategory1" }
             };
 

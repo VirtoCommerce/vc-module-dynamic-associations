@@ -9,6 +9,7 @@ using VirtoCommerce.CatalogModule.Core.Services;
 using VirtoCommerce.CatalogModule.Data.Authorization;
 using VirtoCommerce.DynamicAssociationsModule.Core.Model;
 using VirtoCommerce.DynamicAssociationsModule.Core.Model.Search;
+using VirtoCommerce.Platform.Core.Common;
 using VirtoCommerce.Platform.Core.Security;
 using VirtoCommerce.Platform.Security.Authorization;
 using VirtoCommerce.StoreModule.Core.Services;
@@ -92,33 +93,30 @@ namespace VirtoCommerce.DynamicAssociationsModule.Web.Authorization
                     }
                     else if (context.Resource is DynamicAssociationConditionEvaluationRequest evaluationRequest)
                     {
+                        var catalogId = evaluationRequest.CatalogId;
                         var categoryIds = evaluationRequest.CategoryIds;
-                        var categories = await _categoryService.GetByIdsAsync(categoryIds.ToArray(), $"{CategoryResponseGroup.WithOutlines}");
 
-                        if (categoryIds.All(x => CategoryContainsInOutline(x, categories, allowedCatalogIds)))
+                        if (!categoryIds.IsNullOrEmpty())
                         {
-                            context.Succeed(requirement);
+                            var categories = await _categoryService.GetByIdsAsync(categoryIds.ToArray(), $"{CategoryResponseGroup.WithOutlines}");
+
+                            if ((catalogId == null || allowedCatalogIds.Any(x => x.EqualsInvariant(catalogId))) && categories.All(x => IsCategoryLocatedInCatalogs(x, allowedCatalogIds)))
+                            {
+                                context.Succeed(requirement);
+                            }
                         }
                     }
                 }
             }
         }
 
-        protected virtual bool CategoryContainsInOutline(string categoryId, Category[] categories, string[] allowedCatalogs)
+        protected virtual bool IsCategoryLocatedInCatalogs(Category category, string[] catalogIds)
         {
-            var result = false;
-            var category = categories.FirstOrDefault(x => x.Id == categoryId);
-
-            if (category != null)
-            {
-                result = category
-                    .Outlines
-                    .SelectMany(x => x.Items.Select(y => y.Id))
-                    .Intersect(allowedCatalogs, StringComparer.OrdinalIgnoreCase)
-                    .Any();
-            }
-
-            return result;
+            return category
+                .Outlines
+                .SelectMany(x => x.Items.Select(y => y.Id))
+                .Intersect(catalogIds, StringComparer.OrdinalIgnoreCase)
+                .Any();
         }
     }
 }

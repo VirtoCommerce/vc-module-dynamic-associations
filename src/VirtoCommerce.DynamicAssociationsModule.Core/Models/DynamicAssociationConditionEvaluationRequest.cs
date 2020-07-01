@@ -6,6 +6,8 @@ namespace VirtoCommerce.DynamicAssociationsModule.Core.Model
     {
         public string Keyword { get; set; }
 
+        public string CatalogId { get; set; }
+
         public ICollection<string> CategoryIds { get; set; }
 
         public IDictionary<string, string[]> PropertyValues { get; set; }

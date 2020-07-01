@@ -24,7 +24,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Data.Services
         public async Task<string[]> EvaluateDynamicAssociationConditionAsync(DynamicAssociationConditionEvaluationRequest conditionRequest)
         {
             _requestBuilder
-                .AddOutlineSearch(conditionRequest.CategoryIds)
+                .AddOutlineSearch(conditionRequest.CatalogId, conditionRequest.CategoryIds)
                 .AddPropertySearch(conditionRequest.PropertyValues)
                 .AddKeywordSearch(conditionRequest.Keyword)
                 .AddSortInfo(conditionRequest.Sort)

@@ -5,6 +5,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Core.Model.Conditions
 {
     public class ConditionProductCategory : ConditionTree
     {
+        public string CatalogId { get; set; }
         public string[] CategoryIds { get; set; }
 
         public override bool IsSatisfiedBy(IEvaluationContext context)

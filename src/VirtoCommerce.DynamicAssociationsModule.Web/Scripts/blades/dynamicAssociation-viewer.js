@@ -81,6 +81,7 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
 
                     var dataQuery = {
                         categoryIds: blade.categoryIds,
+                        catalogId: blade.catalogId,
                         propertyValues: propertyValues,
                         keyword: filter.keyword,
                         skip: ($scope.pageSettings.currentPage - 1) * $scope.pageSettings.itemsPerPageCount,

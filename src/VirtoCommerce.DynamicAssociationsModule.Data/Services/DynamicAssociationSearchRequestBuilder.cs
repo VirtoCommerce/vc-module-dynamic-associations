@@ -53,17 +53,27 @@ namespace VirtoCommerce.DynamicAssociationsModule.Data.Services
             return this;
         }
 
-        public virtual DynamicAssociationSearchRequestBuilder AddOutlineSearch(ICollection<string> categoryIds)
+        public virtual DynamicAssociationSearchRequestBuilder AddOutlineSearch(string catalogId, ICollection<string> categoryIds)
         {
+            if (!catalogId.IsNullOrEmpty())
+            {
+                ((AndFilter)_searchRequest.Filter).ChildFilters.Add(new TermFilter
+                {
+                    FieldName = "catalog",
+                    Values = new[] { catalogId }
+                });
+            }
+
             if (!categoryIds.IsNullOrEmpty())
             {
                 ((AndFilter)_searchRequest.Filter).ChildFilters.Add(new OrFilter
                 {
                     ChildFilters = categoryIds
-                        .Select(x => new WildCardTermFilter
+                        .Select(categoryId => new TermFilter
                         {
                             FieldName = "__outline",
-                            Value = $"*{x}"
+                            // Here we using the fact that we have such outlines in index (even for non-top level categories)
+                            Values = new List<string>() { $"{catalogId}/{categoryId}" },
                         })
                         .ToArray<IFilter>(),
                 });

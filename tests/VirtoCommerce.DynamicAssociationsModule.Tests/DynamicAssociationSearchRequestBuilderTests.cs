@@ -15,6 +15,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Tests
             var keyword = "testKeyword";
             var take = 9;
             var skip = 8;
+            var catalogId = "catalogId";
             var outline = new[] { "testOutline" };
 
             var builder = new DynamicAssociationSearchRequestBuilder()
@@ -23,21 +24,23 @@ namespace VirtoCommerce.DynamicAssociationsModule.Tests
                     {"testProperty", new [] { "testValue1", "testValue2" }},
                 })
                 .AddKeywordSearch(keyword)
-                .AddOutlineSearch(outline)
+                .AddOutlineSearch(catalogId, outline)
                 .AddSortInfo("property1:asc;property2:desc")
                 .WithPaging(skip, take);
 
             // Act
             var result = builder.Build();
-            var propertyFilter = ((AndFilter)result.Filter).ChildFilters.OfType<TermFilter>().FirstOrDefault();
+            var propertyFilter = ((AndFilter)result.Filter).ChildFilters.OfType<TermFilter>().FirstOrDefault(x => x.FieldName == "testProperty");
             var sortProperty1 = result.Sorting.FirstOrDefault(x => x.FieldName == "property1");
             var sortProperty2 = result.Sorting.FirstOrDefault(x => x.FieldName == "property2");
             var outlineFilter = ((AndFilter)result.Filter).ChildFilters.OfType<OrFilter>().FirstOrDefault()?.ChildFilters.FirstOrDefault();
+            var catalogFilter = ((AndFilter)result.Filter).ChildFilters.OfType<TermFilter>().FirstOrDefault(x => x.FieldName == "catalog");
 
             // Assert
             Assert.Equal("testProperty:testValue1,testValue2", propertyFilter?.ToString());
 
-            Assert.Equal("__outline:*testOutline", outlineFilter?.ToString());
+            Assert.Equal("__outline:catalogId/testOutline", outlineFilter?.ToString());
+            Assert.Equal("catalog:catalogId", catalogFilter?.ToString());
 
             Assert.Equal(keyword, result.SearchKeywords);
             Assert.Equal("__content", result.SearchFields.FirstOrDefault());
@@ -56,7 +59,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Tests
             var builder = new DynamicAssociationSearchRequestBuilder()
                 .AddPropertySearch(null)
                 .AddKeywordSearch(null)
-                .AddOutlineSearch(null)
+                .AddOutlineSearch(null, null)
                 .AddSortInfo(null);
 
             // Act

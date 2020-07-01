@@ -57,6 +57,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Data.Services
 
                     result = AbstractTypeFactory<DynamicAssociationConditionEvaluationRequest>.TryCreateInstance();
                     result.PropertyValues = resultRule.GetPropertyValues();
+                    result.CatalogId = resultRule.GetCatalogId();
                     result.CategoryIds = resultRule.GetCategoryIds();
                     result.Sort = outputTuningBlock.Sort;
                     result.Skip = context.Skip;
