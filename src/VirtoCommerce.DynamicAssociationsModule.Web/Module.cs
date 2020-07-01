@@ -1,10 +1,12 @@
 using System;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -21,7 +23,6 @@ using VirtoCommerce.DynamicAssociationsModule.Web.JsonConverters;
 using VirtoCommerce.Platform.Core.Common;
 using VirtoCommerce.Platform.Core.ExportImport;
 using VirtoCommerce.Platform.Core.Modularity;
-using VirtoCommerce.Platform.Data.Extensions;
 
 namespace VirtoCommerce.DynamicAssociationsModule.Web
 {
@@ -59,9 +60,22 @@ namespace VirtoCommerce.DynamicAssociationsModule.Web
             mvcJsonOptions.Value.SerializerSettings.Converters.Add(new PolymorphicDynamicAssociationsJsonConverter());
 
             //Register the resulting trees expressions into the AbstractFactory<IConditionTree> 
-            foreach (var conditionTree in AbstractTypeFactory<DynamicAssociationRuleTreePrototype>.TryCreateInstance().Traverse<IConditionTree>(x => x.AvailableChildren))
+            foreach (var conditionType in AbstractTypeFactory<DynamicAssociationRuleTreePrototype>.TryCreateInstance()
+                .Traverse<IConditionTree>(x => x.AvailableChildren)
+                .Select(x => x.GetType())
+                .Distinct())
             {
-                AbstractTypeFactory<IConditionTree>.RegisterType(conditionTree.GetType());
+                var alreadyRegisteredConditionTypeInfo = AbstractTypeFactory<IConditionTree>.FindTypeInfoByName(conditionType.Name);
+
+                if (alreadyRegisteredConditionTypeInfo == null)
+                {
+                    AbstractTypeFactory<IConditionTree>.RegisterType(conditionType);
+                }
+                else
+                {
+                    // Need to throw exception to prevent registering IConditionTree descendant condition with the same name - or one type deserialization would be broken by another
+                    throw new InvalidOperationException($"Cannot register \"{conditionType.Name}\" condition type the one with the same named already registered: \"{alreadyRegisteredConditionTypeInfo.Type.FullName}\"");
+                }
             }
 
             using (var serviceScope = appBuilder.ApplicationServices.CreateScope())
