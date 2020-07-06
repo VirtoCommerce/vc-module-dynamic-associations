@@ -11,7 +11,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Core.Model.Conditions
         public override bool IsSatisfiedBy(IEvaluationContext context)
         {
             var result = false;
-            if (context is DynamicAssociationExpressionEvaluationContext evaluationContext)
+            if (context is AssociationExpressionEvaluationContext evaluationContext)
             {
                 result = evaluationContext.AreItemsInCategory(CategoryIds);
             }
