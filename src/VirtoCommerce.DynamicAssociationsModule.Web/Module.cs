@@ -47,6 +47,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Web
             serviceCollection.AddTransient<IAssociationConditionSelector, AssociationConditionsSelector>();
             serviceCollection.AddTransient<AssociationSearchRequestBuilder>();
             serviceCollection.AddTransient<IAssociationConditionEvaluator, AssociationConditionEvaluator>();
+            serviceCollection.AddTransient<AssociationsExportImport>();
 
             serviceCollection.AddDbContext<AssociationsModuleDbContext>(options => options.UseSqlServer(connectionString));
             serviceCollection.AddTransient<Func<IAssociationsRepository>>(provider => () => provider.CreateScope().ServiceProvider.GetRequiredService<IAssociationsRepository>());
