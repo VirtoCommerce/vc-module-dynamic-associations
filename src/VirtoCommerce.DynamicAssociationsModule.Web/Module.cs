@@ -1,61 +1,107 @@
+using System;
+using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using VirtoCommerce.Platform.Core.Modularity;
-using VirtoCommerce.Platform.Core.Security;
-using VirtoCommerce.Platform.Core.Settings;
-using VirtoCommerce.DynamicAssociationsModule.Core;
+using Microsoft.Extensions.Options;
+using VirtoCommerce.CoreModule.Core.Conditions;
+using VirtoCommerce.DynamicAssociationsModule.Core.Model;
+using VirtoCommerce.DynamicAssociationsModule.Core.Search;
+using VirtoCommerce.DynamicAssociationsModule.Core.Services;
+using VirtoCommerce.DynamicAssociationsModule.Data.ExportImport;
 using VirtoCommerce.DynamicAssociationsModule.Data.Repositories;
-
+using VirtoCommerce.DynamicAssociationsModule.Data.Search;
+using VirtoCommerce.DynamicAssociationsModule.Data.Services;
+using VirtoCommerce.DynamicAssociationsModule.Web.Authorization;
+using VirtoCommerce.DynamicAssociationsModule.Web.JsonConverters;
+using VirtoCommerce.Platform.Core.Common;
+using VirtoCommerce.Platform.Core.ExportImport;
+using VirtoCommerce.Platform.Core.Modularity;
 
 namespace VirtoCommerce.DynamicAssociationsModule.Web
 {
-	public class Module : IModule
-	{
-		public ManifestModuleInfo ModuleInfo { get; set; }
+    public class Module : IModule, IExportSupport, IImportSupport
+    {
+        private IApplicationBuilder _appBuilder;
 
-		public void Initialize(IServiceCollection serviceCollection)
-		{
-			// database initialization
-			var configuration = serviceCollection.BuildServiceProvider().GetRequiredService<IConfiguration>();
-			var connectionString = configuration.GetConnectionString("VirtoCommerce.VirtoCommerceDynamicAssociationsModule") ?? configuration.GetConnectionString("VirtoCommerce");
-			serviceCollection.AddDbContext<VirtoCommerceDynamicAssociationsModuleDbContext>(options => options.UseSqlServer(connectionString));
-		}
+        public ManifestModuleInfo ModuleInfo { get; set; }
 
-		public void PostInitialize(IApplicationBuilder appBuilder)
-		{
-			// register settings
-			var settingsRegistrar = appBuilder.ApplicationServices.GetRequiredService<ISettingsRegistrar>();
-			settingsRegistrar.RegisterSettings(ModuleConstants.Settings.AllSettings, ModuleInfo.Id);
+        public void Initialize(IServiceCollection serviceCollection)
+        {
 
-			// register permissions
-			var permissionsProvider = appBuilder.ApplicationServices.GetRequiredService<IPermissionsRegistrar>();
-			permissionsProvider.RegisterPermissions(ModuleConstants.Security.Permissions.AllPermissions.Select(x =>
-				new Permission()
-				{
-					GroupName = "VirtoCommerceDynamicAssociationsModule",
-					ModuleId = ModuleInfo.Id,
-					Name = x
-				}).ToArray());
+            var configuration = serviceCollection.BuildServiceProvider().GetRequiredService<IConfiguration>();
+            var connectionString = configuration.GetConnectionString("VirtoCommerce.DynamicAssociationsModule") ?? configuration.GetConnectionString("VirtoCommerce");
 
-			// Ensure that any pending migrations are applied
-			using (var serviceScope = appBuilder.ApplicationServices.CreateScope())
-			{
-				using (var dbContext = serviceScope.ServiceProvider.GetRequiredService<VirtoCommerceDynamicAssociationsModuleDbContext>())
-				{
-					dbContext.Database.EnsureCreated();
-					dbContext.Database.Migrate();
-				}
-			}
-		}
 
-		public void Uninstall()
-		{
-			// do nothing in here
-		}
+            serviceCollection.AddTransient<IAssociationService, AssociationService>();
+            serviceCollection.AddTransient<IAssociationsRepository, AssociationsRepository>();
+            serviceCollection.AddTransient<IAssociationSearchService, AssociationSearchService>();
+            serviceCollection.AddTransient<IAuthorizationHandler, AssociationAuthorizationHandler>();
+            serviceCollection.AddTransient<IAssociationEvaluator, AssociationEvaluator>();
+            serviceCollection.AddTransient<IAssociationConditionSelector, AssociationConditionsSelector>();
+            serviceCollection.AddTransient<AssociationSearchRequestBuilder>();
+            serviceCollection.AddTransient<IAssociationConditionEvaluator, AssociationConditionEvaluator>();
+            serviceCollection.AddTransient<AssociationsExportImport>();
 
-	}
+            serviceCollection.AddDbContext<AssociationsModuleDbContext>(options => options.UseSqlServer(connectionString));
+            serviceCollection.AddTransient<Func<IAssociationsRepository>>(provider => () => provider.CreateScope().ServiceProvider.GetRequiredService<IAssociationsRepository>());
+        }
 
+        public void PostInitialize(IApplicationBuilder appBuilder)
+        {
+            _appBuilder = appBuilder;
+
+            var mvcJsonOptions = appBuilder.ApplicationServices.GetService<IOptions<MvcNewtonsoftJsonOptions>>();
+            mvcJsonOptions.Value.SerializerSettings.Converters.Add(new PolymorphicAssociationsJsonConverter());
+
+            //Register the resulting trees expressions into the AbstractFactory<IConditionTree> 
+            foreach (var conditionType in AbstractTypeFactory<AssociationRuleTreePrototype>.TryCreateInstance()
+                .Traverse<IConditionTree>(x => x.AvailableChildren)
+                .Select(x => x.GetType())
+                .Distinct())
+            {
+                var alreadyRegisteredConditionTypeInfo = AbstractTypeFactory<IConditionTree>.FindTypeInfoByName(conditionType.Name);
+
+                if (alreadyRegisteredConditionTypeInfo == null)
+                {
+                    AbstractTypeFactory<IConditionTree>.RegisterType(conditionType);
+                }
+                else
+                {
+                    // Need to throw exception to prevent registering IConditionTree descendant condition with the same name - or one type deserialization would be broken by another
+                    throw new InvalidOperationException($"Cannot register \"{conditionType.Name}\" condition type the one with the same named already registered: \"{alreadyRegisteredConditionTypeInfo.Type.FullName}\"");
+                }
+            }
+
+            using (var serviceScope = appBuilder.ApplicationServices.CreateScope())
+            {
+                var dbContext = serviceScope.ServiceProvider.GetRequiredService<AssociationsModuleDbContext>();
+                dbContext.Database.EnsureCreated();
+                dbContext.Database.Migrate();
+            }
+        }
+
+        public void Uninstall()
+        {
+            // Method intentionally left empty.
+        }
+
+        public async Task ExportAsync(Stream outStream, ExportImportOptions options, Action<ExportImportProgressInfo> progressCallback,
+            ICancellationToken cancellationToken)
+        {
+            await _appBuilder.ApplicationServices.GetRequiredService<AssociationsExportImport>().DoExportAsync(outStream, progressCallback, cancellationToken);
+        }
+
+        public async Task ImportAsync(Stream inputStream, ExportImportOptions options, Action<ExportImportProgressInfo> progressCallback,
+            ICancellationToken cancellationToken)
+        {
+            await _appBuilder.ApplicationServices.GetRequiredService<AssociationsExportImport>().DoImportAsync(inputStream, progressCallback, cancellationToken);
+        }
+    }
 }

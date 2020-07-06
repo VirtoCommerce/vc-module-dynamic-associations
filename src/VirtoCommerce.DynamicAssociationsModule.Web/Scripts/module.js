@@ -26,8 +26,8 @@ angular.module(moduleName, [])
                 });
         }
     ])
-    .run(['platformWebApp.mainMenuService', 'platformWebApp.widgetService', '$state',
-        function (mainMenuService, widgetService, $state) {
+    .run(['platformWebApp.mainMenuService', 'platformWebApp.widgetService', '$state', 'virtoCommerce.marketingModule.marketingMenuItemService',
+        function (mainMenuService, widgetService, $state, marketingMenuItemService) {
             //Register module in main menu
             var menuItem = {
                 path: 'browse/virtoCommerce.dynamicAssociationsModule',
@@ -38,5 +38,14 @@ angular.module(moduleName, [])
                 permission: 'virtoCommerceDynamicAssociationsModule:access'
             };
             mainMenuService.addMenuItem(menuItem);
+
+            marketingMenuItemService.register({
+                id: '3',
+                name: 'Dynamic product associations',
+                entityName: 'dynamicProductAssociations',
+                icon: 'fa fa-a',
+                controller: 'virtoCommerce.dynamicAssociationsModule.dynamicAssociationsListController',
+                template: 'Modules/$(virtoCommerce.dynamicAssociationsModule)/Scripts/blades/dynamicAssociations-list.tpl.html'
+            });
         }
     ]);

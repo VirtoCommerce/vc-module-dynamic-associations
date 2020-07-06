@@ -1,27 +1,107 @@
 {
-  "virtoCommerce.dynamicAssociationsModule": {
+  "dynamicAssociations": {
+    "main-menu-title": "Dynamic Associations",
+    "main-blade-title": "Dynamic Associations",
+    "properties": {
+    },
     "blades": {
-      "hello-world": {
-        "title": "Hello world blade"
+      "dynamicAssociation-list": {
+        "title": "Dynamic product association rules",
+        "subtitle": "Select dynamic association rule",
+        "labels": {
+          "name": "Name",
+          "group": "Group",
+          "priority": "Priority",
+          "isActive": "isActive",
+          "last-modified": "modified"
+        }
+      },
+      "dynamicAssociation-detail": {
+        "title-new": "Create new dynamic association rule",
+        "labels": {
+          "name": "Association name",
+          "description": "Description",
+          "main-parameters": "Main parameters",
+          "productsToMatch": "Products to match",
+          "productsToDisplay": "Products to display",
+          "outputTuning": "Output tuning"
+        },
+        "descriptions": {
+          "name": "Type a name that uniquely identifies the association.",
+          "main-parameters": "{{count}} of {{total}} properties filled",
+          "productsToMatch": "{{count}} products in the current filter",
+          "productsToDisplay": "{{count}} products in the current filter",
+          "outputTuning": "Output sorting, limits, rule priority"
+        },
+        "placeholders": {
+          "name": "Dynamic association name"
+        }
+      },
+      "dynamicAssociation-parameters": {
+        "title": "Parameters for rule",
+        "subtitle": "Edit main parameters for association rule",
+        "labels": {
+          "is-active": "is Active",
+          "start-date": "Start date",
+          "expiration-date": "Expiration date",
+          "store": "Store",
+          "priority": "Priority"
+        },
+        "descriptions": {
+          "is-active": "Flag controls Active/Inactive the rule",
+          "store": "Store in which this promotion will be active",
+          "priority": "The association rule with the highest priority will be applied."
+        },
+        "placeholders": {
+          "start-date": "Please choose date...",
+          "expiration-date": "Please choose date...",
+          "store": "Please select store..."
+        }
+      },
+      "dynamicAssociation-outputTuning": {
+        "title": "Output tuning",
+        "subtitle": "Select properties for sorting",
+        "labels": {
+          "sortByProperty": "Sort by property",
+          "direction": "Direction",
+          "limit": "Output limit"
+        },
+        "placeholders": {
+          "selectProperty": "Select property..."
+        }
+      },
+      "dynamicAssociation-preview": {
+        "title": "Products preview",
+        "labels": {
+          "picture": "Pic",
+          "name": "Name"
+        }
+      },
+      "dynamicAssociation-ruleCreation": {
+        "title": "Create products {{ ruleType }} rule"
+      }
+    },
+    "dialogs": {
+      "dynamic-association-delete": {
+        "title": "Delete confirmation",
+        "message": "Are you sure you want to delete selected Dynamic association rules?"
       }
     }
   },
   "permissions": {
-    "virtoCommerceDynamicAssociationsModule:access": "Open VirtoCommerceDynamicAssociationsModule menu",
-    "virtoCommerceDynamicAssociationsModule:create": "Create VirtoCommerceDynamicAssociationsModule related data",
-    "virtoCommerceDynamicAssociationsModule:read": "View VirtoCommerceDynamicAssociationsModule related data",
-    "virtoCommerceDynamicAssociationsModule:update": "Update VirtoCommerceDynamicAssociationsModule related data",
-    "virtoCommerceDynamicAssociationsModule:delete": "Delete VirtoCommerceDynamicAssociationsModule related data"
   },
   "settings": {
-    "VirtoCommerceDynamicAssociationsModule": {
-      "VirtoCommerceDynamicAssociationsModulePassword": {
-        "title": "VirtoCommerceDynamicAssociationsModule Password",
-        "description": "VirtoCommerceDynamicAssociationsModule Password setting"
-      },
-      "VirtoCommerceDynamicAssociationsModuleEnabled": {
-        "title": "VirtoCommerceDynamicAssociationsModule Enabled",
-        "description": "VirtoCommerceDynamicAssociationsModule Enabled setting"
+  },
+  "module": {
+    "VirtoCommerce.DynamicAssociations": {
+      "description": ""
+    }
+  },
+  "export": {
+    "groups": {
+      "VirtoCommerce.DynamicAssociationsModule.Core.Model.Export": {
+        "name": "DynamicAssociations",
+        "description": "Rules"
       }
     }
   }
