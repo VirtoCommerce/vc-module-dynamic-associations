@@ -40,7 +40,7 @@ angular.module(moduleName, [])
             mainMenuService.addMenuItem(menuItem);
 
             marketingMenuItemService.register({
-                id: '30',
+                id: '3',
                 name: 'Dynamic product associations',
                 entityName: 'dynamicProductAssociations',
                 icon: 'fa fa-a',
