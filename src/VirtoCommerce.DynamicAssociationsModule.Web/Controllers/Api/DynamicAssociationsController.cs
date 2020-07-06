@@ -92,7 +92,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Web.Controllers.Api
         [HttpGet]
         [Route("new")]
         [Authorize(CatalogModuleConstants.Security.Permissions.Create)]
-        public ActionResult<DynamicAssociation> GetNewDynamicPromotion()
+        public ActionResult<DynamicAssociation> GetNewAssociation()
         {
             var result = AbstractTypeFactory<DynamicAssociation>.TryCreateInstance();
 
