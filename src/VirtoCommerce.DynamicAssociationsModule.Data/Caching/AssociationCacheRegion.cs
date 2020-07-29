@@ -1,8 +1,6 @@
 using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using Microsoft.Extensions.Primitives;
 using VirtoCommerce.DynamicAssociationsModule.Core.Model;
 using VirtoCommerce.Platform.Core.Caching;
@@ -11,8 +9,6 @@ namespace VirtoCommerce.DynamicAssociationsModule.Data.Caching
 {
     public class AssociationCacheRegion : CancellableCacheRegion<AssociationCacheRegion>
     {
-        private static readonly ConcurrentDictionary<string, CancellationTokenSource> _entityRegionTokenLookup = new ConcurrentDictionary<string, CancellationTokenSource>();
-
         public static IChangeToken CreateChangeToken(string[] associationIds)
         {
             if (associationIds == null)
@@ -24,8 +20,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Data.Caching
 
             changeTokens.AddRange(
                 associationIds
-                    .Select(associationId => new CancellationChangeToken(_entityRegionTokenLookup.GetOrAdd(associationId, new CancellationTokenSource()).Token)
-                    )
+                    .Select(associationId => CreateChangeTokenForKey(associationId))
                 );
 
             return new CompositeChangeToken(changeTokens);
@@ -48,10 +43,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Data.Caching
                 throw new ArgumentNullException(nameof(association));
             }
 
-            if (_entityRegionTokenLookup.TryRemove(association.Id, out var token))
-            {
-                token.Cancel();
-            }
+            ExpireTokenForKey(association.Id);
         }
     }
 }
