@@ -95,10 +95,10 @@ namespace VirtoCommerce.DynamicAssociationsModule.Data.Services
                 await dynamicAssociationsRepository.UnitOfWork.CommitAsync();
                 pkMap.ResolvePrimaryKeys();
 
+                ClearCache(items);
+
                 await _eventPublisher.Publish(new AssociationChangedEvent(changedEntries));
             }
-
-            ClearCache(items);
         }
 
         public async virtual Task DeleteAsync(string[] itemIds)
@@ -121,10 +121,10 @@ namespace VirtoCommerce.DynamicAssociationsModule.Data.Services
 
                 await associationsRepositoryFactory.UnitOfWork.CommitAsync();
 
+                ClearCache(items);
+
                 await _eventPublisher.Publish(new AssociationChangedEvent(changedEntries));
             }
-
-            ClearCache(items);
         }
 
 
