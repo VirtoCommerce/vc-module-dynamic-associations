@@ -2,6 +2,9 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
     .controller('virtoCommerce.dynamicAssociationsModule.dynamicAssociationDetailController', ['$scope', 'platformWebApp.bladeNavigationService', 'virtoCommerce.dynamicAssociationsModule.dynamicAssociations', 'virtoCommerce.storeModule.stores', function ($scope, bladeNavigationService, associations, stores) {
         var blade = $scope.blade;
         var formScope;
+
+        const maxPreviewItemCount = 10000;
+        
         $scope.setForm = (form) => { formScope = form; };
 
         $scope.BlockMatchingRules = 'BlockMatchingRules';
@@ -287,7 +290,7 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
                 categoryIds: categoryIds,
                 propertyValues: propertyValues,
                 skip: 0,
-                take: 10000
+                take: maxPreviewItemCount
             };
             return dataQuery;
 

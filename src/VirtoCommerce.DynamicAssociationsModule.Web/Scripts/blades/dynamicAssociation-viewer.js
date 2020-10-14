@@ -7,6 +7,8 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
                 $scope.items = [];
                 $scope.blade.headIcon = 'fa-upload';
 
+                const maxPreviewItemCount = 10000;
+
                 var blade = $scope.blade;
                 var bladeNavigationService = bladeUtils.bladeNavigationService;
                 blade.isLoading = true;
@@ -36,7 +38,7 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
                 function maxAssociationsCount(){
                     let countDataRequest = buildDataQuery();
                     countDataRequest.skip = 0;
-                    countDataRequest.take = 10000;
+                    countDataRequest.take = maxPreviewItemCount;
                     associations.preview(countDataRequest, (data) => {
                         $scope.pageSettings.totalItems = data.length;
                     })
