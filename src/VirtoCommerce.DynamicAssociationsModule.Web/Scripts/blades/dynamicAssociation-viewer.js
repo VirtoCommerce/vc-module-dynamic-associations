@@ -30,12 +30,12 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
                         $scope.pageSettings.currentPage = 1;
                     }
 
-                    maxAssociationsCount();
+                    calculateTotals();
                     loadData();
                     resetStateGrid();
                 };
 
-                function maxAssociationsCount(){
+                function calculateTotals(){
                     let countDataRequest = buildDataQuery();
                     countDataRequest.skip = 0;
                     countDataRequest.take = maxPreviewItemCount;
