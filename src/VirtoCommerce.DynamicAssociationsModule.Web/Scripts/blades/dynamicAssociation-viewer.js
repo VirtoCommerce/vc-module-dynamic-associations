@@ -28,9 +28,19 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
                         $scope.pageSettings.currentPage = 1;
                     }
 
+                    calculateTotals();
                     loadData();
                     resetStateGrid();
                 };
+
+                function calculateTotals(){
+                    let countDataRequest = buildDataQuery();
+                    countDataRequest.skip = 0;
+                    countDataRequest.take = 1000;
+                    associations.preview(countDataRequest, (data) => {
+                        $scope.pageSettings.totalItems = data.length;
+                    })
+                } 
 
                 function loadData(callback) {
                     blade.isLoading = true;
@@ -40,10 +50,7 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
                     associations.preview(dataRequest, (data) => {
                         let productIds = data;
                         blade.isLoading = false;
-                        $scope.pageSettings.totalItems = data.length;
-                            //$scope.items = $scope.items.concat(data);
                         $scope.hasMore = data.length === $scope.pageSettings.itemsPerPageCount;
-
 
                         items.getByIds({ ids: productIds},
                             response => {
