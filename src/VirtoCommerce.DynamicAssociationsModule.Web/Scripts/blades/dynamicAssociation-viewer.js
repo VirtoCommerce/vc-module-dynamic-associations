@@ -7,6 +7,8 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
                 $scope.items = [];
                 $scope.blade.headIcon = 'fa-upload';
 
+                const maxPreviewItemCount = 10000;
+
                 var blade = $scope.blade;
                 var bladeNavigationService = bladeUtils.bladeNavigationService;
                 blade.isLoading = true;
@@ -28,9 +30,19 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
                         $scope.pageSettings.currentPage = 1;
                     }
 
+                    calculateTotals();
                     loadData();
                     resetStateGrid();
                 };
+
+                function calculateTotals(){
+                    let countDataRequest = buildDataQuery();
+                    countDataRequest.skip = 0;
+                    countDataRequest.take = maxPreviewItemCount;
+                    associations.preview(countDataRequest, (data) => {
+                        $scope.pageSettings.totalItems = data.length;
+                    })
+                } 
 
                 function loadData(callback) {
                     blade.isLoading = true;
@@ -40,10 +52,7 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
                     associations.preview(dataRequest, (data) => {
                         let productIds = data;
                         blade.isLoading = false;
-                        $scope.pageSettings.totalItems = data.length;
-                            //$scope.items = $scope.items.concat(data);
                         $scope.hasMore = data.length === $scope.pageSettings.itemsPerPageCount;
-
 
                         items.getByIds({ ids: productIds},
                             response => {
