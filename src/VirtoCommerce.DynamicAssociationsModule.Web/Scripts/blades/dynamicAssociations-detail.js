@@ -287,7 +287,7 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
                 categoryIds: categoryIds,
                 propertyValues: propertyValues,
                 skip: 0,
-                take: 1000
+                take: 10000
             };
             return dataQuery;
 
