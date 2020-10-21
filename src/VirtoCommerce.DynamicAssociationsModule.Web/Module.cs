@@ -11,15 +11,18 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using VirtoCommerce.CoreModule.Core.Conditions;
+using VirtoCommerce.DynamicAssociationsModule.Core.Events;
 using VirtoCommerce.DynamicAssociationsModule.Core.Model;
 using VirtoCommerce.DynamicAssociationsModule.Core.Search;
 using VirtoCommerce.DynamicAssociationsModule.Core.Services;
 using VirtoCommerce.DynamicAssociationsModule.Data.ExportImport;
+using VirtoCommerce.DynamicAssociationsModule.Data.Handlers;
 using VirtoCommerce.DynamicAssociationsModule.Data.Repositories;
 using VirtoCommerce.DynamicAssociationsModule.Data.Search;
 using VirtoCommerce.DynamicAssociationsModule.Data.Services;
 using VirtoCommerce.DynamicAssociationsModule.Web.Authorization;
 using VirtoCommerce.DynamicAssociationsModule.Web.JsonConverters;
+using VirtoCommerce.Platform.Core.Bus;
 using VirtoCommerce.Platform.Core.Common;
 using VirtoCommerce.Platform.Core.ExportImport;
 using VirtoCommerce.Platform.Core.Modularity;
@@ -48,6 +51,8 @@ namespace VirtoCommerce.DynamicAssociationsModule.Web
             serviceCollection.AddTransient<AssociationSearchRequestBuilder>();
             serviceCollection.AddTransient<IAssociationConditionEvaluator, AssociationConditionEvaluator>();
             serviceCollection.AddTransient<AssociationsExportImport>();
+
+            serviceCollection.AddTransient<LogChangesChangedEventHandler>();
 
             serviceCollection.AddDbContext<AssociationsModuleDbContext>(options => options.UseSqlServer(connectionString));
             serviceCollection.AddTransient<Func<IAssociationsRepository>>(provider => () => provider.CreateScope().ServiceProvider.GetRequiredService<IAssociationsRepository>());
@@ -78,6 +83,9 @@ namespace VirtoCommerce.DynamicAssociationsModule.Web
                     throw new InvalidOperationException($"Cannot register \"{conditionType.Name}\" condition type the one with the same named already registered: \"{alreadyRegisteredConditionTypeInfo.Type.FullName}\"");
                 }
             }
+
+            var inProcessBus = appBuilder.ApplicationServices.GetService<IHandlerRegistrar>();
+            inProcessBus.RegisterHandler<AssociationChangedEvent>(async (message, token) => await appBuilder.ApplicationServices.GetService<LogChangesChangedEventHandler>().Handle(message));
 
             using (var serviceScope = appBuilder.ApplicationServices.CreateScope())
             {
