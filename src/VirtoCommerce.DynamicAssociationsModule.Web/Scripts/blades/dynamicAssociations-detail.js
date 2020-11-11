@@ -4,7 +4,7 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
         var formScope;
 
         const maxPreviewItemCount = 10000;
-        
+
         $scope.setForm = (form) => { formScope = form; };
 
         $scope.BlockMatchingRules = 'BlockMatchingRules';
@@ -16,15 +16,13 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
         $scope.productsToMatchCount = 0;
         $scope.productsToDisplayCount = 0;
 
-
         blade.currentEntity = {};
 
         blade.updatePermission = 'catalog:update';
         blade.isMatchingRulesExist = false;
         blade.isResultingRulesExist = false;
 
-
-        blade.refresh = function(parentRefresh) {
+        blade.refresh = function (parentRefresh) {
             if (blade.isNew) {
                 associations.new({},
                     data => {
@@ -35,16 +33,16 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
                 associations.get({ id: blade.currentEntityId }, (data) => {
                     initializeBlade(data);
 
-                     if (parentRefresh) {
-                         blade.parentBlade.refresh();
-                     }
+                    if (parentRefresh) {
+                        blade.parentBlade.refresh();
+                    }
 
                     if (blade.currentEntity.storeId) {
                         //Need to pre filter catalog-category selector
                         stores.get({ id: blade.currentEntity.storeId }, response => {
                             blade.currentEntity.catalogId = blade.origEntity.catalogId = response.catalog;
                         });
-                     }
+                    }
                 });
             }
         };
@@ -61,7 +59,7 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
             blade.isLoading = false;
         }
 
-        $scope.checkExistingRules = function() {
+        $scope.checkExistingRules = function () {
             const matchingRules = _.find(blade.currentEntity.expressionTree.children, x => x.id === $scope.BlockMatchingRules);
             const matchingCondition = $scope.getCondition(matchingRules, $scope.ConditionProductCategory);
             blade.isMatchingRulesExist = matchingCondition.catalogId && matchingCondition.categoryIds.length > 0;
@@ -101,7 +99,7 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
             bladeNavigationService.showBlade(newBlade, blade);
         };
 
-        $scope.mainParameters = function() {
+        $scope.mainParameters = function () {
             const parametersBlade = {
                 id: "mainParameters",
                 title: "dynamicAssociations.blades.dynamicAssociation-parameters.title",
@@ -149,7 +147,7 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
                     initializeToolbar();
                     blade.refresh(true);
                 } else {
-                    bladeNavigationService.setError('Error while saving association rule' , blade);
+                    bladeNavigationService.setError('Error while saving association rule', blade);
                 }
             });
         };
@@ -172,7 +170,7 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
                     {
                         name: "platform.commands.reset", icon: 'fa fa-undo',
                         executeMethod: function () {
-                            angular.copy(blade.origEntity, blade.currentEntity);
+                            blade.refresh(false);
                         },
                         canExecuteMethod: $scope.isDirty,
                         permission: blade.updatePermission
@@ -195,7 +193,7 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
         }, true);
 
         /////
-        $scope.getCondition = function(rulesBlock, conditionName) {
+        $scope.getCondition = function (rulesBlock, conditionName) {
             const conditionProductCategory = {
                 id: $scope.ConditionProductCategory,
                 catalogId: blade.currentEntity.catalogId,
@@ -217,19 +215,16 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
                         rulesBlock.children.push(conditionPropertyValues);
                         break;
                 }
-                
             }
             categoryCondition = _.find(rulesBlock.children, x => x.id === conditionName);
             return categoryCondition;
         };
 
-
         $scope.createProductFilter = function (rulesBlockName) {
-
             const rulesBlock = _.find(blade.currentEntity.expressionTree.children, x => x.id === rulesBlockName);
             let categoryCondition = $scope.getCondition(rulesBlock, $scope.ConditionProductCategory);
             let propertyCondition = $scope.getCondition(rulesBlock, $scope.ConditionPropertyValues);
-            
+
             var ruleCreationBlade = {
                 id: "createDynamicAssociationRule",
                 controller: 'virtoCommerce.dynamicAssociationsModule.ruleCreationController',
@@ -247,10 +242,9 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
                 }
             };
             bladeNavigationService.showBlade(ruleCreationBlade, blade);
-
-        }; 
+        };
         // Receive counts of products
-        $scope.GetMatchingProductsCount = function() {
+        $scope.GetMatchingProductsCount = function () {
             const matchingRules = _.find(blade.currentEntity.expressionTree.children, x => x.id === $scope.BlockMatchingRules);
 
             let query = $scope.prepareQuery(matchingRules);
@@ -266,7 +260,6 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
         };
 
         $scope.prepareQuery = function (rule) {
-
             const properties = $scope.getCondition(rule, $scope.ConditionPropertyValues).properties;
 
             let categoryIds = [];
@@ -293,9 +286,7 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
                 take: maxPreviewItemCount
             };
             return dataQuery;
-
         };
-
 
         initializeToolbar();
         blade.refresh(false);
