@@ -100,7 +100,6 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
                             name: "platform.commands.reset", icon: 'fa fa-undo',
                             executeMethod: function (pickingBlade) {
                                 blade.categoryIds = angular.copy(blade.originalCategoryIds);
-                                //$scope.selectedCount = 0;
                                 bladeNavigationService.closeBlade(pickingBlade);
                             },
                             canExecuteMethod: () => _.any(blade.categoryIds)
