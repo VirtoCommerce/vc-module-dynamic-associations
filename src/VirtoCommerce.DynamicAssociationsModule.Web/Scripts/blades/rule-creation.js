@@ -99,7 +99,17 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
                         {
                             name: "platform.commands.reset", icon: 'fa fa-undo',
                             executeMethod: function (pickingBlade) {
+                                blade.categoryIds = angular.copy(blade.originalCategoryIds);
+                                bladeNavigationService.closeBlade(pickingBlade);
+                            },
+                            canExecuteMethod: () => _.any(blade.categoryIds)
+
+                        },
+                        {
+                            name: "platform.commands.clear", icon: 'fa fa-eraser',
+                            executeMethod: function (pickingBlade) {
                                 blade.categoryIds = [];
+                                blade.categoryCount = 0;
                                 $scope.selectedCount = 0;
                                 bladeNavigationService.closeBlade(pickingBlade);
                             },
