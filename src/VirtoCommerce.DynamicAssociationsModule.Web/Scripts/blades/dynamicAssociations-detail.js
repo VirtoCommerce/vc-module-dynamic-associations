@@ -192,7 +192,6 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
             }
         }, true);
 
-        /////
         $scope.getCondition = function (rulesBlock, conditionName) {
             const conditionProductCategory = {
                 id: $scope.ConditionProductCategory,
