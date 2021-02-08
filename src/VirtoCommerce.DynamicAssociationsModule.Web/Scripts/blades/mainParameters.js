@@ -2,7 +2,7 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
     .controller('virtoCommerce.dynamicAssociationsModule.dynamicAssociationParametersController', ['$scope', 'platformWebApp.bladeNavigationService', 'virtoCommerce.storeModule.stores', 'virtoCommerce.catalogModule.items', 'platformWebApp.settings', function ($scope, bladeNavigationService, stores, items, settings ) {
         var blade = $scope.blade;
         blade.isLoading = true;
-        blade.headIcon = 'fa-area-chart';
+        blade.headIcon = 'fa fa-area-chart';
         var formScope;
         $scope.setForm = (form) => { formScope = form; };
 
