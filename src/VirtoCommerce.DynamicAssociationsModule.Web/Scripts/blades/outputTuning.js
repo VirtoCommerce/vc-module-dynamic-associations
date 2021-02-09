@@ -2,7 +2,7 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
     .controller('virtoCommerce.dynamicAssociationsModule.outputTuningController', ['$scope', 'platformWebApp.bladeNavigationService', 'virtoCommerce.catalogModule.categories' , function ($scope, bladeNavigationService, categories) {
         var blade = $scope.blade;
         blade.isLoading = true;
-        blade.headIcon = 'fa-area-chart';
+        blade.headIcon = 'fa fa-area-chart';
         blade.properties = [];
         blade.outputTuningBlock = {};
 

@@ -182,7 +182,7 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
                 bladeNavigationService.closeBlade(blade);
             };
 
-            $scope.blade.headIcon = 'fa-upload';
+            $scope.blade.headIcon = 'fa fa-upload';
 
             initializeBlade();
 

@@ -5,7 +5,7 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
                 $scope.uiGridConstants = uiGridHelper.uiGridConstants;
                 $scope.hasMore = true;
                 $scope.items = [];
-                $scope.blade.headIcon = 'fa-upload';
+                $scope.blade.headIcon = 'fa fa-upload';
 
                 const maxPreviewItemCount = 10000;
 
