@@ -4,12 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
 using VirtoCommerce.CoreModule.Core.Conditions;
 using VirtoCommerce.DynamicAssociationsModule.Core.Events;
 using VirtoCommerce.DynamicAssociationsModule.Core.Model;
@@ -21,7 +19,6 @@ using VirtoCommerce.DynamicAssociationsModule.Data.Repositories;
 using VirtoCommerce.DynamicAssociationsModule.Data.Search;
 using VirtoCommerce.DynamicAssociationsModule.Data.Services;
 using VirtoCommerce.DynamicAssociationsModule.Web.Authorization;
-using VirtoCommerce.DynamicAssociationsModule.Web.JsonConverters;
 using VirtoCommerce.Platform.Core.Bus;
 using VirtoCommerce.Platform.Core.Common;
 using VirtoCommerce.Platform.Core.ExportImport;
@@ -61,9 +58,6 @@ namespace VirtoCommerce.DynamicAssociationsModule.Web
         public void PostInitialize(IApplicationBuilder appBuilder)
         {
             _appBuilder = appBuilder;
-
-            var mvcJsonOptions = appBuilder.ApplicationServices.GetService<IOptions<MvcNewtonsoftJsonOptions>>();
-            mvcJsonOptions.Value.SerializerSettings.Converters.Add(new PolymorphicAssociationsJsonConverter());
 
             //Register the resulting trees expressions into the AbstractFactory<IConditionTree> 
             foreach (var conditionType in AbstractTypeFactory<AssociationRuleTreePrototype>.TryCreateInstance()
