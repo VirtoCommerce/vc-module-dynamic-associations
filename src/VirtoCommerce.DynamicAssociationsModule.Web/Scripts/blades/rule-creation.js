@@ -149,12 +149,13 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
                     },
                     toolbarCommands: [
                         {
-                            name: "platform.commands.preview", icon: 'fa fa-filter',
+                            name: "platform.commands.preview", icon: 'fa fa-eye',
                             executeMethod: (pickingBlade) => {
                                 var viewerBlade = {
                                     id: 'propertiesSelector',
                                     controller: 'virtoCommerce.dynamicAssociationsModule.dynamicAssociationViewerController',
                                     template: 'Modules/$(virtoCommerce.dynamicAssociationsModule)/Scripts/blades/dynamicAssociation-viewer.tpl.html',
+                                    catalogId: blade.catalogId,
                                     categoryIds: blade.categoryIds,
                                     properties: pickingBlade.currentEntities
                                 };
@@ -185,24 +186,4 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
             $scope.blade.headIcon = 'fa fa-upload';
 
             initializeBlade();
-
-            blade.toolbarCommands = [
-                {
-                    name: "platform.commands.preview",
-                    icon: 'fa fa-filter',
-                    executeMethod: () => {
-                        var viewerBlade = {
-                            id: 'propertiesSelector',
-                            controller: 'virtoCommerce.dynamicAssociationsModule.dynamicAssociationViewerController',
-                            template:
-                                'Modules/$(virtoCommerce.dynamicAssociationsModule)/Scripts/blades/dynamicAssociation-viewer.tpl.html',
-                            catalogId: blade.catalogId,
-                            categoryIds: blade.categoryIds,
-                            properties: blade.editedProperties
-                        };
-                        bladeNavigationService.showBlade(viewerBlade, blade);
-                    },
-                    canExecuteMethod: () => blade.categoryCount > 0
-                }
-            ];
         }]);
