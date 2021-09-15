@@ -60,6 +60,9 @@ namespace VirtoCommerce.DynamicAssociationsModule.Core.Model
         {
             var result = propertyValues.Where(x => x.Key != null).All(kvp =>
             {
+                // return true if no specific property values were selected, treating it as all properties
+                if (kvp.Value.IsNullOrEmpty()) return true;
+
                 var result = false;
                 var productProperty = product.Properties.FirstOrDefault(x => x.Name.EqualsInvariant(kvp.Key));
 
