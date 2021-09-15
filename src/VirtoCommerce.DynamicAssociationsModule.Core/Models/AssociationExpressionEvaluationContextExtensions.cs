@@ -58,26 +58,17 @@ namespace VirtoCommerce.DynamicAssociationsModule.Core.Model
 
         public static bool ProductHasPropertyValues(this CatalogProduct product, Dictionary<string, string[]> propertyValues)
         {
-            var result = propertyValues.Where(x => x.Key != null).All(kvp =>
+            return propertyValues.Where(x => x.Key != null).All(kvp =>
             {
                 // return true if no specific property values were selected, treating it as all properties
                 if (kvp.Value.IsNullOrEmpty()) return true;
 
-                var result = false;
                 var productProperty = product.Properties.FirstOrDefault(x => x.Name.EqualsInvariant(kvp.Key));
+                if (productProperty == null) return false;
 
-                if (productProperty != null && kvp.Value != null)
-                {
-                    var productPropertyValues = productProperty.Values.Where(x => x.Value != null).Select(x => x.Value.ToString()).Distinct().ToArray();
-                    var valuesToSearch = kvp.Value;
-
-                    result = valuesToSearch.Intersect(productPropertyValues, StringComparer.OrdinalIgnoreCase).Any();
-                }
-
-                return result;
+                var productPropertyValues = productProperty.Values.Where(x => x.Value != null).Select(x => x.Value.ToString()).Distinct().ToArray();
+                return kvp.Value.Intersect(productPropertyValues, StringComparer.OrdinalIgnoreCase).Any();
             });
-
-            return result;
         }
 
     }
