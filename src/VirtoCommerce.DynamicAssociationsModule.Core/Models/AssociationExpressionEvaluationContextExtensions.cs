@@ -66,7 +66,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Core.Model
                 var productProperty = product.Properties.FirstOrDefault(x => x.Name.EqualsInvariant(kvp.Key));
                 if (productProperty == null) return false;
 
-                var productPropertyValues = productProperty.Values.Where(x => x.Value != null).Select(x => x.Value.ToString()).Distinct().ToArray();
+                var productPropertyValues = productProperty.Values.Where(x => x.Value != null).Select(x => x.Value.ToString()).Distinct().ToList();
                 return kvp.Value.Intersect(productPropertyValues, StringComparer.OrdinalIgnoreCase).Any();
             });
         }
