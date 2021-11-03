@@ -3,8 +3,6 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
         var blade = $scope.blade;
         var formScope;
 
-        const maxPreviewItemCount = 10000;
-
         $scope.setForm = (form) => { formScope = form; };
 
         $scope.BlockMatchingRules = 'BlockMatchingRules';
@@ -248,13 +246,13 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
 
             let query = $scope.prepareQuery(matchingRules);
             associations.preview(query, data => {
-                $scope.productsToMatchCount = data.length;
+                $scope.productsToMatchCount = data.totalCount;
             });
 
             const resultingRules = _.find(blade.currentEntity.expressionTree.children, x => x.id === $scope.BlockResultingRules);
             query = $scope.prepareQuery(resultingRules);
             associations.preview(query, data => {
-                $scope.productsToDisplayCount = data.length;
+                $scope.productsToDisplayCount = data.totalCount;
             });
         };
 
@@ -282,7 +280,7 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
                 categoryIds: categoryIds,
                 propertyValues: propertyValues,
                 skip: 0,
-                take: maxPreviewItemCount
+                take: 0
             };
             return dataQuery;
         };

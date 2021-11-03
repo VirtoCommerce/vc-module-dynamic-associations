@@ -5,6 +5,6 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
             save: { url: 'api/dynamicAssociations/', method: 'POST', isArray: true },
             remove: { url: 'api/dynamicAssociations/', method: 'DELETE' },
             new: { url: 'api/dynamicAssociations/new', method: 'GET' },
-            preview: { url: 'api/dynamicAssociations/preview', method: 'POST', isArray: true }
+            preview: { url: 'api/dynamicAssociations/preview', method: 'POST' }
         });
     }]);

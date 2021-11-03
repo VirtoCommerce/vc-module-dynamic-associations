@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using VirtoCommerce.DynamicAssociationsModule.Core.Model;
+using VirtoCommerce.DynamicAssociationsModule.Core.Models;
 using VirtoCommerce.DynamicAssociationsModule.Core.Services;
 using VirtoCommerce.SearchModule.Core.Model;
 using VirtoCommerce.SearchModule.Core.Services;
@@ -21,7 +22,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Data.Services
             _searchProvider = searchProvider;
         }
 
-        public async Task<string[]> EvaluateAssociationConditionAsync(AssociationConditionEvaluationRequest conditionRequest)
+        public async Task<AssociationConditionEvaluationResult> EvaluateAssociationConditionAsync(AssociationConditionEvaluationRequest conditionRequest)
         {
             _requestBuilder
                 .AddOutlineSearch(conditionRequest.CatalogId, conditionRequest.CategoryIds)
@@ -32,7 +33,11 @@ namespace VirtoCommerce.DynamicAssociationsModule.Data.Services
 
             var searchResult = await _searchProvider.SearchAsync(KnownDocumentTypes.Product, _requestBuilder.Build());
 
-            return searchResult.Documents.Select(x => x.Id).ToArray();
+            return new AssociationConditionEvaluationResult
+            {
+                TotalCount = (int)searchResult.TotalCount,
+                Results = searchResult.Documents.Select(x => x.Id).ToList(),
+            };
         }
     }
 }
