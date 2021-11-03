@@ -54,7 +54,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Data.Services
                 {
                     var searchResult = await _associationsConditionEvaluator.EvaluateAssociationConditionAsync(associationCondition);
 
-                    result.AddRange(searchResult);
+                    result.AddRange(searchResult.Results);
                 }
             }
 

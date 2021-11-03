@@ -3,6 +3,7 @@ using Moq;
 using VirtoCommerce.CatalogModule.Core.Model;
 using VirtoCommerce.CatalogModule.Core.Services;
 using VirtoCommerce.DynamicAssociationsModule.Core.Model;
+using VirtoCommerce.DynamicAssociationsModule.Core.Models;
 using VirtoCommerce.DynamicAssociationsModule.Core.Services;
 using VirtoCommerce.DynamicAssociationsModule.Data.Services;
 using VirtoCommerce.StoreModule.Core.Model;
@@ -93,6 +94,10 @@ namespace VirtoCommerce.DynamicAssociationsModule.Tests
             _dynamicAssociationConditionSelectorMock
                 .Setup(x => x.GetAssociationConditionAsync(It.IsAny<AssociationEvaluationContext>(), It.IsAny<CatalogProduct>()))
                 .ReturnsAsync(new AssociationConditionEvaluationRequest());
+
+            _dynamicAssociationConditionEvaluatorMock
+                .Setup(x => x.EvaluateAssociationConditionAsync(It.IsAny<AssociationConditionEvaluationRequest>()))
+                .ReturnsAsync(new AssociationConditionEvaluationResult());
 
             var evaluator = CreateDynamicAssociationEvaluator();
 
