@@ -20,7 +20,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Data.Repositories
         {
             modelBuilder.Entity<AssociationEntity>().ToTable("DynamicAssociation").HasKey(x => x.Id);
             modelBuilder.Entity<AssociationEntity>().Property(x => x.Id).HasMaxLength(128).ValueGeneratedOnAdd();
-            modelBuilder.Entity<AssociationEntity>().HasIndex(x => new { x.StoreId, x.AssociationType }).IsUnique(false).HasName("IX_StoreId_AssociationType");
+            modelBuilder.Entity<AssociationEntity>().HasIndex(x => new { x.StoreId, x.AssociationType }).IsUnique(false).HasDatabaseName("IX_StoreId_AssociationType");
 
             base.OnModelCreating(modelBuilder);
         }
