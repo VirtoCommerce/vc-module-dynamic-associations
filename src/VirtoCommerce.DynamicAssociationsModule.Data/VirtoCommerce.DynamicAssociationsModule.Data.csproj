@@ -8,6 +8,11 @@
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     </PropertyGroup>
 
+    <PropertyGroup>
+        <!-- Project is not a test project -->
+        <SonarQubeTestProject>false</SonarQubeTestProject>
+    </PropertyGroup>
+
     <ItemGroup>
         <ProjectReference Include="..\VirtoCommerce.DynamicAssociationsModule.Core\VirtoCommerce.DynamicAssociationsModule.Core.csproj" />
     </ItemGroup>
