@@ -35,12 +35,15 @@ namespace VirtoCommerce.DynamicAssociationsModule.Web
         public void Initialize(IServiceCollection serviceCollection)
         {
 
-            var configuration = serviceCollection.BuildServiceProvider().GetRequiredService<IConfiguration>();
-            var connectionString = configuration.GetConnectionString("VirtoCommerce.DynamicAssociationsModule") ?? configuration.GetConnectionString("VirtoCommerce");
-
+            serviceCollection.AddDbContext<AssociationsModuleDbContext>((provider, options) =>
+            {
+                var configuration = provider.GetRequiredService<IConfiguration>();
+                options.UseSqlServer(configuration.GetConnectionString(ModuleInfo.Id) ?? configuration.GetConnectionString("VirtoCommerce"));
+            });
 
             serviceCollection.AddTransient<IAssociationService, AssociationService>();
             serviceCollection.AddTransient<IAssociationsRepository, AssociationsRepository>();
+            serviceCollection.AddTransient<Func<IAssociationsRepository>>(provider => () => provider.CreateScope().ServiceProvider.GetRequiredService<IAssociationsRepository>());
             serviceCollection.AddTransient<IAssociationSearchService, AssociationSearchService>();
             serviceCollection.AddTransient<IAuthorizationHandler, AssociationAuthorizationHandler>();
             serviceCollection.AddTransient<IAssociationEvaluator, AssociationEvaluator>();
@@ -48,11 +51,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Web
             serviceCollection.AddTransient<AssociationSearchRequestBuilder>();
             serviceCollection.AddTransient<IAssociationConditionEvaluator, AssociationConditionEvaluator>();
             serviceCollection.AddTransient<AssociationsExportImport>();
-
             serviceCollection.AddTransient<LogChangesChangedEventHandler>();
-
-            serviceCollection.AddDbContext<AssociationsModuleDbContext>(options => options.UseSqlServer(connectionString));
-            serviceCollection.AddTransient<Func<IAssociationsRepository>>(provider => () => provider.CreateScope().ServiceProvider.GetRequiredService<IAssociationsRepository>());
         }
 
         public void PostInitialize(IApplicationBuilder appBuilder)
