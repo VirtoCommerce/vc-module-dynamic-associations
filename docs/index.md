@@ -19,10 +19,10 @@ Evaluation mechanism returns associated products based on the most prioritized m
 ### Rules Management
 
 Rules are located in the Marketing tab.
-![Dynamic associations](/media/rule-list.png)  
+![Dynamic associations](./media/rule-list.png)  
 
 Here is how the rule editor looks like - all properties could be managed here:
-![Dynamic associations](/media/rule-wizard.png)  
+![Dynamic associations](./media/rule-wizard.png)  
 
 ### Rules Evaluation
 
