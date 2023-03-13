@@ -14,30 +14,52 @@ Evaluation mechanism returns associated products based on the most prioritized m
 * Building of Product Associations by Dynamic Conditions.
 * Extendable Evaluation mechanics.
 
-## Documentation
-* [Product Rating and Reviews Module Documentation](https://virtocommerce.com/docs/latest/modules/vc-module-dynamic-associations/)
-* [View on GitHub](docs/index.md)
+## Scenarios
 
+### Rules Management
 
-## References
+Rules are located in the Marketing tab:
 
-* Deploy: https://virtocommerce.com/docs/latest/developer-guide/deploy-module-from-source-code/
-* Installation: https://www.virtocommerce.com/docs/latest/user-guide/modules/
-* Home: https://virtocommerce.com
-* Community: https://www.virtocommerce.org
-* [Download Latest Release](https://github.com/VirtoCommerce/vc-module-dynamic-associations/releases/latest)
+![Dynamic associations](./media/rule-list.png)  
 
-## License
+Here is how the rule editor looks like - all properties could be managed here:
 
-Copyright (c) Virto Solutions LTD.  All rights reserved.
+![Dynamic associations](./media/rule-wizard.png)  
 
-Licensed under the Virto Commerce Open Software License (the "License"); you
-may not use this file except in compliance with the License. You may
-obtain a copy of the License at
+### Rules Evaluation
 
-http://virtocommerce.com/opensourcelicense
+For interactions module provides the API. It consists of CRUD operations, preview, and most important - evaluation endpoint.
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
-implied.
+Assuming we have the single active rule of "Accessories" group for the "Electronics" store which matches all cellphones of ASUS brand. It returns all Binuaral headphones, with the output limit of 10 items.
+
+The following request 
+```
+POST /api/dynamicassociations/evaluate
+```
+with such body (`f9330eb5ed78427abb4dc4089bc37d9f` - ASUS 64GB cellphone id in the sample data):
+```
+{
+  "storeId": "Electronics",
+  "productsToMatch": [
+    "f9330eb5ed78427abb4dc4089bc37d9f"
+  ],
+  "group": "Accessories",
+  "take": 10,
+  "skip": 0
+}
+```
+returns:
+```
+[
+  "0f7a77cc1b9a46a29f6a159e5cd49ad1",
+  "fb4c38fa746d44ffb70d4f904a7741b0",
+  "4a835614487e4d599d17b77652872001",
+  "a5bc65b871e947dabb0bc88239c085b3",
+  "a9185fbb41d14e1baa355e631f06e8fd",
+  "2b6fe6c6779f4cbeaa95c67e0cc7afd6",
+  "143e3eb3d1ee4a2bbf8fa0ecacfd1222",
+  "6e7a31c35c814fb389dc2574aa142b63",
+  "f7624d8ca3334998a46b1dac7d21c990",
+  "7252d30d493d4925adb9b586d09c6e09"
+]
+```
