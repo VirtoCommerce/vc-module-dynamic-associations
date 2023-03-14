@@ -1,1 +1,0 @@
-Add-Migration <<Name>> -Context VirtoCommerce.DynamicAssociationsModule.Data.Repositories.DynamicAssociationsModuleDbContext  -Verbose -OutputDir Migrations -Project VirtoCommerce.DynamicAssociationsModule.Data -StartupProject VirtoCommerce.DynamicAssociationsModule.Data -Debug

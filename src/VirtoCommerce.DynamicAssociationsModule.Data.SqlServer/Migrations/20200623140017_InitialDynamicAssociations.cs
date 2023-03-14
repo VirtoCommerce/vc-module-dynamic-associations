@@ -1,7 +1,6 @@
-﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace VirtoCommerce.DynamicAssociationsModule.Data.Migrations
+namespace VirtoCommerce.DynamicAssociationsModule.Data.SqlServer.Migrations
 {
     public partial class InitialDynamicAssociations : Migration
     {

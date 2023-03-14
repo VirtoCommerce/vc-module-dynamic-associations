@@ -3,17 +3,15 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VirtoCommerce.DynamicAssociationsModule.Data.Repositories;
 
-namespace VirtoCommerce.DynamicAssociationsModule.Data.Migrations
+namespace VirtoCommerce.DynamicAssociationsModule.Data.SqlServer.Migrations
 {
     [DbContext(typeof(AssociationsModuleDbContext))]
-    [Migration("20200623140017_InitialDynamicAssociations")]
-    partial class InitialDynamicAssociations
+    partial class DynamicAssociationsModuleDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
