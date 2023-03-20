@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using VirtoCommerce.CoreModule.Core.Conditions;
@@ -15,9 +14,12 @@ using VirtoCommerce.DynamicAssociationsModule.Core.Search;
 using VirtoCommerce.DynamicAssociationsModule.Core.Services;
 using VirtoCommerce.DynamicAssociationsModule.Data.ExportImport;
 using VirtoCommerce.DynamicAssociationsModule.Data.Handlers;
+using VirtoCommerce.DynamicAssociationsModule.Data.MySql;
+using VirtoCommerce.DynamicAssociationsModule.Data.PostgreSql;
 using VirtoCommerce.DynamicAssociationsModule.Data.Repositories;
 using VirtoCommerce.DynamicAssociationsModule.Data.Search;
 using VirtoCommerce.DynamicAssociationsModule.Data.Services;
+using VirtoCommerce.DynamicAssociationsModule.Data.SqlServer;
 using VirtoCommerce.DynamicAssociationsModule.Web.Authorization;
 using VirtoCommerce.Platform.Core.Bus;
 using VirtoCommerce.Platform.Core.Common;
@@ -26,20 +28,35 @@ using VirtoCommerce.Platform.Core.Modularity;
 
 namespace VirtoCommerce.DynamicAssociationsModule.Web
 {
-    public class Module : IModule, IExportSupport, IImportSupport
+    public class Module : IModule, IExportSupport, IImportSupport, IHasConfiguration
     {
         private IApplicationBuilder _appBuilder;
 
         public ManifestModuleInfo ModuleInfo { get; set; }
+        public IConfiguration Configuration { get; set; }
 
         public void Initialize(IServiceCollection serviceCollection)
         {
-
             serviceCollection.AddDbContext<AssociationsModuleDbContext>((provider, options) =>
             {
-                var configuration = provider.GetRequiredService<IConfiguration>();
-                options.UseSqlServer(configuration.GetConnectionString(ModuleInfo.Id) ?? configuration.GetConnectionString("VirtoCommerce"));
+                var databaseProvider = Configuration.GetValue("DatabaseProvider", "SqlServer");
+                var connectionString = Configuration.GetConnectionString(ModuleInfo.Id) ?? Configuration.GetConnectionString("VirtoCommerce");
+
+                switch (databaseProvider)
+                {
+                    case "MySql":
+                        options.UseMySqlDatabase(connectionString);
+                        break;
+                    case "PostgreSql":
+                        options.UsePostgreSqlDatabase(connectionString);
+                        break;
+                    default:
+                        options.UseSqlServerDatabase(connectionString);
+                        break;
+                }
             });
+
+
 
             serviceCollection.AddTransient<IAssociationService, AssociationService>();
             serviceCollection.AddTransient<IAssociationsRepository, AssociationsRepository>();
@@ -83,7 +100,6 @@ namespace VirtoCommerce.DynamicAssociationsModule.Web
             using (var serviceScope = appBuilder.ApplicationServices.CreateScope())
             {
                 var dbContext = serviceScope.ServiceProvider.GetRequiredService<AssociationsModuleDbContext>();
-                dbContext.Database.EnsureCreated();
                 dbContext.Database.Migrate();
             }
         }

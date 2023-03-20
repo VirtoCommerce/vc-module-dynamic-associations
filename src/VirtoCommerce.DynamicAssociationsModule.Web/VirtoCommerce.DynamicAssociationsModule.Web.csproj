@@ -19,6 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\VirtoCommerce.DynamicAssociationsModule.Data.MySql\VirtoCommerce.DynamicAssociationsModule.Data.MySql.csproj" />
+    <ProjectReference Include="..\VirtoCommerce.DynamicAssociationsModule.Data.PostgreSql\VirtoCommerce.DynamicAssociationsModule.Data.PostgreSql.csproj" />
+    <ProjectReference Include="..\VirtoCommerce.DynamicAssociationsModule.Data.SqlServer\VirtoCommerce.DynamicAssociationsModule.Data.SqlServer.csproj" />
     <ProjectReference Include="..\VirtoCommerce.DynamicAssociationsModule.Data\VirtoCommerce.DynamicAssociationsModule.Data.csproj" />
   </ItemGroup>
   <ItemGroup>
