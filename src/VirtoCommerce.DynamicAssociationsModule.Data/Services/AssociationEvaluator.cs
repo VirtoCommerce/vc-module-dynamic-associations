@@ -38,7 +38,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Data.Services
                 return Array.Empty<string>();
             }
 
-            var store = await _storeService.GetByIdAsync(context.StoreId);
+            var store = await _storeService.GetNoCloneAsync(context.StoreId);
 
             var products = await _itemService.GetByIdsAsync(context.ProductsToMatch,
                 $"{ItemResponseGroup.WithProperties | ItemResponseGroup.WithOutlines}", store.Catalog);

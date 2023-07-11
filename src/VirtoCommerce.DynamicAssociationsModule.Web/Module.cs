@@ -37,7 +37,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Web
 
         public void Initialize(IServiceCollection serviceCollection)
         {
-            serviceCollection.AddDbContext<AssociationsModuleDbContext>((provider, options) =>
+            serviceCollection.AddDbContext<AssociationsModuleDbContext>(options =>
             {
                 var databaseProvider = Configuration.GetValue("DatabaseProvider", "SqlServer");
                 var connectionString = Configuration.GetConnectionString(ModuleInfo.Id) ?? Configuration.GetConnectionString("VirtoCommerce");
@@ -55,8 +55,6 @@ namespace VirtoCommerce.DynamicAssociationsModule.Web
                         break;
                 }
             });
-
-
 
             serviceCollection.AddTransient<IAssociationService, AssociationService>();
             serviceCollection.AddTransient<IAssociationsRepository, AssociationsRepository>();
@@ -94,14 +92,12 @@ namespace VirtoCommerce.DynamicAssociationsModule.Web
                 }
             }
 
-            var inProcessBus = appBuilder.ApplicationServices.GetService<IHandlerRegistrar>();
-            inProcessBus.RegisterHandler<AssociationChangedEvent>(async (message, token) => await appBuilder.ApplicationServices.GetService<LogChangesChangedEventHandler>().Handle(message));
+            var handlerRegistrar = appBuilder.ApplicationServices.GetService<IHandlerRegistrar>();
+            handlerRegistrar.RegisterHandler<AssociationChangedEvent>(async (message, _) => await appBuilder.ApplicationServices.GetService<LogChangesChangedEventHandler>().Handle(message));
 
-            using (var serviceScope = appBuilder.ApplicationServices.CreateScope())
-            {
-                var dbContext = serviceScope.ServiceProvider.GetRequiredService<AssociationsModuleDbContext>();
-                dbContext.Database.Migrate();
-            }
+            using var serviceScope = appBuilder.ApplicationServices.CreateScope();
+            var dbContext = serviceScope.ServiceProvider.GetRequiredService<AssociationsModuleDbContext>();
+            dbContext.Database.Migrate();
         }
 
         public void Uninstall()

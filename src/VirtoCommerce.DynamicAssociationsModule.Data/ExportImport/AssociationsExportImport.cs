@@ -10,7 +10,6 @@ using VirtoCommerce.DynamicAssociationsModule.Core.Search;
 using VirtoCommerce.DynamicAssociationsModule.Core.Services;
 using VirtoCommerce.Platform.Core.Common;
 using VirtoCommerce.Platform.Core.ExportImport;
-using VirtoCommerce.Platform.Data.ExportImport;
 
 namespace VirtoCommerce.DynamicAssociationsModule.Data.ExportImport
 {
@@ -40,11 +39,11 @@ namespace VirtoCommerce.DynamicAssociationsModule.Data.ExportImport
                 await writer.WriteStartObjectAsync();
                 await writer.WritePropertyNameAsync("DynamicAssociations");
 
-                await writer.SerializeJsonArrayWithPagingAsync(_serializer, _batchSize, async (skip, take) =>
+                await writer.SerializeArrayWithPagingAsync(_serializer, _batchSize, async (skip, take) =>
                         (GenericSearchResult<Association>)await _associationSearchService.SearchAssociationsAsync(new AssociationSearchCriteria { Skip = skip, Take = take })
                     , (processedCount, totalCount) =>
                     {
-                        progressInfo.Description = $"{ processedCount } of { totalCount } dynamic associations have been exported";
+                        progressInfo.Description = $"{processedCount} of {totalCount} dynamic associations have been exported";
                         progressCallback(progressInfo);
                     }, cancellationToken);
 
@@ -57,19 +56,22 @@ namespace VirtoCommerce.DynamicAssociationsModule.Data.ExportImport
         {
             cancellationToken.ThrowIfCancellationRequested();
 
-            var progressInfo = new ExportImportProgressInfo();
-            progressInfo.Description = "Importing dynamic associations…";
+            var progressInfo = new ExportImportProgressInfo { Description = "Importing dynamic associations…" };
             progressCallback(progressInfo);
 
             using (var streamReader = new StreamReader(inputStream))
             using (var reader = new JsonTextReader(streamReader))
             {
-                while (reader.Read())
+                while (await reader.ReadAsync())
                 {
-                    if (reader.TokenType != JsonToken.PropertyName) continue;
+                    if (reader.TokenType != JsonToken.PropertyName)
+                    {
+                        continue;
+                    }
+
                     if (reader.Value.ToString() == "DynamicAssociations")
                     {
-                        await reader.DeserializeJsonArrayWithPagingAsync<Association>(_serializer, _batchSize, async items =>
+                        await reader.DeserializeArrayWithPagingAsync<Association>(_serializer, _batchSize, async items =>
                         {
                             await _associationService.SaveChangesAsync(items.ToArray());
                         }, processedCount =>

@@ -51,16 +51,16 @@ namespace VirtoCommerce.DynamicAssociationsModule.Tests
             var storeMock = CreateStoreServiceMock();
 
             storeMock
-                .Setup(x => x.GetByIdAsync(It.IsAny<string>(), It.IsAny<string>()))
-                .ReturnsAsync(new Store
+                .Setup(x => x.GetAsync(It.IsAny<IList<string>>(), It.IsAny<string>(), It.IsAny<bool>()))
+                .ReturnsAsync(new[] { new Store
                 {
                     Id = "testStore",
                     Catalog = "testCatalog"
-                });
+                }});
 
             var authorizationHandler = CreateAuthorizationHandler(storeMock.Object, null);
 
-            var dynamicAssociation = new Association();
+            var dynamicAssociation = new Association { StoreId = "testStore" };
 
             var context = CreateAuthorizationHandlerContext(
                 _permission,
@@ -81,16 +81,16 @@ namespace VirtoCommerce.DynamicAssociationsModule.Tests
             var storeMock = CreateStoreServiceMock();
 
             storeMock
-                .Setup(x => x.GetByIdAsync(It.IsAny<string>(), It.IsAny<string>()))
-                .ReturnsAsync(new Store
+                .Setup(x => x.GetAsync(It.IsAny<IList<string>>(), It.IsAny<string>(), It.IsAny<bool>()))
+                .ReturnsAsync(new[] { new Store
                 {
                     Id = "testStore",
                     Catalog = "testCatalog1"
-                });
+                }});
 
             var authorizationHandler = CreateAuthorizationHandler(storeMock.Object, null);
 
-            var dynamicAssociation = new Association();
+            var dynamicAssociation = new Association { StoreId = "testStore" };
 
             var context = CreateAuthorizationHandlerContext(
                 _permission,
@@ -111,12 +111,12 @@ namespace VirtoCommerce.DynamicAssociationsModule.Tests
             var storeMock = CreateStoreServiceMock();
 
             storeMock
-                .Setup(x => x.GetByIdAsync(It.IsAny<string>(), It.IsAny<string>()))
-                .ReturnsAsync(new Store
+                .Setup(x => x.GetAsync(It.IsAny<IList<string>>(), It.IsAny<string>(), It.IsAny<bool>()))
+                .ReturnsAsync(new[] { new Store
                 {
                     Id = "testStore",
                     Catalog = "testCatalog"
-                });
+                }});
 
             var authorizationHandler = CreateAuthorizationHandler(storeMock.Object, null);
 
@@ -141,7 +141,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Tests
             var storeMock = CreateStoreServiceMock();
 
             storeMock
-                .Setup(x => x.GetByIdsAsync(It.IsAny<string[]>(), It.IsAny<string>()))
+                .Setup(x => x.GetAsync(It.IsAny<IList<string>>(), It.IsAny<string>(), It.IsAny<bool>()))
                 .ReturnsAsync(new[]
                 {
                     new Store
@@ -182,8 +182,8 @@ namespace VirtoCommerce.DynamicAssociationsModule.Tests
             var storeMock = CreateStoreServiceMock();
 
             storeMock
-                .Setup(x => x.GetByIdsAsync(It.IsAny<string[]>(), It.IsAny<string>()))
-                .ReturnsAsync(new Store[0]);
+                .Setup(x => x.GetAsync(It.IsAny<IList<string>>(), It.IsAny<string>(), It.IsAny<bool>()))
+                .ReturnsAsync(Array.Empty<Store>());
 
             var authorizationHandler = CreateAuthorizationHandler(storeMock.Object, null);
             var dynamicAssociationSearchCriteria = new AssociationSearchCriteria();
@@ -197,7 +197,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Tests
             await authorizationHandler.HandleAsync(context);
 
             // Assert
-            Assert.Equal(new string[0], dynamicAssociationSearchCriteria.StoreIds);
+            Assert.Equal(Array.Empty<string>(), dynamicAssociationSearchCriteria.StoreIds);
             Assert.True(context.HasSucceeded);
         }
 
@@ -208,8 +208,8 @@ namespace VirtoCommerce.DynamicAssociationsModule.Tests
             var storeMock = CreateStoreServiceMock();
 
             storeMock
-                .Setup(x => x.GetByIdsAsync(It.IsAny<string[]>(), It.IsAny<string>()))
-                .ReturnsAsync(new Store[0]);
+                .Setup(x => x.GetAsync(It.IsAny<IList<string>>(), It.IsAny<string>(), It.IsAny<bool>()))
+                .ReturnsAsync(Array.Empty<Store>());
 
             var authorizationHandler = CreateAuthorizationHandler(storeMock.Object, null);
             var dynamicAssociationSearchCriteria = new AssociationSearchCriteria
@@ -237,7 +237,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Tests
             var storeMock = CreateStoreServiceMock();
 
             var authorizationHandler = CreateAuthorizationHandler(storeMock.Object, null);
-            var dynamicAssociations = new Association[0];
+            var dynamicAssociations = Array.Empty<Association>();
 
             var context = CreateAuthorizationHandlerContext(
                 $"{_permission}",
@@ -258,7 +258,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Tests
             var storeMock = CreateStoreServiceMock();
 
             storeMock
-                .Setup(x => x.GetByIdsAsync(It.IsAny<string[]>(), It.IsAny<string>()))
+                .Setup(x => x.GetAsync(It.IsAny<IList<string>>(), It.IsAny<string>(), It.IsAny<bool>()))
                 .ReturnsAsync(new[]
                 {
                     new Store
@@ -272,7 +272,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Tests
                 });
 
             var authorizationHandler = CreateAuthorizationHandler(storeMock.Object, null);
-            var dynamicAssociations = new Association[0];
+            var dynamicAssociations = Array.Empty<Association>();
 
             var context = CreateAuthorizationHandlerContext(
                 $"{_permission}",
@@ -293,7 +293,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Tests
             var storeMock = CreateStoreServiceMock();
 
             storeMock
-                .Setup(x => x.GetByIdsAsync(It.IsAny<string[]>(), It.IsAny<string>()))
+                .Setup(x => x.GetAsync(It.IsAny<IList<string>>(), It.IsAny<string>(), It.IsAny<bool>()))
                 .ReturnsAsync(new[]
                 {
                     new Store
@@ -307,7 +307,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Tests
                 });
 
             var authorizationHandler = CreateAuthorizationHandler(storeMock.Object, null);
-            var dynamicAssociations = new Association[0];
+            var dynamicAssociations = Array.Empty<Association>();
 
             var context = CreateAuthorizationHandlerContext(
                 $"{_permission}",
@@ -330,11 +330,11 @@ namespace VirtoCommerce.DynamicAssociationsModule.Tests
             // Arrange
             var storeMock = CreateStoreServiceMock();
             storeMock
-                .Setup(x => x.GetByIdAsync(It.IsAny<string>(), It.IsAny<string>()))
-                .ReturnsAsync(new Store { Catalog = "testCatalog1", });
+                .Setup(x => x.GetAsync(It.IsAny<IList<string>>(), It.IsAny<string>(), It.IsAny<bool>()))
+                .ReturnsAsync(new[] { new Store { Catalog = "testCatalog1" } });
 
             var authorizationHandler = CreateAuthorizationHandler(storeMock.Object, null);
-            var productsToMatchCriteria = new AssociationEvaluationContext();
+            var productsToMatchCriteria = new AssociationEvaluationContext { StoreId = "testStore" };
 
             var context = CreateAuthorizationHandlerContext(
                 _permission,
@@ -354,11 +354,11 @@ namespace VirtoCommerce.DynamicAssociationsModule.Tests
             // Arrange
             var storeMock = CreateStoreServiceMock();
             storeMock
-                .Setup(x => x.GetByIdAsync(It.IsAny<string>(), It.IsAny<string>()))
-                .ReturnsAsync(new Store { Catalog = "testCatalog", });
+                .Setup(x => x.GetAsync(It.IsAny<IList<string>>(), It.IsAny<string>(), It.IsAny<bool>()))
+                .ReturnsAsync(new[] { new Store { Catalog = "testCatalog" } });
 
             var authorizationHandler = CreateAuthorizationHandler(storeMock.Object, null);
-            var productsToMatchCriteria = new AssociationEvaluationContext();
+            var productsToMatchCriteria = new AssociationEvaluationContext { StoreId = "testStore" };
 
             var context = CreateAuthorizationHandlerContext(
                 _permission,
@@ -378,7 +378,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Tests
             // Arrage
             var categoryServiceMock = CreateCategoryServiceMock();
             categoryServiceMock
-                .Setup(x => x.GetByIdsAsync(It.IsAny<string[]>(), It.IsAny<string>(), It.IsAny<string>()))
+                .Setup(x => x.GetAsync(It.IsAny<IList<string>>(), It.IsAny<string>(), It.IsAny<bool>()))
                 .ReturnsAsync(new[]
                 {
                     new Category
@@ -424,7 +424,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Tests
             // Arrage
             var categoryServiceMock = CreateCategoryServiceMock();
             categoryServiceMock
-                .Setup(x => x.GetByIdsAsync(It.IsAny<string[]>(), It.IsAny<string>(), It.IsAny<string>()))
+                .Setup(x => x.GetAsync(It.IsAny<IList<string>>(), It.IsAny<string>(), It.IsAny<bool>()))
                 .ReturnsAsync(new[]
                 {
                     new Category
@@ -470,7 +470,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Tests
             // Arrage
             var categoryServiceMock = CreateCategoryServiceMock();
             categoryServiceMock
-                .Setup(x => x.GetByIdsAsync(It.IsAny<string[]>(), It.IsAny<string>(), It.IsAny<string>()))
+                .Setup(x => x.GetAsync(It.IsAny<IList<string>>(), It.IsAny<string>(), It.IsAny<bool>()))
                 .ReturnsAsync(Array.Empty<Category>);
 
             var authorizationHandler = CreateAuthorizationHandler(null, categoryServiceMock.Object);
@@ -498,7 +498,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Tests
             // Arrage
             var categoryServiceMock = CreateCategoryServiceMock();
             categoryServiceMock
-                .Setup(x => x.GetByIdsAsync(It.IsAny<string[]>(), It.IsAny<string>(), It.IsAny<string>()))
+                .Setup(x => x.GetAsync(It.IsAny<IList<string>>(), It.IsAny<string>(), It.IsAny<bool>()))
                 .ReturnsAsync(new[]
                 {
                     new Category
@@ -544,7 +544,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Tests
             // Arrage
             var categoryServiceMock = CreateCategoryServiceMock();
             categoryServiceMock
-                .Setup(x => x.GetByIdsAsync(It.IsAny<string[]>(), It.IsAny<string>(), It.IsAny<string>()))
+                .Setup(x => x.GetAsync(It.IsAny<IList<string>>(), It.IsAny<string>(), It.IsAny<bool>()))
                 .ReturnsAsync(new[]
                 {
                     new Category
@@ -591,7 +591,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Tests
             // Arrage
             var categoryServiceMock = CreateCategoryServiceMock();
             categoryServiceMock
-                .Setup(x => x.GetByIdsAsync(It.IsAny<string[]>(), It.IsAny<string>(), It.IsAny<string>()))
+                .Setup(x => x.GetAsync(It.IsAny<IList<string>>(), It.IsAny<string>(), It.IsAny<bool>()))
                 .ReturnsAsync(new[]
                 {
                     new Category
@@ -638,7 +638,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Tests
             // Arrage
             var categoryServiceMock = CreateCategoryServiceMock();
             categoryServiceMock
-                .Setup(x => x.GetByIdsAsync(It.IsAny<string[]>(), It.IsAny<string>(), It.IsAny<string>()))
+                .Setup(x => x.GetAsync(It.IsAny<IList<string>>(), It.IsAny<string>(), It.IsAny<bool>()))
                 .ReturnsAsync(new[]
                 {
                     new Category
