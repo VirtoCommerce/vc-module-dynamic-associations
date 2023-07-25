@@ -8,7 +8,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Core.Model
 
         public string CatalogId { get; set; }
 
-        public ICollection<string> CategoryIds { get; set; }
+        public IList<string> CategoryIds { get; set; }
 
         public IDictionary<string, string[]> PropertyValues { get; set; }
 
@@ -17,6 +17,5 @@ namespace VirtoCommerce.DynamicAssociationsModule.Core.Model
         public int Take { get; set; } = 20;
 
         public int Skip { get; set; } = 0;
-
     }
 }

@@ -51,8 +51,8 @@ namespace VirtoCommerce.DynamicAssociationsModule.Web.Authorization
 
                     if (context.Resource is Association[] associations)
                     {
-                        var storeIds = associations.Select(x => x.StoreId).Distinct();
-                        var stores = await _storeService.GetByIdsAsync(storeIds.ToArray());
+                        var storeIds = associations.Select(x => x.StoreId).Distinct().ToArray();
+                        var stores = await _storeService.GetNoCloneAsync(storeIds);
                         var catalogIds = stores.Select(x => x.Catalog);
 
                         if (catalogIds.All(x => allowedCatalogIds.Contains(x)))
@@ -62,8 +62,8 @@ namespace VirtoCommerce.DynamicAssociationsModule.Web.Authorization
                     }
                     else if (context.Resource is AssociationSearchCriteria associationSearchCriteria)
                     {
-                        var storeIds = associationSearchCriteria.StoreIds?.Distinct() ?? Array.Empty<string>();
-                        var stores = await _storeService.GetByIdsAsync(storeIds.ToArray());
+                        var storeIds = associationSearchCriteria.StoreIds?.Distinct().ToArray() ?? Array.Empty<string>();
+                        var stores = await _storeService.GetNoCloneAsync(storeIds);
                         var availableStores = stores.Where(x => allowedCatalogIds.Contains(x.Catalog));
 
                         associationSearchCriteria.StoreIds = availableStores.Select(x => x.Id).ToArray();
@@ -74,7 +74,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Web.Authorization
                     else if (context.Resource is Association association)
                     {
                         var storeId = association.StoreId;
-                        var store = await _storeService.GetByIdAsync(storeId);
+                        var store = await _storeService.GetNoCloneAsync(storeId);
 
                         if (allowedCatalogIds.Contains(store.Catalog))
                         {
@@ -84,7 +84,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Web.Authorization
                     else if (context.Resource is AssociationEvaluationContext evaluationContext)
                     {
                         var storeId = evaluationContext.StoreId;
-                        var store = await _storeService.GetByIdAsync(storeId);
+                        var store = await _storeService.GetNoCloneAsync(storeId);
 
                         if (allowedCatalogIds.Contains(store.Catalog))
                         {
@@ -98,7 +98,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Web.Authorization
 
                         if (!categoryIds.IsNullOrEmpty())
                         {
-                            var categories = await _categoryService.GetByIdsAsync(categoryIds.ToArray(), $"{CategoryResponseGroup.WithOutlines}");
+                            var categories = await _categoryService.GetAsync(categoryIds, $"{CategoryResponseGroup.WithOutlines}");
 
                             if ((catalogId == null || allowedCatalogIds.Any(x => x.EqualsInvariant(catalogId))) && categories.All(x => IsCategoryLocatedInCatalogs(x, allowedCatalogIds)))
                             {

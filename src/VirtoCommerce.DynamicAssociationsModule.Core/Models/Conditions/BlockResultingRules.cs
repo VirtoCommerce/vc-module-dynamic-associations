@@ -19,7 +19,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Core.Model.Conditions
                 .ToDictionary(x => x.Key, y => y.Value)
             ?? new Dictionary<string, string[]>();
 
-        public virtual ICollection<string> GetCategoryIds() =>
+        public virtual IList<string> GetCategoryIds() =>
             Children?.OfType<ConditionProductCategory>()
                 .FirstOrDefault()
                 ?.CategoryIds
@@ -28,7 +28,6 @@ namespace VirtoCommerce.DynamicAssociationsModule.Core.Model.Conditions
         public virtual string GetCatalogId() =>
             Children?.OfType<ConditionProductCategory>()
                 .FirstOrDefault()
-                ?.CatalogId
-            ?? null;
+                ?.CatalogId;
     }
 }
