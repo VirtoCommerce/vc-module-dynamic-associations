@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Moq;
 using VirtoCommerce.CatalogModule.Core.Model;
@@ -19,7 +21,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Tests
         private readonly Mock<IAssociationConditionEvaluator> _dynamicAssociationConditionEvaluatorMock;
         private readonly Mock<IItemService> _itemServiceMock;
 
-        private readonly AssociationEvaluationContext _evaluationContext = new AssociationEvaluationContext();
+        private readonly AssociationEvaluationContext _evaluationContext = new AssociationEvaluationContext { StoreId = Guid.NewGuid().ToString() };
 
         public AssociationEvaluatorTests()
         {
@@ -52,15 +54,12 @@ namespace VirtoCommerce.DynamicAssociationsModule.Tests
             _evaluationContext.ProductsToMatch = new[] { string.Empty, };
 
             _storeServiceMock
-                .Setup(x => x.GetByIdAsync(It.IsAny<string>(), It.IsAny<string>()))
-                .ReturnsAsync(new Store());
+                .Setup(x => x.GetAsync(It.IsAny<IList<string>>(), It.IsAny<string>(), It.IsAny<bool>()))
+                .ReturnsAsync(new[] { new Store() });
 
             _itemServiceMock
-                .Setup(x => x.GetByIdsAsync(It.IsAny<string[]>(), It.IsAny<string>(), It.IsAny<string>()))
-                .ReturnsAsync(new[]
-                {
-                    new CatalogProduct(),
-                });
+                .Setup(x => x.GetByIdsAsync(It.IsAny<IList<string>>(), It.IsAny<string>(), It.IsAny<string>()))
+                .ReturnsAsync(new[] { new CatalogProduct() });
 
             var evaluator = CreateDynamicAssociationEvaluator();
 
@@ -81,15 +80,12 @@ namespace VirtoCommerce.DynamicAssociationsModule.Tests
             _evaluationContext.ProductsToMatch = new[] { string.Empty, };
 
             _storeServiceMock
-                .Setup(x => x.GetByIdAsync(It.IsAny<string>(), It.IsAny<string>()))
-                .ReturnsAsync(new Store());
+                .Setup(x => x.GetAsync(It.IsAny<IList<string>>(), It.IsAny<string>(), It.IsAny<bool>()))
+                .ReturnsAsync(new[] { new Store() });
 
             _itemServiceMock
-                .Setup(x => x.GetByIdsAsync(It.IsAny<string[]>(), It.IsAny<string>(), It.IsAny<string>()))
-                .ReturnsAsync(new[]
-                {
-                    new CatalogProduct(),
-                });
+                .Setup(x => x.GetByIdsAsync(It.IsAny<IList<string>>(), It.IsAny<string>(), It.IsAny<string>()))
+                .ReturnsAsync(new[] { new CatalogProduct() });
 
             _dynamicAssociationConditionSelectorMock
                 .Setup(x => x.GetAssociationConditionAsync(It.IsAny<AssociationEvaluationContext>(), It.IsAny<CatalogProduct>()))

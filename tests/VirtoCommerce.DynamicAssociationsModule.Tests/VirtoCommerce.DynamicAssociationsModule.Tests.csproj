@@ -1,29 +1,22 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-
     <IsPackable>false</IsPackable>
   </PropertyGroup>
-
   <ItemGroup>
-    <PackageReference Include="coverlet.collector" Version="3.2.0">
+    <PackageReference Include="coverlet.collector" Version="6.0.0">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0" />
     <PackageReference Include="MockQueryable.Moq" Version="5.0.1" />
     <PackageReference Include="Moq" Version="4.13.1" />
-    <PackageReference Include="VirtoCommerce.CatalogModule.Core" Version="3.200.0" />
-    <PackageReference Include="VirtoCommerce.CatalogModule.Data" Version="3.200.0" />
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\..\src\VirtoCommerce.DynamicAssociationsModule.Core\VirtoCommerce.DynamicAssociationsModule.Core.csproj" />
     <ProjectReference Include="..\..\src\VirtoCommerce.DynamicAssociationsModule.Data\VirtoCommerce.DynamicAssociationsModule.Data.csproj" />
     <ProjectReference Include="..\..\src\VirtoCommerce.DynamicAssociationsModule.Web\VirtoCommerce.DynamicAssociationsModule.Web.csproj" />
   </ItemGroup>
-
 </Project>
