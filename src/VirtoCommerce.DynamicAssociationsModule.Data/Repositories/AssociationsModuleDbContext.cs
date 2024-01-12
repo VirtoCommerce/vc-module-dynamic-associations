@@ -2,10 +2,11 @@ using System.Reflection;
 using EntityFrameworkCore.Triggers;
 using Microsoft.EntityFrameworkCore;
 using VirtoCommerce.DynamicAssociationsModule.Data.Model;
+using VirtoCommerce.Platform.Data.Infrastructure;
 
 namespace VirtoCommerce.DynamicAssociationsModule.Data.Repositories
 {
-    public class AssociationsModuleDbContext : DbContextWithTriggers
+    public class AssociationsModuleDbContext : DbContextBase
     {
         public AssociationsModuleDbContext(DbContextOptions<AssociationsModuleDbContext> options)
             : base(options)
