@@ -165,7 +165,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Tests
             var entitiesMock = entities.AsQueryable().BuildMock();
 
             dynamicAssociationsRepositoryMock.Setup(x => x.Associations)
-                .Returns(entitiesMock.Object);
+                .Returns(entitiesMock);
             dynamicAssociationsRepositoryMock.Setup(x => x.GetAssociationsByIdsAsync(It.IsAny<string[]>()))
                 .Returns<string[]>(ids =>
                     Task.FromResult(entities.Where(x => ids.Contains(x.Id)).ToArray()));

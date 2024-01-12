@@ -1,14 +1,14 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <id>VirtoCommerce.DynamicAssociationsModule</id>
-  <version>3.401.0</version>
+  <version>3.800.0</version>
   <version-tag />
-  <platformVersion>3.400.0</platformVersion>
+  <platformVersion>3.800.0</platformVersion>
   <dependencies>
-    <dependency id="VirtoCommerce.Catalog" version="3.401.0" />
-    <dependency id="VirtoCommerce.Core" version="3.400.0" />
-    <dependency id="VirtoCommerce.Marketing" version="3.200.0" />
-    <dependency id="VirtoCommerce.Store" version="3.400.0" />
+    <dependency id="VirtoCommerce.Catalog" version="3.800.0" />
+    <dependency id="VirtoCommerce.Core" version="3.800.0" />
+    <dependency id="VirtoCommerce.Marketing" version="3.800.0" />
+    <dependency id="VirtoCommerce.Store" version="3.800.0" />
   </dependencies>
   <title>Dynamic Associations</title>
   <description>Dynamic rule based product associations module</description>
@@ -22,7 +22,7 @@
   </owners>
   <requireLicenseAcceptance>false</requireLicenseAcceptance>
   <releaseNotes>First version.</releaseNotes>
-  <copyright>Copyright © 2020-2023 Virto Commerce. All rights reserved</copyright>
+  <copyright>Copyright © 2011-2024 Virto Commerce. All rights reserved</copyright>
   <tags>dynamicAssociations</tags>
   <assemblyFile>VirtoCommerce.DynamicAssociationsModule.Web.dll</assemblyFile>
   <moduleType>VirtoCommerce.DynamicAssociationsModule.Web.Module, VirtoCommerce.DynamicAssociationsModule.Web</moduleType>
