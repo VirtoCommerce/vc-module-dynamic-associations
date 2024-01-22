@@ -50,7 +50,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Web.Controllers.Api
 
             if (!authorizationResult.Succeeded)
             {
-                return Unauthorized();
+                return Forbid();
             }
 
             var result = await _associationSearchService.SearchAssociationsAsync(criteria);
@@ -77,7 +77,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Web.Controllers.Api
 
             if (!authorizationResult.Succeeded)
             {
-                return Unauthorized();
+                return Forbid();
             }
 
             result?.ExpressionTree?.MergeFromPrototype(AbstractTypeFactory<AssociationRuleTreePrototype>.TryCreateInstance());
@@ -119,7 +119,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Web.Controllers.Api
 
             if (!authorizationResult.Succeeded)
             {
-                return Unauthorized();
+                return Forbid();
             }
 
             if (!associations.IsNullOrEmpty())
@@ -150,7 +150,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Web.Controllers.Api
 
             if (!authorizationResult.Succeeded)
             {
-                return Unauthorized();
+                return Forbid();
             }
 
             await _associationService.DeleteAsync(ids);
@@ -177,7 +177,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Web.Controllers.Api
 
             if (!authorizationResult.Succeeded)
             {
-                return Unauthorized();
+                return Forbid();
             }
 
             var result = await _associationEvaluator.EvaluateAssociationsAsync(context);
@@ -199,7 +199,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Web.Controllers.Api
 
             if (!authorizationResult.Succeeded)
             {
-                return Unauthorized();
+                return Forbid();
             }
 
             var result = await _associationConditionEvaluator.EvaluateAssociationConditionAsync(conditionRequest);
