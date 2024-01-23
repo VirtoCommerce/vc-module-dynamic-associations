@@ -4,13 +4,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using VirtoCommerce.DynamicAssociationsModule.Core;
 using VirtoCommerce.DynamicAssociationsModule.Core.Model;
 using VirtoCommerce.DynamicAssociationsModule.Core.Model.Search;
 using VirtoCommerce.DynamicAssociationsModule.Core.Search;
 using VirtoCommerce.DynamicAssociationsModule.Core.Services;
 using VirtoCommerce.DynamicAssociationsModule.Web.Authorization;
 using VirtoCommerce.Platform.Core.Common;
-using CatalogModuleConstants = VirtoCommerce.CatalogModule.Core.ModuleConstants;
 
 namespace VirtoCommerce.DynamicAssociationsModule.Web.Controllers.Api
 {
@@ -45,7 +45,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Web.Controllers.Api
             var authorizationResult = await _authorizationService.AuthorizeAsync(
                 User,
                 criteria,
-                new AssociationAuthorizationRequirement(CatalogModuleConstants.Security.Permissions.Read)
+                new AssociationAuthorizationRequirement(ModuleConstants.Security.Permissions.Read)
                 );
 
             if (!authorizationResult.Succeeded)
@@ -72,7 +72,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Web.Controllers.Api
             var authorizationResult = await _authorizationService.AuthorizeAsync(
                 User,
                 result,
-                new AssociationAuthorizationRequirement(CatalogModuleConstants.Security.Permissions.Read)
+                new AssociationAuthorizationRequirement(ModuleConstants.Security.Permissions.Read)
                 );
 
             if (!authorizationResult.Succeeded)
@@ -91,7 +91,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Web.Controllers.Api
         /// <remarks>Return a new dynamic association object with populated dynamic expression tree</remarks>
         [HttpGet]
         [Route("new")]
-        [Authorize(CatalogModuleConstants.Security.Permissions.Create)]
+        [Authorize(ModuleConstants.Security.Permissions.Create)]
         public ActionResult<Association> GetNewAssociation()
         {
             var result = AbstractTypeFactory<Association>.TryCreateInstance();
@@ -114,7 +114,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Web.Controllers.Api
             var authorizationResult = await _authorizationService.AuthorizeAsync(
                 User,
                 associations,
-                new AssociationAuthorizationRequirement(CatalogModuleConstants.Security.Permissions.Update)
+                new AssociationAuthorizationRequirement(ModuleConstants.Security.Permissions.Update)
                 );
 
             if (!authorizationResult.Succeeded)
@@ -145,7 +145,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Web.Controllers.Api
             var authorizationResult = await _authorizationService.AuthorizeAsync(
                 User,
                 dynamicAssociations,
-                new AssociationAuthorizationRequirement(CatalogModuleConstants.Security.Permissions.Delete)
+                new AssociationAuthorizationRequirement(ModuleConstants.Security.Permissions.Delete)
                 );
 
             if (!authorizationResult.Succeeded)
@@ -172,7 +172,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Web.Controllers.Api
             var authorizationResult = await _authorizationService.AuthorizeAsync(
                 User,
                 context,
-                new AssociationAuthorizationRequirement(CatalogModuleConstants.Security.Permissions.Read)
+                new AssociationAuthorizationRequirement(ModuleConstants.Security.Permissions.Read)
                 );
 
             if (!authorizationResult.Succeeded)
@@ -194,7 +194,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Web.Controllers.Api
             var authorizationResult = await _authorizationService.AuthorizeAsync(
                 User,
                 conditionRequest,
-                new AssociationAuthorizationRequirement(CatalogModuleConstants.Security.Permissions.Read)
+                new AssociationAuthorizationRequirement(ModuleConstants.Security.Permissions.Read)
                 );
 
             if (!authorizationResult.Succeeded)
