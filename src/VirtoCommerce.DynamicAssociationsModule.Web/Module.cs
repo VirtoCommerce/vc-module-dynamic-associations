@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using VirtoCommerce.CoreModule.Core.Conditions;
+using VirtoCommerce.DynamicAssociationsModule.Core;
 using VirtoCommerce.DynamicAssociationsModule.Core.Events;
 using VirtoCommerce.DynamicAssociationsModule.Core.Model;
 using VirtoCommerce.DynamicAssociationsModule.Core.Search;
@@ -25,6 +26,7 @@ using VirtoCommerce.Platform.Core.Bus;
 using VirtoCommerce.Platform.Core.Common;
 using VirtoCommerce.Platform.Core.ExportImport;
 using VirtoCommerce.Platform.Core.Modularity;
+using VirtoCommerce.Platform.Core.Security;
 
 namespace VirtoCommerce.DynamicAssociationsModule.Web
 {
@@ -94,6 +96,9 @@ namespace VirtoCommerce.DynamicAssociationsModule.Web
 
             var handlerRegistrar = appBuilder.ApplicationServices.GetService<IHandlerRegistrar>();
             handlerRegistrar.RegisterHandler<AssociationChangedEvent>(async (message, _) => await appBuilder.ApplicationServices.GetService<LogChangesChangedEventHandler>().Handle(message));
+
+            var permissionsRegistrar = appBuilder.ApplicationServices.GetRequiredService<IPermissionsRegistrar>();
+            permissionsRegistrar.RegisterPermissions(ModuleInfo.Id, "DynamicAssociations", ModuleConstants.Security.Permissions.AllPermissions);
 
             using var serviceScope = appBuilder.ApplicationServices.CreateScope();
             var dbContext = serviceScope.ServiceProvider.GetRequiredService<AssociationsModuleDbContext>();
