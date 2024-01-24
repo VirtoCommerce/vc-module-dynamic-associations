@@ -14,7 +14,8 @@ angular.module(moduleName, [])
                 entityName: 'dynamicProductAssociations',
                 icon: 'fa fa-a',
                 controller: 'virtoCommerce.dynamicAssociationsModule.dynamicAssociationsListController',
-                template: 'Modules/$(virtoCommerce.dynamicAssociationsModule)/Scripts/blades/dynamicAssociations-list.tpl.html'
+                template: 'Modules/$(virtoCommerce.dynamicAssociationsModule)/Scripts/blades/dynamicAssociations-list.tpl.html',
+                permission: 'dynamic-association:access'
             });
         }
     ]);

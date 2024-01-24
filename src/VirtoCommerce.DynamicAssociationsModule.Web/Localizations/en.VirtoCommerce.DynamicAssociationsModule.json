@@ -89,6 +89,11 @@
     }
   },
   "permissions": {
+    "dynamic-association:read": "View dynamic associations data",
+    "dynamic-association:create": "Create dynamic associations data",
+    "dynamic-association:update": "Update dynamic associations data",
+    "dynamic-association:delete": "Delete dynamic associations data",
+    "dynamic-association:access": "Open dynamic associations menu"
   },
   "settings": {
   },
