@@ -16,7 +16,7 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
 
         blade.currentEntity = {};
 
-        blade.updatePermission = 'catalog:update';
+        blade.updatePermission = 'dynamic-association:update';
         blade.isMatchingRulesExist = false;
         blade.isResultingRulesExist = false;
 

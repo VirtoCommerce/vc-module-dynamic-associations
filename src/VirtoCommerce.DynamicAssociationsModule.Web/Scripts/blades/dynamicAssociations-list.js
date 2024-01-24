@@ -114,7 +114,7 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
                         });
                     },
                     canExecuteMethod: function () { return true; },
-                    permission: 'catalog:create'
+                    permission: 'dynamic-association:create'
                 },
                 {
                     name: "platform.commands.delete", icon: 'fa fa-trash-o',
@@ -124,7 +124,7 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
                     canExecuteMethod: function () {
                         return $scope.gridApi && _.any($scope.gridApi.selection.getSelectedRows());
                     },
-                    permission: 'marketing:delete'
+                    permission: 'dynamic-association:delete'
                 }
             ];
 
