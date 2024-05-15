@@ -9,7 +9,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="VirtoCommerce.CatalogModule.Data" Version="3.800.0" />
-    <PackageReference Include="VirtoCommerce.Platform.Security" Version="3.800.0" />
+    <PackageReference Include="VirtoCommerce.Platform.Security" Version="3.825.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\VirtoCommerce.DynamicAssociationsModule.Data.MySql\VirtoCommerce.DynamicAssociationsModule.Data.MySql.csproj" />
