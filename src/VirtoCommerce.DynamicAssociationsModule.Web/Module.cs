@@ -22,8 +22,8 @@ using VirtoCommerce.DynamicAssociationsModule.Data.Search;
 using VirtoCommerce.DynamicAssociationsModule.Data.Services;
 using VirtoCommerce.DynamicAssociationsModule.Data.SqlServer;
 using VirtoCommerce.DynamicAssociationsModule.Web.Authorization;
-using VirtoCommerce.Platform.Core.Bus;
 using VirtoCommerce.Platform.Core.Common;
+using VirtoCommerce.Platform.Core.Events;
 using VirtoCommerce.Platform.Core.ExportImport;
 using VirtoCommerce.Platform.Core.Modularity;
 using VirtoCommerce.Platform.Core.Security;
@@ -94,8 +94,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Web
                 }
             }
 
-            var handlerRegistrar = appBuilder.ApplicationServices.GetService<IHandlerRegistrar>();
-            handlerRegistrar.RegisterHandler<AssociationChangedEvent>(async (message, _) => await appBuilder.ApplicationServices.GetService<LogChangesChangedEventHandler>().Handle(message));
+            appBuilder.RegisterEventHandler<AssociationChangedEvent, LogChangesChangedEventHandler>();
 
             var permissionsRegistrar = appBuilder.ApplicationServices.GetRequiredService<IPermissionsRegistrar>();
             permissionsRegistrar.RegisterPermissions(ModuleInfo.Id, "DynamicAssociations", ModuleConstants.Security.Permissions.AllPermissions);
