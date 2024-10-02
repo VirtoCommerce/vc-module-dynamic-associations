@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using MockQueryable.Moq;
+using MockQueryable;
 using Moq;
 using VirtoCommerce.DynamicAssociationsModule.Core.Model.Search;
 using VirtoCommerce.DynamicAssociationsModule.Data.Model;
