@@ -8,8 +8,8 @@
     <SonarQubeTestProject>false</SonarQubeTestProject>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="VirtoCommerce.CatalogModule.Data" Version="3.800.0" />
-    <PackageReference Include="VirtoCommerce.Platform.Security" Version="3.825.0" />
+    <PackageReference Include="VirtoCommerce.CatalogModule.Data" Version="3.822.0" />
+    <PackageReference Include="VirtoCommerce.Platform.Security" Version="3.853.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\VirtoCommerce.DynamicAssociationsModule.Data.MySql\VirtoCommerce.DynamicAssociationsModule.Data.MySql.csproj" />
