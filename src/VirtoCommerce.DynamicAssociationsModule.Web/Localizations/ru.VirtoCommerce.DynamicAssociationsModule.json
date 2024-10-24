@@ -1,0 +1,113 @@
+{
+  "dynamicAssociations": {
+    "main-menu-title": "Динамические ассоциации",
+    "main-blade-title": "Динамические ассоциации",
+    "properties": {
+    },
+    "blades": {
+      "dynamicAssociation-list": {
+        "title": "Правила динамических ассоциаций товаров",
+        "subtitle": "Выберите правило динамической ассоциации",
+        "labels": {
+          "name": "Название",
+          "group": "Группа",
+          "priority": "Приоритет",
+          "isActive": "Активно",
+          "last-modified": "Последнее изменение"
+        }
+      },
+      "dynamicAssociation-detail": {
+        "title-new": "Создать новое правило динамической ассоциации",
+        "labels": {
+          "name": "Название ассоциации",
+          "description": "Описание",
+          "main-parameters": "Основные параметры",
+          "productsToMatch": "Товары для сопоставления",
+          "productsToDisplay": "Товары для отображения",
+          "outputTuning": "Настройка вывода"
+        },
+        "descriptions": {
+          "name": "Введите уникальное название для идентификации ассоциации",
+          "main-parameters": "Заполнено {{count}} из {{total}} свойств",
+          "productsToMatch": "{{count}} товаров в текущем фильтре",
+          "productsToDisplay": "{{count}} товаров в текущем фильтре",
+          "outputTuning": "Сортировка вывода, ограничения, приоритет правила"
+        },
+        "placeholders": {
+          "name": "Название динамической ассоциации"
+        }
+      },
+      "dynamicAssociation-parameters": {
+        "title": "Параметры правила",
+        "subtitle": "Редактировать основные параметры правила ассоциации",
+        "labels": {
+          "is-active": "Активно",
+          "start-date": "Дата начала",
+          "expiration-date": "Дата окончания",
+          "store": "Магазин",
+          "priority": "Приоритет"
+        },
+        "descriptions": {
+          "is-active": "Флаг управляет состоянием Активно/Неактивно",
+          "store": "Магазин, в котором будет действовать это правило",
+          "priority": "Применяется правило ассоциации с наивысшим приоритетом"
+        },
+        "placeholders": {
+          "start-date": "Выберите дату...",
+          "expiration-date": "Выберите дату...",
+          "store": "Выберите магазин..."
+        }
+      },
+      "dynamicAssociation-outputTuning": {
+        "title": "Настройка вывода",
+        "subtitle": "Выберите свойства для сортировки",
+        "labels": {
+          "sortByProperty": "Сортировать по свойству",
+          "direction": "Направление",
+          "limit": "Ограничение вывода"
+        },
+        "placeholders": {
+          "selectProperty": "Выберите свойство..."
+        }
+      },
+      "dynamicAssociation-preview": {
+        "title": "Предпросмотр товаров",
+        "labels": {
+          "picture": "Изображение",
+          "name": "Название"
+        }
+      },
+      "dynamicAssociation-ruleCreation": {
+        "title": "Создать правило {{ ruleType }} для товаров"
+      }
+    },
+    "dialogs": {
+      "dynamic-association-delete": {
+        "title": "Подтверждение удаления",
+        "message": "Вы уверены, что хотите удалить выбранные правила динамических ассоциаций?"
+      }
+    }
+  },
+  "permissions": {
+    "dynamic-association:read": "Просмотр данных динамических ассоциаций",
+    "dynamic-association:create": "Создание данных динамических ассоциаций",
+    "dynamic-association:update": "Обновление данных динамических ассоциаций",
+    "dynamic-association:delete": "Удаление данных динамических ассоциаций",
+    "dynamic-association:access": "Доступ к меню динамических ассоциаций"
+  },
+  "settings": {
+  },
+  "module": {
+    "VirtoCommerce.DynamicAssociations": {
+      "description": ""
+    }
+  },
+  "export": {
+    "groups": {
+      "VirtoCommerce.DynamicAssociationsModule.Core.Model.Export": {
+        "name": "ДинамическиеАссоциации",
+        "description": "Правила"
+      }
+    }
+  }
+}
