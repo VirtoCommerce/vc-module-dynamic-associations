@@ -1,0 +1,113 @@
+{
+  "dynamicAssociations": {
+    "main-menu-title": "Associazioni dinamiche",
+    "main-blade-title": "Associazioni dinamiche",
+    "properties": {
+    },
+    "blades": {
+      "dynamicAssociation-list": {
+        "title": "Regole di associazione dinamica dei prodotti",
+        "subtitle": "Seleziona regola di associazione dinamica",
+        "labels": {
+          "name": "Nome",
+          "group": "Gruppo",
+          "priority": "Priorità",
+          "isActive": "È attivo",
+          "last-modified": "Ultima modifica"
+        }
+      },
+      "dynamicAssociation-detail": {
+        "title-new": "Crea nuova regola di associazione dinamica",
+        "labels": {
+          "name": "Nome dell'associazione",
+          "description": "Descrizione",
+          "main-parameters": "Parametri principali",
+          "productsToMatch": "Prodotti da abbinare",
+          "productsToDisplay": "Prodotti da visualizzare",
+          "outputTuning": "Regolazione dell'output"
+        },
+        "descriptions": {
+          "name": "Inserisci un nome che identifichi univocamente l'associazione",
+          "main-parameters": "{{count}} di {{total}} proprietà compilate",
+          "productsToMatch": "{{count}} prodotti nel filtro corrente",
+          "productsToDisplay": "{{count}} prodotti nel filtro corrente",
+          "outputTuning": "Ordinamento dell'output, limiti, priorità della regola"
+        },
+        "placeholders": {
+          "name": "Nome dell'associazione dinamica"
+        }
+      },
+      "dynamicAssociation-parameters": {
+        "title": "Parametri per la regola",
+        "subtitle": "Modifica i parametri principali per la regola di associazione",
+        "labels": {
+          "is-active": "È attivo",
+          "start-date": "Data di inizio",
+          "expiration-date": "Data di scadenza",
+          "store": "Negozio",
+          "priority": "Priorità"
+        },
+        "descriptions": {
+          "is-active": "Il flag controlla Attivo/Inattivo",
+          "store": "Negozio in cui questa promozione sarà attiva",
+          "priority": "Viene applicata la regola di associazione con la priorità più alta"
+        },
+        "placeholders": {
+          "start-date": "Scegli data...",
+          "expiration-date": "Scegli data...",
+          "store": "Seleziona negozio..."
+        }
+      },
+      "dynamicAssociation-outputTuning": {
+        "title": "Regolazione dell'output",
+        "subtitle": "Seleziona proprietà per l'ordinamento",
+        "labels": {
+          "sortByProperty": "Ordina per proprietà",
+          "direction": "Direzione",
+          "limit": "Limite di output"
+        },
+        "placeholders": {
+          "selectProperty": "Seleziona proprietà..."
+        }
+      },
+      "dynamicAssociation-preview": {
+        "title": "Anteprima prodotti",
+        "labels": {
+          "picture": "Immagine",
+          "name": "Nome"
+        }
+      },
+      "dynamicAssociation-ruleCreation": {
+        "title": "Crea regola {{ ruleType }} per i prodotti"
+      }
+    },
+    "dialogs": {
+      "dynamic-association-delete": {
+        "title": "Conferma eliminazione",
+        "message": "Sei sicuro di voler eliminare le regole di associazione dinamica selezionate?"
+      }
+    }
+  },
+  "permissions": {
+    "dynamic-association:read": "Visualizza dati di associazione dinamica",
+    "dynamic-association:create": "Crea dati di associazione dinamica",
+    "dynamic-association:update": "Aggiorna dati di associazione dinamica",
+    "dynamic-association:delete": "Elimina dati di associazione dinamica",
+    "dynamic-association:access": "Apri menu associazioni dinamiche"
+  },
+  "settings": {
+  },
+  "module": {
+    "VirtoCommerce.DynamicAssociations": {
+      "description": ""
+    }
+  },
+  "export": {
+    "groups": {
+      "VirtoCommerce.DynamicAssociationsModule.Core.Model.Export": {
+        "name": "AssociazioniDinamiche",
+        "description": "Regole"
+      }
+    }
+  }
+}

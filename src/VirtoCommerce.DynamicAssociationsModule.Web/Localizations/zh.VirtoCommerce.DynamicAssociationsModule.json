@@ -1,0 +1,113 @@
+{
+  "dynamicAssociations": {
+    "main-menu-title": "动态关联",
+    "main-blade-title": "动态关联",
+    "properties": {
+    },
+    "blades": {
+      "dynamicAssociation-list": {
+        "title": "动态产品关联规则",
+        "subtitle": "选择动态关联规则",
+        "labels": {
+          "name": "名称",
+          "group": "组别",
+          "priority": "优先级",
+          "isActive": "是否激活",
+          "last-modified": "最后修改"
+        }
+      },
+      "dynamicAssociation-detail": {
+        "title-new": "创建新的动态关联规则",
+        "labels": {
+          "name": "关联名称",
+          "description": "描述",
+          "main-parameters": "主要参数",
+          "productsToMatch": "待匹配产品",
+          "productsToDisplay": "待显示产品",
+          "outputTuning": "输出调整"
+        },
+        "descriptions": {
+          "name": "输入唯一标识此关联的名称",
+          "main-parameters": "已填写 {{count}} 个属性，共 {{total}} 个",
+          "productsToMatch": "当前筛选器中有 {{count}} 个产品",
+          "productsToDisplay": "当前筛选器中有 {{count}} 个产品",
+          "outputTuning": "输出排序、限制、规则优先级"
+        },
+        "placeholders": {
+          "name": "动态关联名称"
+        }
+      },
+      "dynamicAssociation-parameters": {
+        "title": "规则参数",
+        "subtitle": "编辑关联规则的主要参数",
+        "labels": {
+          "is-active": "是否激活",
+          "start-date": "开始日期",
+          "expiration-date": "过期日期",
+          "store": "商店",
+          "priority": "优先级"
+        },
+        "descriptions": {
+          "is-active": "标志控制激活/未激活",
+          "store": "此促销活动将在哪个商店激活",
+          "priority": "应用优先级最高的关联规则"
+        },
+        "placeholders": {
+          "start-date": "选择日期...",
+          "expiration-date": "选择日期...",
+          "store": "选择商店..."
+        }
+      },
+      "dynamicAssociation-outputTuning": {
+        "title": "输出调整",
+        "subtitle": "选择排序属性",
+        "labels": {
+          "sortByProperty": "按属性排序",
+          "direction": "方向",
+          "limit": "输出限制"
+        },
+        "placeholders": {
+          "selectProperty": "选择属性..."
+        }
+      },
+      "dynamicAssociation-preview": {
+        "title": "产品预览",
+        "labels": {
+          "picture": "图片",
+          "name": "名称"
+        }
+      },
+      "dynamicAssociation-ruleCreation": {
+        "title": "创建产品{{ ruleType }}规则"
+      }
+    },
+    "dialogs": {
+      "dynamic-association-delete": {
+        "title": "删除确认",
+        "message": "您确定要删除所选的动态关联规则吗？"
+      }
+    }
+  },
+  "permissions": {
+    "dynamic-association:read": "查看动态关联数据",
+    "dynamic-association:create": "创建动态关联数据",
+    "dynamic-association:update": "更新动态关联数据",
+    "dynamic-association:delete": "删除动态关联数据",
+    "dynamic-association:access": "打开动态关联菜单"
+  },
+  "settings": {
+  },
+  "module": {
+    "VirtoCommerce.DynamicAssociations": {
+      "description": ""
+    }
+  },
+  "export": {
+    "groups": {
+      "VirtoCommerce.DynamicAssociationsModule.Core.Model.Export": {
+        "name": "动态关联",
+        "description": "规则"
+      }
+    }
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "dynamicAssociations": {
+    "main-menu-title": "Dynamiczne powiązania",
+    "main-blade-title": "Dynamiczne powiązania",
+    "properties": {
+    },
+    "blades": {
+      "dynamicAssociation-list": {
+        "title": "Reguły dynamicznych powiązań produktów",
+        "subtitle": "Wybierz regułę dynamicznego powiązania",
+        "labels": {
+          "name": "Nazwa",
+          "group": "Grupa",
+          "priority": "Priorytet",
+          "isActive": "Jest aktywna",
+          "last-modified": "Ostatnia modyfikacja"
+        }
+      },
+      "dynamicAssociation-detail": {
+        "title-new": "Utwórz nową regułę dynamicznego powiązania",
+        "labels": {
+          "name": "Nazwa powiązania",
+          "description": "Opis",
+          "main-parameters": "Główne parametry",
+          "productsToMatch": "Produkty do dopasowania",
+          "productsToDisplay": "Produkty do wyświetlenia",
+          "outputTuning": "Dostosowanie wyników"
+        },
+        "descriptions": {
+          "name": "Wpisz nazwę, która jednoznacznie identyfikuje powiązanie",
+          "main-parameters": "Wypełniono {{count}} z {{total}} właściwości",
+          "productsToMatch": "{{count}} produktów w bieżącym filtrze",
+          "productsToDisplay": "{{count}} produktów w bieżącym filtrze",
+          "outputTuning": "Sortowanie wyników, limity, priorytet reguły"
+        },
+        "placeholders": {
+          "name": "Nazwa dynamicznego powiązania"
+        }
+      },
+      "dynamicAssociation-parameters": {
+        "title": "Parametry reguły",
+        "subtitle": "Edytuj główne parametry reguły powiązania",
+        "labels": {
+          "is-active": "Jest aktywna",
+          "start-date": "Data rozpoczęcia",
+          "expiration-date": "Data wygaśnięcia",
+          "store": "Sklep",
+          "priority": "Priorytet"
+        },
+        "descriptions": {
+          "is-active": "Flaga kontroluje stan Aktywna/Nieaktywna",
+          "store": "Sklep, w którym ta promocja będzie aktywna",
+          "priority": "Stosowana jest reguła powiązania o najwyższym priorytecie"
+        },
+        "placeholders": {
+          "start-date": "Wybierz datę...",
+          "expiration-date": "Wybierz datę...",
+          "store": "Wybierz sklep..."
+        }
+      },
+      "dynamicAssociation-outputTuning": {
+        "title": "Dostosowanie wyników",
+        "subtitle": "Wybierz właściwości do sortowania",
+        "labels": {
+          "sortByProperty": "Sortuj według właściwości",
+          "direction": "Kierunek",
+          "limit": "Limit wyników"
+        },
+        "placeholders": {
+          "selectProperty": "Wybierz właściwość..."
+        }
+      },
+      "dynamicAssociation-preview": {
+        "title": "Podgląd produktów",
+        "labels": {
+          "picture": "Zdjęcie",
+          "name": "Nazwa"
+        }
+      },
+      "dynamicAssociation-ruleCreation": {
+        "title": "Utwórz regułę {{ ruleType }} dla produktów"
+      }
+    },
+    "dialogs": {
+      "dynamic-association-delete": {
+        "title": "Potwierdzenie usunięcia",
+        "message": "Czy na pewno chcesz usunąć wybrane reguły dynamicznych powiązań?"
+      }
+    }
+  },
+  "permissions": {
+    "dynamic-association:read": "Przeglądanie danych dynamicznych powiązań",
+    "dynamic-association:create": "Tworzenie danych dynamicznych powiązań",
+    "dynamic-association:update": "Aktualizacja danych dynamicznych powiązań",
+    "dynamic-association:delete": "Usuwanie danych dynamicznych powiązań",
+    "dynamic-association:access": "Otwórz menu dynamicznych powiązań"
+  },
+  "settings": {
+  },
+  "module": {
+    "VirtoCommerce.DynamicAssociations": {
+      "description": ""
+    }
+  },
+  "export": {
+    "groups": {
+      "VirtoCommerce.DynamicAssociationsModule.Core.Model.Export": {
+        "name": "DynamicznePowiązania",
+        "description": "Reguły"
+      }
+    }
+  }
+}

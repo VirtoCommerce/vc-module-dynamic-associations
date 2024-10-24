@@ -1,7 +1,7 @@
 {
   "dynamicAssociations": {
-    "main-menu-title": "Dynamic Associations",
-    "main-blade-title": "Dynamic Associations",
+    "main-menu-title": "Dynamic associations",
+    "main-blade-title": "Dynamic associations",
     "properties": {
     },
     "blades": {
@@ -12,8 +12,8 @@
           "name": "Name",
           "group": "Group",
           "priority": "Priority",
-          "isActive": "isActive",
-          "last-modified": "modified"
+          "isActive": "is Active",
+          "last-modified": "Modified"
         }
       },
       "dynamicAssociation-detail": {
@@ -27,7 +27,7 @@
           "outputTuning": "Output tuning"
         },
         "descriptions": {
-          "name": "Type a name that uniquely identifies the association.",
+          "name": "Type a name that uniquely identifies the association",
           "main-parameters": "{{count}} of {{total}} properties filled",
           "productsToMatch": "{{count}} products in the current filter",
           "productsToDisplay": "{{count}} products in the current filter",
@@ -41,21 +41,21 @@
         "title": "Parameters for rule",
         "subtitle": "Edit main parameters for association rule",
         "labels": {
-          "is-active": "is Active",
+          "is-active": "is active",
           "start-date": "Start date",
           "expiration-date": "Expiration date",
           "store": "Store",
           "priority": "Priority"
         },
         "descriptions": {
-          "is-active": "Flag controls Active/Inactive the rule",
+          "is-active": "Flag controls Active/Inactive",
           "store": "Store in which this promotion will be active",
-          "priority": "The association rule with the highest priority will be applied."
+          "priority": "The association rule with the highest priority is applied"
         },
         "placeholders": {
-          "start-date": "Please choose date...",
-          "expiration-date": "Please choose date...",
-          "store": "Please select store..."
+          "start-date": "Choose date...",
+          "expiration-date": "Choose date...",
+          "store": "Select store..."
         }
       },
       "dynamicAssociation-outputTuning": {
@@ -84,7 +84,7 @@
     "dialogs": {
       "dynamic-association-delete": {
         "title": "Delete confirmation",
-        "message": "Are you sure you want to delete selected Dynamic association rules?"
+        "message": "Are you sure you want to delete the selected Dynamic association rules?"
       }
     }
   },
