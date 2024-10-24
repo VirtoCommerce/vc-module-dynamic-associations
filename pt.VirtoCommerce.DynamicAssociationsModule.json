@@ -1,0 +1,113 @@
+{
+  "dynamicAssociations": {
+    "main-menu-title": "Associações dinâmicas",
+    "main-blade-title": "Associações dinâmicas",
+    "properties": {
+    },
+    "blades": {
+      "dynamicAssociation-list": {
+        "title": "Regras de associação dinâmica de produtos",
+        "subtitle": "Selecionar regra de associação dinâmica",
+        "labels": {
+          "name": "Nome",
+          "group": "Grupo",
+          "priority": "Prioridade",
+          "isActive": "Está ativo",
+          "last-modified": "Última modificação"
+        }
+      },
+      "dynamicAssociation-detail": {
+        "title-new": "Criar nova regra de associação dinâmica",
+        "labels": {
+          "name": "Nome da associação",
+          "description": "Descrição",
+          "main-parameters": "Parâmetros principais",
+          "productsToMatch": "Produtos para corresponder",
+          "productsToDisplay": "Produtos para exibir",
+          "outputTuning": "Ajuste de saída"
+        },
+        "descriptions": {
+          "name": "Digite um nome que identifique exclusivamente a associação",
+          "main-parameters": "{{count}} de {{total}} propriedades preenchidas",
+          "productsToMatch": "{{count}} produtos no filtro atual",
+          "productsToDisplay": "{{count}} produtos no filtro atual",
+          "outputTuning": "Classificação de saída, limites, prioridade da regra"
+        },
+        "placeholders": {
+          "name": "Nome da associação dinâmica"
+        }
+      },
+      "dynamicAssociation-parameters": {
+        "title": "Parâmetros para regra",
+        "subtitle": "Editar parâmetros principais para regra de associação",
+        "labels": {
+          "is-active": "Está ativo",
+          "start-date": "Data de início",
+          "expiration-date": "Data de expiração",
+          "store": "Loja",
+          "priority": "Prioridade"
+        },
+        "descriptions": {
+          "is-active": "O sinalizador controla Ativo/Inativo",
+          "store": "Loja na qual esta promoção estará ativa",
+          "priority": "A regra de associação com a maior prioridade é aplicada"
+        },
+        "placeholders": {
+          "start-date": "Escolher data...",
+          "expiration-date": "Escolher data...",
+          "store": "Selecionar loja..."
+        }
+      },
+      "dynamicAssociation-outputTuning": {
+        "title": "Ajuste de saída",
+        "subtitle": "Selecionar propriedades para classificação",
+        "labels": {
+          "sortByProperty": "Classificar por propriedade",
+          "direction": "Direção",
+          "limit": "Limite de saída"
+        },
+        "placeholders": {
+          "selectProperty": "Selecionar propriedade..."
+        }
+      },
+      "dynamicAssociation-preview": {
+        "title": "Pré-visualização de produtos",
+        "labels": {
+          "picture": "Imagem",
+          "name": "Nome"
+        }
+      },
+      "dynamicAssociation-ruleCreation": {
+        "title": "Criar regra {{ ruleType }} para produtos"
+      }
+    },
+    "dialogs": {
+      "dynamic-association-delete": {
+        "title": "Confirmação de exclusão",
+        "message": "Tem certeza de que deseja excluir as regras de associação dinâmica selecionadas?"
+      }
+    }
+  },
+  "permissions": {
+    "dynamic-association:read": "Visualizar dados de associação dinâmica",
+    "dynamic-association:create": "Criar dados de associação dinâmica",
+    "dynamic-association:update": "Atualizar dados de associação dinâmica",
+    "dynamic-association:delete": "Excluir dados de associação dinâmica",
+    "dynamic-association:access": "Abrir menu de associações dinâmicas"
+  },
+  "settings": {
+  },
+  "module": {
+    "VirtoCommerce.DynamicAssociations": {
+      "description": ""
+    }
+  },
+  "export": {
+    "groups": {
+      "VirtoCommerce.DynamicAssociationsModule.Core.Model.Export": {
+        "name": "AssociaçõesDinâmicas",
+        "description": "Regras"
+      }
+    }
+  }
+}

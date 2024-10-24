@@ -1,0 +1,113 @@
+{
+  "dynamicAssociations": {
+    "main-menu-title": "動的関連付け",
+    "main-blade-title": "動的関連付け",
+    "properties": {
+    },
+    "blades": {
+      "dynamicAssociation-list": {
+        "title": "動的商品関連付けルール",
+        "subtitle": "動的関連付けルールを選択",
+        "labels": {
+          "name": "名前",
+          "group": "グループ",
+          "priority": "優先度",
+          "isActive": "アクティブ",
+          "last-modified": "最終更新"
+        }
+      },
+      "dynamicAssociation-detail": {
+        "title-new": "新しい動的関連付けルールを作成",
+        "labels": {
+          "name": "関連付け名",
+          "description": "説明",
+          "main-parameters": "主要パラメータ",
+          "productsToMatch": "マッチする商品",
+          "productsToDisplay": "表示する商品",
+          "outputTuning": "出力調整"
+        },
+        "descriptions": {
+          "name": "関連付けを一意に識別する名前を入力してください",
+          "main-parameters": "{{total}}個中{{count}}個のプロパティが入力済み",
+          "productsToMatch": "現在のフィルタで{{count}}個の商品",
+          "productsToDisplay": "現在のフィルタで{{count}}個の商品",
+          "outputTuning": "出力の並べ替え、制限、ルールの優先度"
+        },
+        "placeholders": {
+          "name": "動的関連付け名"
+        }
+      },
+      "dynamicAssociation-parameters": {
+        "title": "ルールのパラメータ",
+        "subtitle": "関連付けルールの主要パラメータを編集",
+        "labels": {
+          "is-active": "アクティブ",
+          "start-date": "開始日",
+          "expiration-date": "有効期限",
+          "store": "ストア",
+          "priority": "優先度"
+        },
+        "descriptions": {
+          "is-active": "フラグでアクティブ/非アクティブを制御",
+          "store": "このプロモーションがアクティブになるストア",
+          "priority": "最も優先度の高い関連付けルールが適用されます"
+        },
+        "placeholders": {
+          "start-date": "日付を選択...",
+          "expiration-date": "日付を選択...",
+          "store": "ストアを選択..."
+        }
+      },
+      "dynamicAssociation-outputTuning": {
+        "title": "出力調整",
+        "subtitle": "並べ替えのプロパティを選択",
+        "labels": {
+          "sortByProperty": "プロパティで並べ替え",
+          "direction": "方向",
+          "limit": "出力制限"
+        },
+        "placeholders": {
+          "selectProperty": "プロパティを選択..."
+        }
+      },
+      "dynamicAssociation-preview": {
+        "title": "商品プレビュー",
+        "labels": {
+          "picture": "画像",
+          "name": "名前"
+        }
+      },
+      "dynamicAssociation-ruleCreation": {
+        "title": "商品の{{ ruleType }}ルールを作成"
+      }
+    },
+    "dialogs": {
+      "dynamic-association-delete": {
+        "title": "削除の確認",
+        "message": "選択した動的関連付けルールを削除してもよろしいですか？"
+      }
+    }
+  },
+  "permissions": {
+    "dynamic-association:read": "動的関連付けデータの表示",
+    "dynamic-association:create": "動的関連付けデータの作成",
+    "dynamic-association:update": "動的関連付けデータの更新",
+    "dynamic-association:delete": "動的関連付けデータの削除",
+    "dynamic-association:access": "動的関連付けメニューを開く"
+  },
+  "settings": {
+  },
+  "module": {
+    "VirtoCommerce.DynamicAssociations": {
+      "description": ""
+    }
+  },
+  "export": {
+    "groups": {
+      "VirtoCommerce.DynamicAssociationsModule.Core.Model.Export": {
+        "name": "動的関連付け",
+        "description": "ルール"
+      }
+    }
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "dynamicAssociations": {
+    "main-menu-title": "Dynamische Assoziationen",
+    "main-blade-title": "Dynamische Assoziationen",
+    "properties": {
+    },
+    "blades": {
+      "dynamicAssociation-list": {
+        "title": "Dynamische Produktassoziationsregeln",
+        "subtitle": "Dynamische Assoziationsregel auswählen",
+        "labels": {
+          "name": "Name",
+          "group": "Gruppe",
+          "priority": "Priorität",
+          "isActive": "Ist aktiv",
+          "last-modified": "Zuletzt geändert"
+        }
+      },
+      "dynamicAssociation-detail": {
+        "title-new": "Neue dynamische Assoziationsregel erstellen",
+        "labels": {
+          "name": "Assoziationsname",
+          "description": "Beschreibung",
+          "main-parameters": "Hauptparameter",
+          "productsToMatch": "Zu vergleichende Produkte",
+          "productsToDisplay": "Anzuzeigende Produkte",
+          "outputTuning": "Ausgabeoptimierung"
+        },
+        "descriptions": {
+          "name": "Geben Sie einen Namen ein, der die Assoziation eindeutig identifiziert",
+          "main-parameters": "{{count}} von {{total}} Eigenschaften ausgefüllt",
+          "productsToMatch": "{{count}} Produkte im aktuellen Filter",
+          "productsToDisplay": "{{count}} Produkte im aktuellen Filter",
+          "outputTuning": "Ausgabesortierung, Limits, Regelpriorität"
+        },
+        "placeholders": {
+          "name": "Name der dynamischen Assoziation"
+        }
+      },
+      "dynamicAssociation-parameters": {
+        "title": "Parameter für Regel",
+        "subtitle": "Hauptparameter für Assoziationsregel bearbeiten",
+        "labels": {
+          "is-active": "Ist aktiv",
+          "start-date": "Startdatum",
+          "expiration-date": "Ablaufdatum",
+          "store": "Geschäft",
+          "priority": "Priorität"
+        },
+        "descriptions": {
+          "is-active": "Flag steuert Aktiv/Inaktiv",
+          "store": "Geschäft, in dem diese Aktion aktiv sein wird",
+          "priority": "Die Assoziationsregel mit der höchsten Priorität wird angewendet"
+        },
+        "placeholders": {
+          "start-date": "Datum auswählen...",
+          "expiration-date": "Datum auswählen...",
+          "store": "Geschäft auswählen..."
+        }
+      },
+      "dynamicAssociation-outputTuning": {
+        "title": "Ausgabeoptimierung",
+        "subtitle": "Eigenschaften für Sortierung auswählen",
+        "labels": {
+          "sortByProperty": "Nach Eigenschaft sortieren",
+          "direction": "Richtung",
+          "limit": "Ausgabelimit"
+        },
+        "placeholders": {
+          "selectProperty": "Eigenschaft auswählen..."
+        }
+      },
+      "dynamicAssociation-preview": {
+        "title": "Produktvorschau",
+        "labels": {
+          "picture": "Bild",
+          "name": "Name"
+        }
+      },
+      "dynamicAssociation-ruleCreation": {
+        "title": "{{ ruleType }}-Regel für Produkte erstellen"
+      }
+    },
+    "dialogs": {
+      "dynamic-association-delete": {
+        "title": "Löschbestätigung",
+        "message": "Sind Sie sicher, dass Sie die ausgewählten dynamischen Assoziationsregeln löschen möchten?"
+      }
+    }
+  },
+  "permissions": {
+    "dynamic-association:read": "Dynamische Assoziationsdaten anzeigen",
+    "dynamic-association:create": "Dynamische Assoziationsdaten erstellen",
+    "dynamic-association:update": "Dynamische Assoziationsdaten aktualisieren",
+    "dynamic-association:delete": "Dynamische Assoziationsdaten löschen",
+    "dynamic-association:access": "Menü für dynamische Assoziationen öffnen"
+  },
+  "settings": {
+  },
+  "module": {
+    "VirtoCommerce.DynamicAssociations": {
+      "description": ""
+    }
+  },
+  "export": {
+    "groups": {
+      "VirtoCommerce.DynamicAssociationsModule.Core.Model.Export": {
+        "name": "DynamischeAssoziationen",
+        "description": "Regeln"
+      }
+    }
+  }
+}

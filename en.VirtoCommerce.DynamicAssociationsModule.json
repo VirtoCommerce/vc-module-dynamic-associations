@@ -1,0 +1,113 @@
+{
+  "dynamicAssociations": {
+    "main-menu-title": "Dynamic associations",
+    "main-blade-title": "Dynamic associations",
+    "properties": {
+    },
+    "blades": {
+      "dynamicAssociation-list": {
+        "title": "Dynamic product association rules",
+        "subtitle": "Select dynamic association rule",
+        "labels": {
+          "name": "Name",
+          "group": "Group",
+          "priority": "Priority",
+          "isActive": "is Active",
+          "last-modified": "Modified"
+        }
+      },
+      "dynamicAssociation-detail": {
+        "title-new": "Create new dynamic association rule",
+        "labels": {
+          "name": "Association name",
+          "description": "Description",
+          "main-parameters": "Main parameters",
+          "productsToMatch": "Products to match",
+          "productsToDisplay": "Products to display",
+          "outputTuning": "Output tuning"
+        },
+        "descriptions": {
+          "name": "Type a name that uniquely identifies the association",
+          "main-parameters": "{{count}} of {{total}} properties filled",
+          "productsToMatch": "{{count}} products in the current filter",
+          "productsToDisplay": "{{count}} products in the current filter",
+          "outputTuning": "Output sorting, limits, rule priority"
+        },
+        "placeholders": {
+          "name": "Dynamic association name"
+        }
+      },
+      "dynamicAssociation-parameters": {
+        "title": "Parameters for rule",
+        "subtitle": "Edit main parameters for association rule",
+        "labels": {
+          "is-active": "is active",
+          "start-date": "Start date",
+          "expiration-date": "Expiration date",
+          "store": "Store",
+          "priority": "Priority"
+        },
+        "descriptions": {
+          "is-active": "Flag controls Active/Inactive",
+          "store": "Store in which this promotion will be active",
+          "priority": "The association rule with the highest priority is applied"
+        },
+        "placeholders": {
+          "start-date": "Choose date...",
+          "expiration-date": "Choose date...",
+          "store": "Select store..."
+        }
+      },
+      "dynamicAssociation-outputTuning": {
+        "title": "Output tuning",
+        "subtitle": "Select properties for sorting",
+        "labels": {
+          "sortByProperty": "Sort by property",
+          "direction": "Direction",
+          "limit": "Output limit"
+        },
+        "placeholders": {
+          "selectProperty": "Select property..."
+        }
+      },
+      "dynamicAssociation-preview": {
+        "title": "Products preview",
+        "labels": {
+          "picture": "Pic",
+          "name": "Name"
+        }
+      },
+      "dynamicAssociation-ruleCreation": {
+        "title": "Create products {{ ruleType }} rule"
+      }
+    },
+    "dialogs": {
+      "dynamic-association-delete": {
+        "title": "Delete confirmation",
+        "message": "Are you sure you want to delete the selected Dynamic association rules?"
+      }
+    }
+  },
+  "permissions": {
+    "dynamic-association:read": "View dynamic associations data",
+    "dynamic-association:create": "Create dynamic associations data",
+    "dynamic-association:update": "Update dynamic associations data",
+    "dynamic-association:delete": "Delete dynamic associations data",
+    "dynamic-association:access": "Open dynamic associations menu"
+  },
+  "settings": {
+  },
+  "module": {
+    "VirtoCommerce.DynamicAssociations": {
+      "description": ""
+    }
+  },
+  "export": {
+    "groups": {
+      "VirtoCommerce.DynamicAssociationsModule.Core.Model.Export": {
+        "name": "DynamicAssociations",
+        "description": "Rules"
+      }
+    }
+  }
+}

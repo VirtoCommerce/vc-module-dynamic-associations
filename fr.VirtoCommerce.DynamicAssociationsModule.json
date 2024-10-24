@@ -1,0 +1,113 @@
+{
+  "dynamicAssociations": {
+    "main-menu-title": "Associations dynamiques",
+    "main-blade-title": "Associations dynamiques",
+    "properties": {
+    },
+    "blades": {
+      "dynamicAssociation-list": {
+        "title": "Règles d'association dynamique de produits",
+        "subtitle": "Sélectionner une règle d'association dynamique",
+        "labels": {
+          "name": "Nom",
+          "group": "Groupe",
+          "priority": "Priorité",
+          "isActive": "Est actif",
+          "last-modified": "Dernière modification"
+        }
+      },
+      "dynamicAssociation-detail": {
+        "title-new": "Créer une nouvelle règle d'association dynamique",
+        "labels": {
+          "name": "Nom de l'association",
+          "description": "Description",
+          "main-parameters": "Paramètres principaux",
+          "productsToMatch": "Produits à associer",
+          "productsToDisplay": "Produits à afficher",
+          "outputTuning": "Ajustement de la sortie"
+        },
+        "descriptions": {
+          "name": "Saisissez un nom qui identifie uniquement l'association",
+          "main-parameters": "{{count}} sur {{total}} propriétés remplies",
+          "productsToMatch": "{{count}} produits dans le filtre actuel",
+          "productsToDisplay": "{{count}} produits dans le filtre actuel",
+          "outputTuning": "Tri de sortie, limites, priorité des règles"
+        },
+        "placeholders": {
+          "name": "Nom de l'association dynamique"
+        }
+      },
+      "dynamicAssociation-parameters": {
+        "title": "Paramètres de la règle",
+        "subtitle": "Modifier les paramètres principaux de la règle d'association",
+        "labels": {
+          "is-active": "Est actif",
+          "start-date": "Date de début",
+          "expiration-date": "Date d'expiration",
+          "store": "Magasin",
+          "priority": "Priorité"
+        },
+        "descriptions": {
+          "is-active": "Le drapeau contrôle Actif/Inactif",
+          "store": "Magasin dans lequel cette promotion sera active",
+          "priority": "La règle d'association avec la priorité la plus élevée est appliquée"
+        },
+        "placeholders": {
+          "start-date": "Choisir une date...",
+          "expiration-date": "Choisir une date...",
+          "store": "Sélectionner un magasin..."
+        }
+      },
+      "dynamicAssociation-outputTuning": {
+        "title": "Ajustement de la sortie",
+        "subtitle": "Sélectionner les propriétés pour le tri",
+        "labels": {
+          "sortByProperty": "Trier par propriété",
+          "direction": "Direction",
+          "limit": "Limite de sortie"
+        },
+        "placeholders": {
+          "selectProperty": "Sélectionner une propriété..."
+        }
+      },
+      "dynamicAssociation-preview": {
+        "title": "Aperçu des produits",
+        "labels": {
+          "picture": "Image",
+          "name": "Nom"
+        }
+      },
+      "dynamicAssociation-ruleCreation": {
+        "title": "Créer une règle {{ ruleType }} pour les produits"
+      }
+    },
+    "dialogs": {
+      "dynamic-association-delete": {
+        "title": "Confirmation de suppression",
+        "message": "Êtes-vous sûr de vouloir supprimer les règles d'association dynamique sélectionnées ?"
+      }
+    }
+  },
+  "permissions": {
+    "dynamic-association:read": "Afficher les données d'association dynamique",
+    "dynamic-association:create": "Créer des données d'association dynamique",
+    "dynamic-association:update": "Mettre à jour les données d'association dynamique",
+    "dynamic-association:delete": "Supprimer les données d'association dynamique",
+    "dynamic-association:access": "Ouvrir le menu des associations dynamiques"
+  },
+  "settings": {
+  },
+  "module": {
+    "VirtoCommerce.DynamicAssociations": {
+      "description": ""
+    }
+  },
+  "export": {
+    "groups": {
+      "VirtoCommerce.DynamicAssociationsModule.Core.Model.Export": {
+        "name": "AssociationsDynamiques",
+        "description": "Règles"
+      }
+    }
+  }
+}
