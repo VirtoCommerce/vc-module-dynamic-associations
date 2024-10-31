@@ -11,7 +11,7 @@ angular.module(moduleName, [])
             marketingMenuItemService.register({
                 id: '3',
                 name: 'Dynamic product associations',
-                entityName: 'dynamicProductAssociations',
+                entityName: 'dynamicAssociations.main-menu-title',
                 icon: 'fa fa-a',
                 controller: 'virtoCommerce.dynamicAssociationsModule.dynamicAssociationsListController',
                 template: 'Modules/$(virtoCommerce.dynamicAssociationsModule)/Scripts/blades/dynamicAssociations-list.tpl.html',
