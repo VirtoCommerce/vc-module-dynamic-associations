@@ -10,7 +10,7 @@ angular.module(moduleName, [])
         function (mainMenuService, widgetService, $state, marketingMenuItemService) {
             marketingMenuItemService.register({
                 id: '3',
-                name: 'Dynamic product associations',
+                name: 'dynamicAssociations.main-menu-title',
                 entityName: 'dynamicProductAssociations',
                 icon: 'fa fa-a',
                 controller: 'virtoCommerce.dynamicAssociationsModule.dynamicAssociationsListController',
