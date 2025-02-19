@@ -1,6 +1,8 @@
+# Virto Commerce Dynamic Associations Module
+
 [![CI status](https://github.com/VirtoCommerce/vc-module-dynamic-associations/workflows/Module%20CI/badge.svg?branch=dev)](https://github.com/VirtoCommerce/vc-module-dynamic-associations/actions?query=workflow%3A"Module+CI") [![Quality gate](https://sonarcloud.io/api/project_badges/measure?project=VirtoCommerce_vc-module-dynamic-associations&metric=alert_status&branch=dev)](https://sonarcloud.io/dashboard?id=VirtoCommerce_vc-module-dynamic-associations) [![Reliability rating](https://sonarcloud.io/api/project_badges/measure?project=VirtoCommerce_vc-module-dynamic-associations&metric=reliability_rating&branch=dev)](https://sonarcloud.io/dashboard?id=VirtoCommerce_vc-module-dynamic-associations) [![Security rating](https://sonarcloud.io/api/project_badges/measure?project=VirtoCommerce_vc-module-dynamic-associations&metric=security_rating&branch=dev)](https://sonarcloud.io/dashboard?id=VirtoCommerce_vc-module-dynamic-associations) [![Sqale rating](https://sonarcloud.io/api/project_badges/measure?project=VirtoCommerce_vc-module-dynamic-associations&metric=sqale_rating&branch=dev)](https://sonarcloud.io/dashboard?id=VirtoCommerce_vc-module-dynamic-associations)
 
-Th Dynamic Associations module allows you to drive your sales and reduce marketing spend with the upselling and cross-selling features.
+The Dynamic Associations module allows you to drive your sales and reduce marketing spend with the upselling and cross-selling features.
 
 Easily define specific product relations to present customers by creating product association rules. These rules are dynamic, so they are defined by the set of restrictions rather than specific products. So new product which matches rule conditions would be handled by the rule without its change.
 
