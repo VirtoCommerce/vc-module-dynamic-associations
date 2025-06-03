@@ -62,11 +62,15 @@ namespace VirtoCommerce.DynamicAssociationsModule.Core.Model
             {
                 // return true if no specific property values were selected, treating it as all properties
                 if (kvp.Value.IsNullOrEmpty())
+                {
                     return true;
+                }
 
                 var productProperty = product.Properties.FirstOrDefault(x => x.Name.EqualsIgnoreCase(kvp.Key));
                 if (productProperty == null)
+                {
                     return false;
+                }
 
                 var productPropertyValues = productProperty.Values.Where(x => x.Value != null).Select(x => x.Value.ToString()).Distinct().ToList();
                 return kvp.Value.Intersect(productPropertyValues, StringComparer.OrdinalIgnoreCase).Any();
