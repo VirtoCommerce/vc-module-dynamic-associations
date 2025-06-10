@@ -100,7 +100,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Web.Authorization
                         {
                             var categories = await _categoryService.GetAsync(categoryIds, $"{CategoryResponseGroup.WithOutlines}");
 
-                            if ((catalogId == null || allowedCatalogIds.Any(x => x.EqualsInvariant(catalogId))) && categories.All(x => IsCategoryLocatedInCatalogs(x, allowedCatalogIds)))
+                            if ((catalogId == null || allowedCatalogIds.Any(x => x.EqualsIgnoreCase(catalogId))) && categories.All(x => IsCategoryLocatedInCatalogs(x, allowedCatalogIds)))
                             {
                                 context.Succeed(requirement);
                             }

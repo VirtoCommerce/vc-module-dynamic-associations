@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using VirtoCommerce.CatalogModule.Core.Model;
-using VirtoCommerce.CoreModule.Core.Outlines;
+using VirtoCommerce.CatalogModule.Core.Outlines;
 using VirtoCommerce.DynamicAssociationsModule.Core.Model;
 using Xunit;
 

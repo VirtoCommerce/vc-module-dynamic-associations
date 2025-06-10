@@ -11,23 +11,23 @@ namespace VirtoCommerce.DynamicAssociationsModule.Core.Model
         public AssociationRuleTreePrototype()
         {
             var matchingRules = new BlockMatchingRules()
-                .WithAvailConditions(
+                .WithAvailableChildren(
                     new ConditionProductCategory(),
                     new ConditionPropertyValues()
                 );
             var resultingRules = new BlockResultingRules()
-                .WithAvailConditions(
+                .WithAvailableChildren(
                     new ConditionProductCategory(),
                     new ConditionPropertyValues()
                 );
             var outputTuning = new BlockOutputTuning();
 
-            WithAvailConditions(
+            WithAvailableChildren(
                 matchingRules,
                 resultingRules,
                 outputTuning
             );
-            WithChildrens(
+            WithChildren(
                 matchingRules,
                 resultingRules,
                 outputTuning
