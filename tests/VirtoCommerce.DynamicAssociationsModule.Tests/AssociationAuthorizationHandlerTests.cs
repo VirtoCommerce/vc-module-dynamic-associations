@@ -10,9 +10,9 @@ using Moq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using VirtoCommerce.CatalogModule.Core.Model;
+using VirtoCommerce.CatalogModule.Core.Outlines;
 using VirtoCommerce.CatalogModule.Core.Services;
 using VirtoCommerce.CatalogModule.Data.Authorization;
-using VirtoCommerce.CoreModule.Core.Outlines;
 using VirtoCommerce.DynamicAssociationsModule.Core.Model;
 using VirtoCommerce.DynamicAssociationsModule.Core.Model.Search;
 using VirtoCommerce.DynamicAssociationsModule.Web.Authorization;
@@ -769,7 +769,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Tests
             }
             else
             {
-                var tryCreateInstance = typeof(AbstractTypeFactory<>).MakeGenericType(objectType).GetMethods().FirstOrDefault(x => x.Name.EqualsInvariant("TryCreateInstance") && x.GetParameters().Length == 0);
+                var tryCreateInstance = typeof(AbstractTypeFactory<>).MakeGenericType(objectType).GetMethods().FirstOrDefault(x => x.Name.EqualsIgnoreCase("TryCreateInstance") && x.GetParameters().Length == 0);
                 result = tryCreateInstance?.Invoke(null, null);
             }
 
