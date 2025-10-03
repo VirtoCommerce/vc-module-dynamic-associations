@@ -1,0 +1,113 @@
+{
+  "dynamicAssociations": {
+    "main-menu-title": "Dynamiske assosiasjoner",
+    "main-blade-title": "Dynamiske assosiasjoner",
+    "properties": {
+    },
+    "blades": {
+      "dynamicAssociation-list": {
+        "title": "Regler for dynamiske produktassosiasjoner",
+        "subtitle": "Velg regel for dynamisk assosiasjon",
+        "labels": {
+          "name": "Navn",
+          "group": "Gruppe",
+          "priority": "Prioritet",
+          "isActive": "Er aktiv",
+          "last-modified": "Endret"
+        }
+      },
+      "dynamicAssociation-detail": {
+        "title-new": "Opprett ny regel for dynamisk assosiasjon",
+        "labels": {
+          "name": "Assosiasjonsnavn",
+          "description": "Beskrivelse",
+          "main-parameters": "Hovedparametere",
+          "productsToMatch": "Produkter å matche",
+          "productsToDisplay": "Produkter å vise",
+          "outputTuning": "Utdatainnstilling"
+        },
+        "descriptions": {
+          "name": "Skriv inn et navn som unikt identifiserer assosiasjonen",
+          "main-parameters": "{{count}} av {{total}} egenskaper fylt ut",
+          "productsToMatch": "{{count}} produkter i det gjeldende filteret",
+          "productsToDisplay": "{{count}} produkter i det gjeldende filteret",
+          "outputTuning": "Utdatasortering, grenser, regelprioritet"
+        },
+        "placeholders": {
+          "name": "Navn på dynamisk assosiasjon"
+        }
+      },
+      "dynamicAssociation-parameters": {
+        "title": "Parametere for regel",
+        "subtitle": "Rediger hovedparametere for assosiasjonsregel",
+        "labels": {
+          "is-active": "Er aktiv",
+          "start-date": "Startdato",
+          "expiration-date": "Utløpsdato",
+          "store": "Butikk",
+          "priority": "Prioritet"
+        },
+        "descriptions": {
+          "is-active": "Flagg styrer Aktiv/Inaktiv",
+          "store": "Butikk der denne kampanjen vil være aktiv",
+          "priority": "Assosiasjonsregelen med høyest prioritet brukes"
+        },
+        "placeholders": {
+          "start-date": "Velg dato...",
+          "expiration-date": "Velg dato...",
+          "store": "Velg butikk..."
+        }
+      },
+      "dynamicAssociation-outputTuning": {
+        "title": "Utdatainnstilling",
+        "subtitle": "Velg egenskaper for sortering",
+        "labels": {
+          "sortByProperty": "Sorter etter egenskap",
+          "direction": "Retning",
+          "limit": "Utdatabegrensning"
+        },
+        "placeholders": {
+          "selectProperty": "Velg egenskap..."
+        }
+      },
+      "dynamicAssociation-preview": {
+        "title": "Forhåndsvisning av produkter",
+        "labels": {
+          "picture": "Bilde",
+          "name": "Navn"
+        }
+      },
+      "dynamicAssociation-ruleCreation": {
+        "title": "Opprett produkter {{ ruleType }} regel"
+      }
+    },
+    "dialogs": {
+      "dynamic-association-delete": {
+        "title": "Bekreftelse på sletting",
+        "message": "Er du sikker på at du vil slette de valgte reglene for dynamiske assosiasjoner?"
+      }
+    }
+  },
+  "permissions": {
+    "dynamic-association:read": "Vis data for dynamiske assosiasjoner",
+    "dynamic-association:create": "Opprett data for dynamiske assosiasjoner",
+    "dynamic-association:update": "Oppdater data for dynamiske assosiasjoner",
+    "dynamic-association:delete": "Slett data for dynamiske assosiasjoner",
+    "dynamic-association:access": "Åpne menyen for dynamiske assosiasjoner"
+  },
+  "settings": {
+  },
+  "module": {
+    "VirtoCommerce.DynamicAssociations": {
+      "description": ""
+    }
+  },
+  "export": {
+    "groups": {
+      "VirtoCommerce.DynamicAssociationsModule.Core.Model.Export": {
+        "name": "Dynamiske assosiasjoner",
+        "description": "Regler"
+      }
+    }
+  }
+}
