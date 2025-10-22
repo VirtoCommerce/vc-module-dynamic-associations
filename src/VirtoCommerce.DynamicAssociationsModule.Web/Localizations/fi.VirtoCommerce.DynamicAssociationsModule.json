@@ -1,0 +1,113 @@
+{
+  "dynamicAssociations": {
+    "main-menu-title": "Dynaamiset assosiaatiot",
+    "main-blade-title": "Dynaamiset assosiaatiot",
+    "properties": {
+    },
+    "blades": {
+      "dynamicAssociation-list": {
+        "title": "Dynaamiset tuoteassosiaatiosäännöt",
+        "subtitle": "Valitse dynaaminen assosiaatiosääntö",
+        "labels": {
+          "name": "Nimi",
+          "group": "Ryhmä",
+          "priority": "Prioriteetti",
+          "isActive": "On aktiivinen",
+          "last-modified": "Muokattu"
+        }
+      },
+      "dynamicAssociation-detail": {
+        "title-new": "Luo uusi dynaaminen assosiaatiosääntö",
+        "labels": {
+          "name": "Assosiaation nimi",
+          "description": "Kuvaus",
+          "main-parameters": "Pääparametrit",
+          "productsToMatch": "Vastattavat tuotteet",
+          "productsToDisplay": "Näytettävät tuotteet",
+          "outputTuning": "Tulosten säätö"
+        },
+        "descriptions": {
+          "name": "Kirjoita nimi, joka yksilöi assosiaation",
+          "main-parameters": "{{count}} / {{total}} ominaisuutta täytetty",
+          "productsToMatch": "{{count}} tuotetta nykyisessä suodattimessa",
+          "productsToDisplay": "{{count}} tuotetta nykyisessä suodattimessa",
+          "outputTuning": "Tulosten lajittelu, rajoitukset, säännön prioriteetti"
+        },
+        "placeholders": {
+          "name": "Dynaamisen assosiaation nimi"
+        }
+      },
+      "dynamicAssociation-parameters": {
+        "title": "Säännön parametrit",
+        "subtitle": "Muokkaa assosiaatiosäännön pääparametreja",
+        "labels": {
+          "is-active": "On aktiivinen",
+          "start-date": "Aloituspäivä",
+          "expiration-date": "Vanhentumispäivä",
+          "store": "Kauppa",
+          "priority": "Prioriteetti"
+        },
+        "descriptions": {
+          "is-active": "Lippu ohjaa aktiivinen/ei-aktiivinen tilaa",
+          "store": "Kauppa, jossa tämä kampanja on aktiivinen",
+          "priority": "Korkeimman prioriteetin assosiaatiosääntö otetaan käyttöön"
+        },
+        "placeholders": {
+          "start-date": "Valitse päivämäärä...",
+          "expiration-date": "Valitse päivämäärä...",
+          "store": "Valitse kauppa..."
+        }
+      },
+      "dynamicAssociation-outputTuning": {
+        "title": "Tulosten säätö",
+        "subtitle": "Valitse ominaisuudet lajitteluun",
+        "labels": {
+          "sortByProperty": "Lajittele ominaisuuden mukaan",
+          "direction": "Suunta",
+          "limit": "Tulosrajoitus"
+        },
+        "placeholders": {
+          "selectProperty": "Valitse ominaisuus..."
+        }
+      },
+      "dynamicAssociation-preview": {
+        "title": "Tuotteiden esikatselu",
+        "labels": {
+          "picture": "Kuva",
+          "name": "Nimi"
+        }
+      },
+      "dynamicAssociation-ruleCreation": {
+        "title": "Luo tuotteiden {{ ruleType }} sääntö"
+      }
+    },
+    "dialogs": {
+      "dynamic-association-delete": {
+        "title": "Poiston vahvistus",
+        "message": "Oletko varma, että haluat poistaa valitut dynaamiset assosiaatiosäännöt?"
+      }
+    }
+  },
+  "permissions": {
+    "dynamic-association:read": "Näytä dynaamiset assosiaatiotiedot",
+    "dynamic-association:create": "Luo dynaamisia assosiaatiotietoja",
+    "dynamic-association:update": "Päivitä dynaamisia assosiaatiotietoja",
+    "dynamic-association:delete": "Poista dynaamisia assosiaatiotietoja",
+    "dynamic-association:access": "Avaa dynaamisten assosiaatioiden valikko"
+  },
+  "settings": {
+  },
+  "module": {
+    "VirtoCommerce.DynamicAssociations": {
+      "description": ""
+    }
+  },
+  "export": {
+    "groups": {
+      "VirtoCommerce.DynamicAssociationsModule.Core.Model.Export": {
+        "name": "Dynaamiset assosiaatiot",
+        "description": "Säännöt"
+      }
+    }
+  }
+}

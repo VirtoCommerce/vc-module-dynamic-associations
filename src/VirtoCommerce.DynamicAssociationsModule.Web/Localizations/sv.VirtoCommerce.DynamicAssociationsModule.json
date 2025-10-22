@@ -1,0 +1,113 @@
+{
+  "dynamicAssociations": {
+    "main-menu-title": "Dynamiska associationer",
+    "main-blade-title": "Dynamiska associationer",
+    "properties": {
+    },
+    "blades": {
+      "dynamicAssociation-list": {
+        "title": "Regler för dynamiska produktassociationer",
+        "subtitle": "Välj regel för dynamisk association",
+        "labels": {
+          "name": "Namn",
+          "group": "Grupp",
+          "priority": "Prioritet",
+          "isActive": "Är aktiv",
+          "last-modified": "Ändrad"
+        }
+      },
+      "dynamicAssociation-detail": {
+        "title-new": "Skapa ny regel för dynamisk association",
+        "labels": {
+          "name": "Associationsnamn",
+          "description": "Beskrivning",
+          "main-parameters": "Huvudparametrar",
+          "productsToMatch": "Produkter att matcha",
+          "productsToDisplay": "Produkter att visa",
+          "outputTuning": "Utdatainställning"
+        },
+        "descriptions": {
+          "name": "Ange ett namn som unikt identifierar associationen",
+          "main-parameters": "{{count}} av {{total}} egenskaper ifyllda",
+          "productsToMatch": "{{count}} produkter i det aktuella filtret",
+          "productsToDisplay": "{{count}} produkter i det aktuella filtret",
+          "outputTuning": "Utdatasortering, gränser, regelprioritet"
+        },
+        "placeholders": {
+          "name": "Namn på dynamisk association"
+        }
+      },
+      "dynamicAssociation-parameters": {
+        "title": "Parametrar för regel",
+        "subtitle": "Redigera huvudparametrar för associationsregel",
+        "labels": {
+          "is-active": "Är aktiv",
+          "start-date": "Startdatum",
+          "expiration-date": "Utgångsdatum",
+          "store": "Butik",
+          "priority": "Prioritet"
+        },
+        "descriptions": {
+          "is-active": "Flagga styr Aktiv/Inaktiv",
+          "store": "Butik där denna kampanj kommer att vara aktiv",
+          "priority": "Associationsregeln med högst prioritet tillämpas"
+        },
+        "placeholders": {
+          "start-date": "Välj datum...",
+          "expiration-date": "Välj datum...",
+          "store": "Välj butik..."
+        }
+      },
+      "dynamicAssociation-outputTuning": {
+        "title": "Utdatainställning",
+        "subtitle": "Välj egenskaper för sortering",
+        "labels": {
+          "sortByProperty": "Sortera efter egenskap",
+          "direction": "Riktning",
+          "limit": "Utdatabegränsning"
+        },
+        "placeholders": {
+          "selectProperty": "Välj egenskap..."
+        }
+      },
+      "dynamicAssociation-preview": {
+        "title": "Förhandsvisning av produkter",
+        "labels": {
+          "picture": "Bild",
+          "name": "Namn"
+        }
+      },
+      "dynamicAssociation-ruleCreation": {
+        "title": "Skapa produkter {{ ruleType }} regel"
+      }
+    },
+    "dialogs": {
+      "dynamic-association-delete": {
+        "title": "Bekräftelse av radering",
+        "message": "Är du säker på att du vill radera de valda reglerna för dynamiska associationer?"
+      }
+    }
+  },
+  "permissions": {
+    "dynamic-association:read": "Visa data för dynamiska associationer",
+    "dynamic-association:create": "Skapa data för dynamiska associationer",
+    "dynamic-association:update": "Uppdatera data för dynamiska associationer",
+    "dynamic-association:delete": "Radera data för dynamiska associationer",
+    "dynamic-association:access": "Öppna menyn för dynamiska associationer"
+  },
+  "settings": {
+  },
+  "module": {
+    "VirtoCommerce.DynamicAssociations": {
+      "description": ""
+    }
+  },
+  "export": {
+    "groups": {
+      "VirtoCommerce.DynamicAssociationsModule.Core.Model.Export": {
+        "name": "Dynamiska associationer",
+        "description": "Regler"
+      }
+    }
+  }
+}

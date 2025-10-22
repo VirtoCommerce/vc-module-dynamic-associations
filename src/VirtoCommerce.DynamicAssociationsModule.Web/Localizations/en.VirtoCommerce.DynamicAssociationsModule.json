@@ -12,7 +12,7 @@
           "name": "Name",
           "group": "Group",
           "priority": "Priority",
-          "isActive": "is Active",
+          "isActive": "aActive",
           "last-modified": "Modified"
         }
       },
@@ -41,7 +41,7 @@
         "title": "Parameters for rule",
         "subtitle": "Edit main parameters for association rule",
         "labels": {
-          "is-active": "is active",
+          "is-active": "Active",
           "start-date": "Start date",
           "expiration-date": "Expiration date",
           "store": "Store",
@@ -84,7 +84,7 @@
     "dialogs": {
       "dynamic-association-delete": {
         "title": "Delete confirmation",
-        "message": "Are you sure you want to delete the selected Dynamic association rules?"
+        "message": "Are you sure you want to delete the selected dynamic association rules?"
       }
     }
   },
@@ -105,7 +105,7 @@
   "export": {
     "groups": {
       "VirtoCommerce.DynamicAssociationsModule.Core.Model.Export": {
-        "name": "DynamicAssociations",
+        "name": "Dynamic associations",
         "description": "Rules"
       }
     }
