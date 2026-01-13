@@ -18,12 +18,12 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
                 if (data && data.length > 0) {
                     blade.associationType = data[0];
                 }
+                blade.isLoading = false;
             });
 
             if (parentRefresh) {
                 blade.parentBlade.refresh();
             }
-            blade.isLoading = false;
 
             blade.currentEntity = angular.copy(blade.originalEntity);
         };
