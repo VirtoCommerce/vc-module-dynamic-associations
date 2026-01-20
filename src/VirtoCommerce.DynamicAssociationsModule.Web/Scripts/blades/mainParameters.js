@@ -5,6 +5,7 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
         blade.headIcon = 'fa fa-area-chart';
         var formScope;
         $scope.setForm = (form) => { formScope = form; };
+        $scope.storeDataSource = (criteria) => stores.search(criteria);
 
         $scope.isValid = function() {
             return formScope && formScope.$valid;
@@ -17,20 +18,19 @@ angular.module('virtoCommerce.dynamicAssociationsModule')
                 if (data && data.length > 0) {
                     blade.associationType = data[0];
                 }
-            });
-
-            stores.query({}, response => {
-                $scope.stores = response;
-                if (parentRefresh) {
-                    blade.parentBlade.refresh();
-                }
                 blade.isLoading = false;
             });
+
+            if (parentRefresh) {
+                blade.parentBlade.refresh();
+            }
 
             blade.currentEntity = angular.copy(blade.originalEntity);
         };
 
-        $scope.onStoreSelected = ($item) => blade.currentEntity.catalogId = $item.catalog;
+        $scope.onStoreSelected = (item) => {
+            blade.currentEntity.catalogId = item.catalog;
+        };
         
         // datepicker 
         $scope.datepickers = {
