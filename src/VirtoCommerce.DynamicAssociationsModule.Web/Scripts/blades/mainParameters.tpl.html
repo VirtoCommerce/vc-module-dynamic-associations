@@ -49,12 +49,12 @@
                             <div class="form-group __info list">
                                 <label class="form-label">{{ 'dynamicAssociations.blades.dynamicAssociation-parameters.labels.store' | translate }}</label>
                                 <div class="form-input">
-                                    <ui-select ng-model="blade.currentEntity.storeId" required on-select="onStoreSelected($item)">
-                                        <ui-select-match placeholder="{{'dynamicAssociations.blades.dynamicAssociation-parameters.placeholders.store' | translate}}">{{$select.selected.name}}</ui-select-match>
-                                        <ui-select-choices repeat="x.id as x in stores">
-                                            <span ng-bind-html="x.name | highlight: $select.search"></span>
-                                        </ui-select-choices>
-                                    </ui-select>
+                                    <ui-scroll-drop-down data="storeDataSource(criteria)"
+                                                         required
+                                                         on-select="onStoreSelected(item)"
+                                                         placeholder="'dynamicAssociations.blades.dynamicAssociation-parameters.placeholders.store'"
+                                                         ng-model="blade.currentEntity.storeId">
+                                    </ui-scroll-drop-down>
                                 </div>
                                 <div class="list-descr">{{ 'dynamicAssociations.blades.dynamicAssociation-parameters.descriptions.store' | translate }}</div>
                             </div>
