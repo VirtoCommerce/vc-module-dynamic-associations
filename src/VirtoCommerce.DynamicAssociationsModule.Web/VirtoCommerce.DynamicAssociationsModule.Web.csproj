@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
+    <NoWarn>NU1608</NoWarn>
     <OutputType>Library</OutputType>
   </PropertyGroup>
   <PropertyGroup>
@@ -8,8 +9,8 @@
     <SonarQubeTestProject>false</SonarQubeTestProject>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="VirtoCommerce.CatalogModule.Data" Version="3.904.0" />
-    <PackageReference Include="VirtoCommerce.Platform.Security" Version="3.917.0" />
+    <PackageReference Include="VirtoCommerce.CatalogModule.Data" Version="3.1000.0" />
+    <PackageReference Include="VirtoCommerce.Platform.Security" Version="3.1002.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\VirtoCommerce.DynamicAssociationsModule.Data.MySql\VirtoCommerce.DynamicAssociationsModule.Data.MySql.csproj" />
