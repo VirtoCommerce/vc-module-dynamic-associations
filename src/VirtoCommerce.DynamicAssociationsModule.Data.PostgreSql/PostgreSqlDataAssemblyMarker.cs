@@ -1,0 +1,3 @@
+namespace VirtoCommerce.DynamicAssociationsModule.Data.PostgreSql;
+
+public class PostgreSqlDataAssemblyMarker;
