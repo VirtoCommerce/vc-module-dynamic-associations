@@ -147,7 +147,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Tests
         }
 
 
-        private AssociationSearchService CreateDynamicAssociationSearchServiceMock(IEnumerable<AssociationEntity> entities)
+        private AssociationSearchService CreateDynamicAssociationSearchServiceMock(IList<AssociationEntity> entities)
         {
             var dynamicAssociationsRepositoryFactory = CreateRepositoryMock(entities);
             var platformMemoryCache = GetPlatformMemoryCache();
@@ -159,10 +159,10 @@ namespace VirtoCommerce.DynamicAssociationsModule.Tests
             return result;
         }
 
-        private static Func<IAssociationsRepository> CreateRepositoryMock(IEnumerable<AssociationEntity> entities)
+        private static Func<IAssociationsRepository> CreateRepositoryMock(IList<AssociationEntity> entities)
         {
             var dynamicAssociationsRepositoryMock = new Mock<IAssociationsRepository>();
-            var entitiesMock = entities.AsQueryable().BuildMock();
+            var entitiesMock = entities.BuildMock().AsQueryable();
 
             dynamicAssociationsRepositoryMock.Setup(x => x.Associations)
                 .Returns(entitiesMock);

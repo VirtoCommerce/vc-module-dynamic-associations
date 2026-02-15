@@ -1,0 +1,3 @@
+namespace VirtoCommerce.DynamicAssociationsModule.Data.SqlServer;
+
+public class SqlServerDataAssemblyMarker;
