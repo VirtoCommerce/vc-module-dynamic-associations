@@ -1,4 +1,5 @@
-using System;
+using System;
+
 using System.Threading;
 using System.IO;
 using System.Linq;
@@ -37,8 +38,8 @@ namespace VirtoCommerce.DynamicAssociationsModule.Data.ExportImport
             using (var sw = new StreamWriter(outStream, Encoding.UTF8))
             using (var writer = new JsonTextWriter(sw))
             {
-                await writer.WriteStartObjectAsync();
-                await writer.WritePropertyNameAsync("DynamicAssociations");
+                await writer.WriteStartObjectAsync(cancellationToken);
+                await writer.WritePropertyNameAsync("DynamicAssociations", cancellationToken);
 
                 await writer.SerializeArrayWithPagingAsync(_serializer, _batchSize, async (skip, take) =>
                         (GenericSearchResult<Association>)await _associationSearchService.SearchAssociationsAsync(new AssociationSearchCriteria { Skip = skip, Take = take })
@@ -48,8 +49,8 @@ namespace VirtoCommerce.DynamicAssociationsModule.Data.ExportImport
                         progressCallback(progressInfo);
                     }, cancellationToken);
 
-                await writer.WriteEndObjectAsync();
-                await writer.FlushAsync();
+                await writer.WriteEndObjectAsync(cancellationToken);
+                await writer.FlushAsync(cancellationToken);
             }
         }
 
@@ -63,7 +64,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Data.ExportImport
             using (var streamReader = new StreamReader(inputStream))
             using (var reader = new JsonTextReader(streamReader))
             {
-                while (await reader.ReadAsync())
+                while (await reader.ReadAsync(cancellationToken))
                 {
                     if (reader.TokenType != JsonToken.PropertyName)
                     {
