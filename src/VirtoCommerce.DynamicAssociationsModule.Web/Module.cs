@@ -14,6 +14,7 @@ using VirtoCommerce.DynamicAssociationsModule.Core.Events;
 using VirtoCommerce.DynamicAssociationsModule.Core.Model;
 using VirtoCommerce.DynamicAssociationsModule.Core.Search;
 using VirtoCommerce.DynamicAssociationsModule.Core.Services;
+using VirtoCommerce.DynamicAssociationsModule.Data.BackgroundJobs;
 using VirtoCommerce.DynamicAssociationsModule.Data.ExportImport;
 using VirtoCommerce.DynamicAssociationsModule.Data.Handlers;
 using VirtoCommerce.DynamicAssociationsModule.Data.MySql;
@@ -26,6 +27,7 @@ using VirtoCommerce.DynamicAssociationsModule.Web.Authorization;
 using VirtoCommerce.Platform.Core.Common;
 using VirtoCommerce.Platform.Core.Events;
 using VirtoCommerce.Platform.Core.ExportImport;
+using VirtoCommerce.Platform.Core.Jobs;
 using VirtoCommerce.Platform.Core.Modularity;
 using VirtoCommerce.Platform.Core.Security;
 using VirtoCommerce.Platform.Data.MySql.Extensions;
@@ -73,6 +75,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Web
             serviceCollection.AddTransient<IAssociationConditionEvaluator, AssociationConditionEvaluator>();
             serviceCollection.AddTransient<AssociationsExportImport>();
             serviceCollection.AddTransient<LogChangesChangedEventHandler>();
+            serviceCollection.AddBackgroundJob<LogEntityChangesJobHandler, LogEntityChangesJobPayload>(triggerable: false);
         }
 
         public void PostInitialize(IApplicationBuilder appBuilder)
