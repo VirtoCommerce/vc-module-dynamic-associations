@@ -1,6 +1,6 @@
 <template>
   <VcBlade
-    :title="$t('DYNAMIC_ASSOCIATIONS.LIST.TITLE')"
+    :title="$t('DYNAMIC_ASSOCIATIONS.MENU.TITLE')"
     :toolbar-items="bladeToolbar"
     :loading="loading || deleting"
     width="50%"
