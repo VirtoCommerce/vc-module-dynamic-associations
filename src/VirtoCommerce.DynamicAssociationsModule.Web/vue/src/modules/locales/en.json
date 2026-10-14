@@ -1,10 +1,10 @@
 {
   "DYNAMIC_ASSOCIATIONS": {
     "MENU": {
-      "TITLE": "Dynamic associations"
+      "TITLE": "Dynamic Associations"
     },
     "LIST": {
-      "TITLE": "Dynamic associations",
+      "TITLE": "Dynamic Associations",
       "SEARCH": "Search keyword",
       "EMPTY": "No dynamic association rules"
     },
