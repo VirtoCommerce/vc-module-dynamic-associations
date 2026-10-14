@@ -9,6 +9,15 @@
     <SonarQubeTestProject>false</SonarQubeTestProject>
   </PropertyGroup>
   <ItemGroup>
+    <!-- Admin Shell plugin: Vue sources in vue/, built into plugins/admin-shell/ -->
+    <Compile Remove="vue\**" />
+    <Content Remove="vue\**" />
+    <EmbeddedResource Remove="vue\**" />
+    <None Remove="vue\**" />
+    <Content Remove="plugins\**" />
+    <None Remove="plugins\**" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="VirtoCommerce.CatalogModule.Data" Version="3.1048.0" />
     <PackageReference Include="VirtoCommerce.Platform.Security" Version="3.1076.0" />
   </ItemGroup>
@@ -18,4 +27,10 @@
     <ProjectReference Include="..\VirtoCommerce.DynamicAssociationsModule.Data.SqlServer\VirtoCommerce.DynamicAssociationsModule.Data.SqlServer.csproj" />
     <ProjectReference Include="..\VirtoCommerce.DynamicAssociationsModule.Data\VirtoCommerce.DynamicAssociationsModule.Data.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <AdminShellPlugin Include="plugins\**" />
+  </ItemGroup>
+  <Target Name="CopyAdminShellPluginOnPublish" AfterTargets="Publish">
+    <Copy SourceFiles="@(AdminShellPlugin)" DestinationFiles="$(PublishDir)\..\%(Identity)" />
+  </Target>
 </Project>

@@ -1,0 +1,19 @@
+{
+  // Dynamic associations admin UI for the Admin Shell host (Module Federation remote).
+  // The AngularJS module added an item to the Marketing blade (marketingMenuItemService); it gets its own item in the
+  // Marketing section. No seed entry, so nothing is replaced.
+  "remote": { "name": "dynamicassociations_admin", "exposed": "./Module" },
+  "contributions": {
+    "menu": [
+      {
+        "id": "dynamicAssociations",
+        "sectionId": "marketing",
+        "title": "Dynamic associations",
+        "icon": "lucide-git-compare-arrows",
+        "route": "/dynamic-associations",
+        "permission": "dynamic-association:access",
+        "priority": 12
+      }
+    ]
+  }
+}

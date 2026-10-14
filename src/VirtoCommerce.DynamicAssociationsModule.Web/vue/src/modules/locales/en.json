@@ -1,0 +1,93 @@
+{
+  "DYNAMIC_ASSOCIATIONS": {
+    "MENU": {
+      "TITLE": "Dynamic associations"
+    },
+    "LIST": {
+      "TITLE": "Dynamic associations",
+      "SEARCH": "Search keyword",
+      "EMPTY": "No dynamic association rules"
+    },
+    "DETAILS": {
+      "NEW": "New dynamic association rule",
+      "GENERAL": "General",
+      "MAIN_PARAMETERS": "Main parameters",
+      "MATCHING": "Products to match",
+      "MATCHING_HINT": "The products the associations are shown for",
+      "DISPLAY": "Products to display",
+      "DISPLAY_HINT": "The products shown as associations",
+      "DISPLAY_LOCKED": "Define the products to match first",
+      "OUTPUT_TUNING": "Output tuning",
+      "OUTPUT_TUNING_HINT": "Sorting and limit of the products to display",
+      "COUNT": "{count} products in the current filter",
+      "NOT_SET": "Not set",
+      "EDIT_RULE": "Edit rule",
+      "PREVIEW": "Preview",
+      "STORE_FIRST": "Select a store first",
+      "SAVE_HINT": "To save, fill in the name, store, group and priority, and define the products to match and to display"
+    },
+    "RULE": {
+      "TITLE_MATCHING": "Rule for products to match",
+      "TITLE_DISPLAY": "Rule for products to display",
+      "CATEGORIES": "Categories",
+      "ADD_CATEGORIES": "Add categories",
+      "PICK_CATEGORIES": "Select categories",
+      "NO_CATEGORIES": "No categories selected",
+      "PROPERTIES": "Property values",
+      "SELECT_PROPERTIES": "Filter by properties",
+      "SELECT_PROPERTIES_PLACEHOLDER": "Select properties...",
+      "NO_PROPERTIES": "The selected categories have no properties",
+      "PROPERTIES_HINT": "Products must have one of the given values of each selected property"
+    },
+    "PREVIEW": {
+      "TITLE": "Products preview",
+      "EMPTY": "No products"
+    },
+    "FIELDS": {
+      "NAME": "Name",
+      "NAME_PLACEHOLDER": "Dynamic association name",
+      "NAME_HINT": "Type a name that uniquely identifies the association",
+      "DESCRIPTION": "Description",
+      "GROUP": "Group",
+      "GROUP_PLACEHOLDER": "Select group...",
+      "EDIT_GROUPS": "Edit association groups",
+      "PRIORITY": "Priority",
+      "PRIORITY_HINT": "The association rule with the highest priority is applied",
+      "ACTIVE": "Active",
+      "INACTIVE": "Inactive",
+      "IS_ACTIVE": "Active",
+      "IS_ACTIVE_HINT": "Flag controls Active/Inactive",
+      "START_DATE": "Start date",
+      "END_DATE": "Expiration date",
+      "STORE": "Store",
+      "STORE_PLACEHOLDER": "Select store...",
+      "STORE_HINT": "Store in which this association rule will be active",
+      "MODIFIED": "Modified",
+      "CATEGORIES": "Categories",
+      "PROPERTIES": "Properties",
+      "SORT_BY": "Sort by property",
+      "SORT_BY_PLACEHOLDER": "Select property...",
+      "DIRECTION": "Direction",
+      "LIMIT": "Output limit",
+      "IMAGE": "Image",
+      "PRODUCT": "Name",
+      "CODE": "SKU"
+    },
+    "TOOLBAR": {
+      "REFRESH": "Refresh",
+      "ADD": "Add",
+      "DELETE": "Delete",
+      "SAVE": "Save",
+      "CREATE": "Create",
+      "RESET": "Reset",
+      "APPLY": "Apply",
+      "PREVIEW": "Preview",
+      "REMOVE": "Remove"
+    },
+    "ALERTS": {
+      "DELETE": "Are you sure you want to delete the selected dynamic association rules?",
+      "CLOSE": "The dynamic association rule has been modified. Close without saving?",
+      "CLOSE_RULE": "The rule has been modified. Close without applying?"
+    }
+  }
+}
