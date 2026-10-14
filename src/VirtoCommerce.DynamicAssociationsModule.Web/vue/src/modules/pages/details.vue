@@ -330,6 +330,13 @@ for (const id of [MATCHING, RESULTING]) {
   );
 }
 
+// legacy: the rules need the store's catalog, the display rule needs the match rule
+function lockedText(id: string) {
+  if (!catalogId.value) return t("DYNAMIC_ASSOCIATIONS.DETAILS.STORE_FIRST");
+  if (id === RESULTING && !matchExists.value) return t("DYNAMIC_ASSOCIATIONS.DETAILS.DISPLAY_LOCKED");
+  return "";
+}
+
 const rules = computed(() =>
   [
     { id: MATCHING, title: t("DYNAMIC_ASSOCIATIONS.DETAILS.MATCHING"), hint: t("DYNAMIC_ASSOCIATIONS.DETAILS.MATCHING_HINT"), exists: matchExists.value },
@@ -339,12 +346,7 @@ const rules = computed(() =>
     categories: names(ruleOf(r.id).categoryIds),
     properties: valuesText(ruleOf(r.id)),
     count: counts.value[r.id],
-    // legacy: the rules need the store's catalog, the display rule needs the match rule
-    locked: !catalogId.value
-      ? t("DYNAMIC_ASSOCIATIONS.DETAILS.STORE_FIRST")
-      : r.id === RESULTING && !matchExists.value
-        ? t("DYNAMIC_ASSOCIATIONS.DETAILS.DISPLAY_LOCKED")
-        : "",
+    locked: lockedText(r.id),
   })),
 );
 
