@@ -5,7 +5,7 @@
       {
         "id": "dynamicAssociations",
         "sectionId": "marketing",
-        "title": "Dynamic associations",
+        "title": "Dynamic Associations",
         "icon": "lucide-git-compare-arrows",
         "route": "/dynamic-associations",
         "permission": "dynamic-association:access",
