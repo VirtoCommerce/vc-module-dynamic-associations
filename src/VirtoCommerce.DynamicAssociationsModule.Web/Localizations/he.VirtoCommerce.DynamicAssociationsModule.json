@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "dynamic-association:read": "צפייה בנתוני שיוכים דינמיים",
+    "dynamic-association:create": "יצירת נתוני שיוכים דינמיים",
+    "dynamic-association:update": "עדכון נתוני שיוכים דינמיים",
+    "dynamic-association:delete": "מחיקת נתוני שיוכים דינמיים",
+    "dynamic-association:access": "פתיחת תפריט השיוכים הדינמיים"
+  },
+  "settings": {}
+}
