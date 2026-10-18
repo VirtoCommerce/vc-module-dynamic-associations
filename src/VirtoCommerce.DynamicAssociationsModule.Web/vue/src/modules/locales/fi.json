@@ -1,0 +1,92 @@
+{
+  "DYNAMIC_ASSOCIATIONS": {
+    "MENU": {
+      "TITLE": "Dynaamiset assosiaatiot"
+    },
+    "LIST": {
+      "SEARCH": "Hakusana",
+      "EMPTY": "Ei dynaamisia assosiaatiosääntöjä"
+    },
+    "DETAILS": {
+      "NEW": "Uusi dynaaminen assosiaatiosääntö",
+      "GENERAL": "Yleiset",
+      "MAIN_PARAMETERS": "Pääparametrit",
+      "MATCHING": "Vastattavat tuotteet",
+      "MATCHING_HINT": "Tuotteet, joille assosiaatiot näytetään",
+      "DISPLAY": "Näytettävät tuotteet",
+      "DISPLAY_HINT": "Assosiaatioina näytettävät tuotteet",
+      "DISPLAY_LOCKED": "Määritä ensin vastattavat tuotteet",
+      "OUTPUT_TUNING": "Tulosten säätö",
+      "OUTPUT_TUNING_HINT": "Näytettävien tuotteiden lajittelu ja rajoitus",
+      "COUNT": "{count} tuotetta nykyisessä suodattimessa",
+      "NOT_SET": "Ei asetettu",
+      "EDIT_RULE": "Muokkaa sääntöä",
+      "PREVIEW": "Esikatselu",
+      "STORE_FIRST": "Valitse ensin kauppa",
+      "SAVE_HINT": "Tallenna täyttämällä nimi, kauppa, ryhmä ja prioriteetti sekä määrittämällä vastattavat ja näytettävät tuotteet"
+    },
+    "RULE": {
+      "TITLE_MATCHING": "Vastattavien tuotteiden sääntö",
+      "TITLE_DISPLAY": "Näytettävien tuotteiden sääntö",
+      "CATEGORIES": "Kategoriat",
+      "ADD_CATEGORIES": "Lisää kategorioita",
+      "PICK_CATEGORIES": "Valitse kategoriat",
+      "NO_CATEGORIES": "Kategorioita ei ole valittu",
+      "PROPERTIES": "Ominaisuuksien arvot",
+      "SELECT_PROPERTIES": "Suodata ominaisuuksien mukaan",
+      "SELECT_PROPERTIES_PLACEHOLDER": "Valitse ominaisuudet...",
+      "NO_PROPERTIES": "Valituilla kategorioilla ei ole ominaisuuksia",
+      "PROPERTIES_HINT": "Tuotteilla on oltava jokin annetuista arvoista kustakin valitusta ominaisuudesta"
+    },
+    "PREVIEW": {
+      "TITLE": "Tuotteiden esikatselu",
+      "EMPTY": "Ei tuotteita"
+    },
+    "FIELDS": {
+      "NAME": "Nimi",
+      "NAME_PLACEHOLDER": "Dynaamisen assosiaation nimi",
+      "NAME_HINT": "Kirjoita nimi, joka yksilöi assosiaation",
+      "DESCRIPTION": "Kuvaus",
+      "GROUP": "Ryhmä",
+      "GROUP_PLACEHOLDER": "Valitse ryhmä...",
+      "EDIT_GROUPS": "Muokkaa assosiaatioryhmiä",
+      "PRIORITY": "Prioriteetti",
+      "PRIORITY_HINT": "Korkeimman prioriteetin assosiaatiosääntö otetaan käyttöön",
+      "ACTIVE": "Aktiivinen",
+      "INACTIVE": "Ei aktiivinen",
+      "IS_ACTIVE": "Aktiivinen",
+      "IS_ACTIVE_HINT": "Lippu ohjaa aktiivinen/ei-aktiivinen tilaa",
+      "START_DATE": "Aloituspäivä",
+      "END_DATE": "Vanhentumispäivä",
+      "STORE": "Kauppa",
+      "STORE_PLACEHOLDER": "Valitse kauppa...",
+      "STORE_HINT": "Kauppa, jossa tämä assosiaatiosääntö on aktiivinen",
+      "MODIFIED": "Muokattu",
+      "CATEGORIES": "Kategoriat",
+      "PROPERTIES": "Ominaisuudet",
+      "SORT_BY": "Lajittele ominaisuuden mukaan",
+      "SORT_BY_PLACEHOLDER": "Valitse ominaisuus...",
+      "DIRECTION": "Suunta",
+      "LIMIT": "Tulosrajoitus",
+      "IMAGE": "Kuva",
+      "PRODUCT": "Nimi",
+      "CODE": "SKU"
+    },
+    "TOOLBAR": {
+      "REFRESH": "Päivitä",
+      "ADD": "Lisää",
+      "DELETE": "Poista",
+      "SAVE": "Tallenna",
+      "CREATE": "Luo",
+      "RESET": "Palauta",
+      "APPLY": "Käytä",
+      "PREVIEW": "Esikatsele",
+      "REMOVE": "Poista"
+    },
+    "ALERTS": {
+      "DELETE": "Haluatko varmasti poistaa valitut dynaamiset assosiaatiosäännöt?",
+      "CLOSE": "Dynaamista assosiaatiosääntöä on muokattu. Suljetaanko tallentamatta?",
+      "CLOSE_RULE": "Sääntöä on muokattu. Suljetaanko käyttämättä?"
+    }
+  }
+}

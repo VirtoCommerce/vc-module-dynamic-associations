@@ -1,0 +1,92 @@
+{
+  "DYNAMIC_ASSOCIATIONS": {
+    "MENU": {
+      "TITLE": "动态关联"
+    },
+    "LIST": {
+      "SEARCH": "搜索关键字",
+      "EMPTY": "没有动态关联规则"
+    },
+    "DETAILS": {
+      "NEW": "新建动态关联规则",
+      "GENERAL": "常规",
+      "MAIN_PARAMETERS": "主要参数",
+      "MATCHING": "待匹配产品",
+      "MATCHING_HINT": "显示关联的目标产品",
+      "DISPLAY": "待显示产品",
+      "DISPLAY_HINT": "作为关联显示的产品",
+      "DISPLAY_LOCKED": "请先定义待匹配产品",
+      "OUTPUT_TUNING": "输出调整",
+      "OUTPUT_TUNING_HINT": "待显示产品的排序和数量限制",
+      "COUNT": "当前筛选器中有 {count} 个产品",
+      "NOT_SET": "未设置",
+      "EDIT_RULE": "编辑规则",
+      "PREVIEW": "预览",
+      "STORE_FIRST": "请先选择商店",
+      "SAVE_HINT": "要保存，请填写名称、商店、组别和优先级，并定义待匹配产品和待显示产品"
+    },
+    "RULE": {
+      "TITLE_MATCHING": "待匹配产品规则",
+      "TITLE_DISPLAY": "待显示产品规则",
+      "CATEGORIES": "类别",
+      "ADD_CATEGORIES": "添加类别",
+      "PICK_CATEGORIES": "选择类别",
+      "NO_CATEGORIES": "未选择类别",
+      "PROPERTIES": "属性值",
+      "SELECT_PROPERTIES": "按属性筛选",
+      "SELECT_PROPERTIES_PLACEHOLDER": "选择属性...",
+      "NO_PROPERTIES": "所选类别没有属性",
+      "PROPERTIES_HINT": "产品必须具有每个所选属性的指定值之一"
+    },
+    "PREVIEW": {
+      "TITLE": "产品预览",
+      "EMPTY": "没有产品"
+    },
+    "FIELDS": {
+      "NAME": "名称",
+      "NAME_PLACEHOLDER": "动态关联名称",
+      "NAME_HINT": "输入唯一标识此关联的名称",
+      "DESCRIPTION": "描述",
+      "GROUP": "组别",
+      "GROUP_PLACEHOLDER": "选择组别...",
+      "EDIT_GROUPS": "编辑关联组",
+      "PRIORITY": "优先级",
+      "PRIORITY_HINT": "应用优先级最高的关联规则",
+      "ACTIVE": "激活",
+      "INACTIVE": "未激活",
+      "IS_ACTIVE": "激活",
+      "IS_ACTIVE_HINT": "标志控制激活/未激活",
+      "START_DATE": "开始日期",
+      "END_DATE": "过期日期",
+      "STORE": "商店",
+      "STORE_PLACEHOLDER": "选择商店...",
+      "STORE_HINT": "此关联规则将在其中生效的商店",
+      "MODIFIED": "修改时间",
+      "CATEGORIES": "类别",
+      "PROPERTIES": "属性",
+      "SORT_BY": "按属性排序",
+      "SORT_BY_PLACEHOLDER": "选择属性...",
+      "DIRECTION": "方向",
+      "LIMIT": "输出限制",
+      "IMAGE": "图片",
+      "PRODUCT": "名称",
+      "CODE": "SKU"
+    },
+    "TOOLBAR": {
+      "REFRESH": "刷新",
+      "ADD": "添加",
+      "DELETE": "删除",
+      "SAVE": "保存",
+      "CREATE": "创建",
+      "RESET": "重置",
+      "APPLY": "应用",
+      "PREVIEW": "预览",
+      "REMOVE": "移除"
+    },
+    "ALERTS": {
+      "DELETE": "您确定要删除所选的动态关联规则吗？",
+      "CLOSE": "动态关联规则已修改。是否不保存就关闭？",
+      "CLOSE_RULE": "规则已修改。是否不应用就关闭？"
+    }
+  }
+}

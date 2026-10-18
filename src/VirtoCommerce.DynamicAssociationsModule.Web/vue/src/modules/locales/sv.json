@@ -1,0 +1,92 @@
+{
+  "DYNAMIC_ASSOCIATIONS": {
+    "MENU": {
+      "TITLE": "Dynamiska associationer"
+    },
+    "LIST": {
+      "SEARCH": "Sökord",
+      "EMPTY": "Inga regler för dynamiska associationer"
+    },
+    "DETAILS": {
+      "NEW": "Ny regel för dynamisk association",
+      "GENERAL": "Allmänt",
+      "MAIN_PARAMETERS": "Huvudparametrar",
+      "MATCHING": "Produkter att matcha",
+      "MATCHING_HINT": "Produkterna som associationerna visas för",
+      "DISPLAY": "Produkter att visa",
+      "DISPLAY_HINT": "Produkterna som visas som associationer",
+      "DISPLAY_LOCKED": "Definiera först produkterna att matcha",
+      "OUTPUT_TUNING": "Utdatainställning",
+      "OUTPUT_TUNING_HINT": "Sortering och gräns för produkterna att visa",
+      "COUNT": "{count} produkter i det aktuella filtret",
+      "NOT_SET": "Inte angivet",
+      "EDIT_RULE": "Redigera regel",
+      "PREVIEW": "Förhandsvisning",
+      "STORE_FIRST": "Välj en butik först",
+      "SAVE_HINT": "Fyll i namn, butik, grupp och prioritet och definiera produkterna att matcha och att visa för att spara"
+    },
+    "RULE": {
+      "TITLE_MATCHING": "Regel för produkter att matcha",
+      "TITLE_DISPLAY": "Regel för produkter att visa",
+      "CATEGORIES": "Kategorier",
+      "ADD_CATEGORIES": "Lägg till kategorier",
+      "PICK_CATEGORIES": "Välj kategorier",
+      "NO_CATEGORIES": "Inga kategorier valda",
+      "PROPERTIES": "Egenskapsvärden",
+      "SELECT_PROPERTIES": "Filtrera efter egenskaper",
+      "SELECT_PROPERTIES_PLACEHOLDER": "Välj egenskaper...",
+      "NO_PROPERTIES": "De valda kategorierna har inga egenskaper",
+      "PROPERTIES_HINT": "Produkterna måste ha ett av de angivna värdena för varje vald egenskap"
+    },
+    "PREVIEW": {
+      "TITLE": "Förhandsvisning av produkter",
+      "EMPTY": "Inga produkter"
+    },
+    "FIELDS": {
+      "NAME": "Namn",
+      "NAME_PLACEHOLDER": "Namn på dynamisk association",
+      "NAME_HINT": "Ange ett namn som unikt identifierar associationen",
+      "DESCRIPTION": "Beskrivning",
+      "GROUP": "Grupp",
+      "GROUP_PLACEHOLDER": "Välj grupp...",
+      "EDIT_GROUPS": "Redigera associationsgrupper",
+      "PRIORITY": "Prioritet",
+      "PRIORITY_HINT": "Associationsregeln med högst prioritet tillämpas",
+      "ACTIVE": "Aktiv",
+      "INACTIVE": "Inaktiv",
+      "IS_ACTIVE": "Aktiv",
+      "IS_ACTIVE_HINT": "Flagga styr Aktiv/Inaktiv",
+      "START_DATE": "Startdatum",
+      "END_DATE": "Utgångsdatum",
+      "STORE": "Butik",
+      "STORE_PLACEHOLDER": "Välj butik...",
+      "STORE_HINT": "Butik där denna associationsregel kommer att vara aktiv",
+      "MODIFIED": "Ändrad",
+      "CATEGORIES": "Kategorier",
+      "PROPERTIES": "Egenskaper",
+      "SORT_BY": "Sortera efter egenskap",
+      "SORT_BY_PLACEHOLDER": "Välj egenskap...",
+      "DIRECTION": "Riktning",
+      "LIMIT": "Utdatabegränsning",
+      "IMAGE": "Bild",
+      "PRODUCT": "Namn",
+      "CODE": "SKU"
+    },
+    "TOOLBAR": {
+      "REFRESH": "Uppdatera",
+      "ADD": "Lägg till",
+      "DELETE": "Radera",
+      "SAVE": "Spara",
+      "CREATE": "Skapa",
+      "RESET": "Återställ",
+      "APPLY": "Tillämpa",
+      "PREVIEW": "Förhandsgranska",
+      "REMOVE": "Ta bort"
+    },
+    "ALERTS": {
+      "DELETE": "Är du säker på att du vill radera de valda reglerna för dynamiska associationer?",
+      "CLOSE": "Regeln för dynamisk association har ändrats. Stäng utan att spara?",
+      "CLOSE_RULE": "Regeln har ändrats. Stäng utan att tillämpa?"
+    }
+  }
+}
