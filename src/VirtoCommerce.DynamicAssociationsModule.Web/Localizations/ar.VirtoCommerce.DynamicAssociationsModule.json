@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "dynamic-association:read": "عرض بيانات الارتباطات الديناميكية",
+    "dynamic-association:create": "إنشاء بيانات الارتباطات الديناميكية",
+    "dynamic-association:update": "تحديث بيانات الارتباطات الديناميكية",
+    "dynamic-association:delete": "حذف بيانات الارتباطات الديناميكية",
+    "dynamic-association:access": "فتح قائمة الارتباطات الديناميكية"
+  },
+  "settings": {}
+}

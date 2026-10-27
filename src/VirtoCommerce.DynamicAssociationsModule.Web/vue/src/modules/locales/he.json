@@ -1,0 +1,92 @@
+{
+  "DYNAMIC_ASSOCIATIONS": {
+    "MENU": {
+      "TITLE": "שיוכים דינמיים"
+    },
+    "LIST": {
+      "SEARCH": "מילת חיפוש",
+      "EMPTY": "אין כללי שיוך דינמי"
+    },
+    "DETAILS": {
+      "NEW": "כלל שיוך דינמי חדש",
+      "GENERAL": "כללי",
+      "MAIN_PARAMETERS": "פרמטרים עיקריים",
+      "MATCHING": "מוצרים להתאמה",
+      "MATCHING_HINT": "המוצרים שעבורם מוצגים השיוכים",
+      "DISPLAY": "מוצרים להצגה",
+      "DISPLAY_HINT": "המוצרים שמוצגים כשיוכים",
+      "DISPLAY_LOCKED": "יש להגדיר תחילה את המוצרים להתאמה",
+      "OUTPUT_TUNING": "כוונון הפלט",
+      "OUTPUT_TUNING_HINT": "מיון ומגבלה של המוצרים להצגה",
+      "COUNT": "מוצרים במסנן הנוכחי: {count}",
+      "NOT_SET": "לא הוגדר",
+      "EDIT_RULE": "עריכת הכלל",
+      "PREVIEW": "תצוגה מקדימה",
+      "STORE_FIRST": "יש לבחור תחילה חנות",
+      "SAVE_HINT": "לשמירה, יש למלא את השם, החנות, הקבוצה והעדיפות, ולהגדיר את המוצרים להתאמה ולהצגה"
+    },
+    "RULE": {
+      "TITLE_MATCHING": "כלל למוצרים להתאמה",
+      "TITLE_DISPLAY": "כלל למוצרים להצגה",
+      "CATEGORIES": "קטגוריות",
+      "ADD_CATEGORIES": "הוספת קטגוריות",
+      "PICK_CATEGORIES": "בחירת קטגוריות",
+      "NO_CATEGORIES": "לא נבחרו קטגוריות",
+      "PROPERTIES": "ערכי מאפיינים",
+      "SELECT_PROPERTIES": "סינון לפי מאפיינים",
+      "SELECT_PROPERTIES_PLACEHOLDER": "יש לבחור מאפיינים...",
+      "NO_PROPERTIES": "לקטגוריות שנבחרו אין מאפיינים",
+      "PROPERTIES_HINT": "למוצרים חייב להיות אחד מהערכים שצוינו בכל מאפיין שנבחר"
+    },
+    "PREVIEW": {
+      "TITLE": "תצוגה מקדימה של מוצרים",
+      "EMPTY": "אין מוצרים"
+    },
+    "FIELDS": {
+      "NAME": "שם",
+      "NAME_PLACEHOLDER": "שם השיוך הדינמי",
+      "NAME_HINT": "יש להזין שם שמזהה את השיוך באופן ייחודי",
+      "DESCRIPTION": "תיאור",
+      "GROUP": "קבוצה",
+      "GROUP_PLACEHOLDER": "יש לבחור קבוצה...",
+      "EDIT_GROUPS": "עריכת קבוצות שיוך",
+      "PRIORITY": "עדיפות",
+      "PRIORITY_HINT": "מוחל כלל השיוך בעל העדיפות הגבוהה ביותר",
+      "ACTIVE": "פעיל",
+      "INACTIVE": "לא פעיל",
+      "IS_ACTIVE": "פעיל",
+      "IS_ACTIVE_HINT": "הסימון קובע אם הכלל פעיל או לא פעיל",
+      "START_DATE": "תאריך התחלה",
+      "END_DATE": "תאריך תפוגה",
+      "STORE": "חנות",
+      "STORE_PLACEHOLDER": "יש לבחור חנות...",
+      "STORE_HINT": "החנות שבה כלל שיוך זה יהיה פעיל",
+      "MODIFIED": "שונה",
+      "CATEGORIES": "קטגוריות",
+      "PROPERTIES": "מאפיינים",
+      "SORT_BY": "מיון לפי מאפיין",
+      "SORT_BY_PLACEHOLDER": "יש לבחור מאפיין...",
+      "DIRECTION": "כיוון",
+      "LIMIT": "מגבלת פלט",
+      "IMAGE": "תמונה",
+      "PRODUCT": "שם",
+      "CODE": "SKU"
+    },
+    "TOOLBAR": {
+      "REFRESH": "רענון",
+      "ADD": "הוספה",
+      "DELETE": "מחיקה",
+      "SAVE": "שמירה",
+      "CREATE": "יצירה",
+      "RESET": "איפוס",
+      "APPLY": "החלה",
+      "PREVIEW": "תצוגה מקדימה",
+      "REMOVE": "הסרה"
+    },
+    "ALERTS": {
+      "DELETE": "האם למחוק את כללי השיוך הדינמי שנבחרו?",
+      "CLOSE": "כלל השיוך הדינמי השתנה. לסגור בלי לשמור?",
+      "CLOSE_RULE": "הכלל השתנה. לסגור בלי להחיל?"
+    }
+  }
+}

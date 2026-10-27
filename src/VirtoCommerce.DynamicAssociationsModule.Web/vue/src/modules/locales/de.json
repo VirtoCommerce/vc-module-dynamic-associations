@@ -1,0 +1,92 @@
+{
+  "DYNAMIC_ASSOCIATIONS": {
+    "MENU": {
+      "TITLE": "Dynamische Assoziationen"
+    },
+    "LIST": {
+      "SEARCH": "Suchbegriff",
+      "EMPTY": "Keine dynamischen Assoziationsregeln"
+    },
+    "DETAILS": {
+      "NEW": "Neue dynamische Assoziationsregel",
+      "GENERAL": "Allgemein",
+      "MAIN_PARAMETERS": "Hauptparameter",
+      "MATCHING": "Zu vergleichende Produkte",
+      "MATCHING_HINT": "Die Produkte, für die die Assoziationen angezeigt werden",
+      "DISPLAY": "Anzuzeigende Produkte",
+      "DISPLAY_HINT": "Die als Assoziationen angezeigten Produkte",
+      "DISPLAY_LOCKED": "Definieren Sie zuerst die zu vergleichenden Produkte",
+      "OUTPUT_TUNING": "Ausgabeoptimierung",
+      "OUTPUT_TUNING_HINT": "Sortierung und Limit der anzuzeigenden Produkte",
+      "COUNT": "{count} Produkte im aktuellen Filter",
+      "NOT_SET": "Nicht festgelegt",
+      "EDIT_RULE": "Regel bearbeiten",
+      "PREVIEW": "Vorschau",
+      "STORE_FIRST": "Wählen Sie zuerst ein Geschäft aus",
+      "SAVE_HINT": "Geben Sie zum Speichern Name, Geschäft, Gruppe und Priorität ein und definieren Sie die zu vergleichenden und die anzuzeigenden Produkte"
+    },
+    "RULE": {
+      "TITLE_MATCHING": "Regel für zu vergleichende Produkte",
+      "TITLE_DISPLAY": "Regel für anzuzeigende Produkte",
+      "CATEGORIES": "Kategorien",
+      "ADD_CATEGORIES": "Kategorien hinzufügen",
+      "PICK_CATEGORIES": "Kategorien auswählen",
+      "NO_CATEGORIES": "Keine Kategorien ausgewählt",
+      "PROPERTIES": "Eigenschaftswerte",
+      "SELECT_PROPERTIES": "Nach Eigenschaften filtern",
+      "SELECT_PROPERTIES_PLACEHOLDER": "Eigenschaften auswählen...",
+      "NO_PROPERTIES": "Die ausgewählten Kategorien haben keine Eigenschaften",
+      "PROPERTIES_HINT": "Produkte müssen für jede ausgewählte Eigenschaft einen der angegebenen Werte haben"
+    },
+    "PREVIEW": {
+      "TITLE": "Produktvorschau",
+      "EMPTY": "Keine Produkte"
+    },
+    "FIELDS": {
+      "NAME": "Name",
+      "NAME_PLACEHOLDER": "Name der dynamischen Assoziation",
+      "NAME_HINT": "Geben Sie einen Namen ein, der die Assoziation eindeutig identifiziert",
+      "DESCRIPTION": "Beschreibung",
+      "GROUP": "Gruppe",
+      "GROUP_PLACEHOLDER": "Gruppe auswählen...",
+      "EDIT_GROUPS": "Assoziationsgruppen bearbeiten",
+      "PRIORITY": "Priorität",
+      "PRIORITY_HINT": "Die Assoziationsregel mit der höchsten Priorität wird angewendet",
+      "ACTIVE": "Aktiv",
+      "INACTIVE": "Inaktiv",
+      "IS_ACTIVE": "Aktiv",
+      "IS_ACTIVE_HINT": "Flag steuert Aktiv/Inaktiv",
+      "START_DATE": "Startdatum",
+      "END_DATE": "Ablaufdatum",
+      "STORE": "Geschäft",
+      "STORE_PLACEHOLDER": "Geschäft auswählen...",
+      "STORE_HINT": "Geschäft, in dem diese Assoziationsregel aktiv sein wird",
+      "MODIFIED": "Geändert",
+      "CATEGORIES": "Kategorien",
+      "PROPERTIES": "Eigenschaften",
+      "SORT_BY": "Nach Eigenschaft sortieren",
+      "SORT_BY_PLACEHOLDER": "Eigenschaft auswählen...",
+      "DIRECTION": "Richtung",
+      "LIMIT": "Ausgabelimit",
+      "IMAGE": "Bild",
+      "PRODUCT": "Name",
+      "CODE": "SKU"
+    },
+    "TOOLBAR": {
+      "REFRESH": "Aktualisieren",
+      "ADD": "Hinzufügen",
+      "DELETE": "Löschen",
+      "SAVE": "Speichern",
+      "CREATE": "Erstellen",
+      "RESET": "Zurücksetzen",
+      "APPLY": "Anwenden",
+      "PREVIEW": "Vorschau",
+      "REMOVE": "Entfernen"
+    },
+    "ALERTS": {
+      "DELETE": "Möchten Sie die ausgewählten dynamischen Assoziationsregeln wirklich löschen?",
+      "CLOSE": "Die dynamische Assoziationsregel wurde geändert. Ohne Speichern schließen?",
+      "CLOSE_RULE": "Die Regel wurde geändert. Ohne Anwenden schließen?"
+    }
+  }
+}

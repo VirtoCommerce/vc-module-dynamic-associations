@@ -1,0 +1,92 @@
+{
+  "DYNAMIC_ASSOCIATIONS": {
+    "MENU": {
+      "TITLE": "動的関連付け"
+    },
+    "LIST": {
+      "SEARCH": "検索キーワード",
+      "EMPTY": "動的関連付けルールはありません"
+    },
+    "DETAILS": {
+      "NEW": "新しい動的関連付けルール",
+      "GENERAL": "全般",
+      "MAIN_PARAMETERS": "主要パラメータ",
+      "MATCHING": "マッチする商品",
+      "MATCHING_HINT": "関連付けが表示される対象の商品",
+      "DISPLAY": "表示する商品",
+      "DISPLAY_HINT": "関連付けとして表示される商品",
+      "DISPLAY_LOCKED": "先にマッチする商品を定義してください",
+      "OUTPUT_TUNING": "出力調整",
+      "OUTPUT_TUNING_HINT": "表示する商品の並べ替えと上限",
+      "COUNT": "現在のフィルタで{count}個の商品",
+      "NOT_SET": "未設定",
+      "EDIT_RULE": "ルールを編集",
+      "PREVIEW": "プレビュー",
+      "STORE_FIRST": "先にストアを選択してください",
+      "SAVE_HINT": "保存するには、名前、ストア、グループ、優先度を入力し、マッチする商品と表示する商品を定義してください"
+    },
+    "RULE": {
+      "TITLE_MATCHING": "マッチする商品のルール",
+      "TITLE_DISPLAY": "表示する商品のルール",
+      "CATEGORIES": "カテゴリ",
+      "ADD_CATEGORIES": "カテゴリを追加",
+      "PICK_CATEGORIES": "カテゴリを選択",
+      "NO_CATEGORIES": "カテゴリが選択されていません",
+      "PROPERTIES": "プロパティ値",
+      "SELECT_PROPERTIES": "プロパティで絞り込み",
+      "SELECT_PROPERTIES_PLACEHOLDER": "プロパティを選択...",
+      "NO_PROPERTIES": "選択したカテゴリにはプロパティがありません",
+      "PROPERTIES_HINT": "商品は、選択した各プロパティについて指定された値のいずれかを持つ必要があります"
+    },
+    "PREVIEW": {
+      "TITLE": "商品プレビュー",
+      "EMPTY": "商品はありません"
+    },
+    "FIELDS": {
+      "NAME": "名前",
+      "NAME_PLACEHOLDER": "動的関連付け名",
+      "NAME_HINT": "関連付けを一意に識別する名前を入力してください",
+      "DESCRIPTION": "説明",
+      "GROUP": "グループ",
+      "GROUP_PLACEHOLDER": "グループを選択...",
+      "EDIT_GROUPS": "関連付けグループを編集",
+      "PRIORITY": "優先度",
+      "PRIORITY_HINT": "最も優先度の高い関連付けルールが適用されます",
+      "ACTIVE": "アクティブ",
+      "INACTIVE": "非アクティブ",
+      "IS_ACTIVE": "アクティブ",
+      "IS_ACTIVE_HINT": "フラグでアクティブ/非アクティブを制御",
+      "START_DATE": "開始日",
+      "END_DATE": "有効期限",
+      "STORE": "ストア",
+      "STORE_PLACEHOLDER": "ストアを選択...",
+      "STORE_HINT": "この関連付けルールがアクティブになるストア",
+      "MODIFIED": "更新日",
+      "CATEGORIES": "カテゴリ",
+      "PROPERTIES": "プロパティ",
+      "SORT_BY": "プロパティで並べ替え",
+      "SORT_BY_PLACEHOLDER": "プロパティを選択...",
+      "DIRECTION": "方向",
+      "LIMIT": "出力制限",
+      "IMAGE": "画像",
+      "PRODUCT": "名前",
+      "CODE": "SKU"
+    },
+    "TOOLBAR": {
+      "REFRESH": "更新",
+      "ADD": "追加",
+      "DELETE": "削除",
+      "SAVE": "保存",
+      "CREATE": "作成",
+      "RESET": "リセット",
+      "APPLY": "適用",
+      "PREVIEW": "プレビュー",
+      "REMOVE": "除去"
+    },
+    "ALERTS": {
+      "DELETE": "選択した動的関連付けルールを削除してもよろしいですか？",
+      "CLOSE": "動的関連付けルールが変更されています。保存せずに閉じますか？",
+      "CLOSE_RULE": "ルールが変更されています。適用せずに閉じますか？"
+    }
+  }
+}

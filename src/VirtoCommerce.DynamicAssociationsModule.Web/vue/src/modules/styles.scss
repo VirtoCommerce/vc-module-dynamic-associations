@@ -1,0 +1,32 @@
+// Shared layout of the details, rule and preview blades (host tokens only)
+.dyn-form {
+  padding: 20px 22px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.dyn-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+}
+
+.dyn-rule__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.dyn-rule__count {
+  font-size: 14px;
+  color: var(--neutrals-600);
+}
+
+.dyn-rule__actions {
+  display: flex;
+  gap: 8px;
+}

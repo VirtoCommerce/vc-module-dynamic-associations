@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using VirtoCommerce.DynamicAssociationsModule.Core;
 using VirtoCommerce.DynamicAssociationsModule.Core.Model;
+using VirtoCommerce.DynamicAssociationsModule.Core.Models;
 using VirtoCommerce.DynamicAssociationsModule.Core.Model.Search;
 using VirtoCommerce.DynamicAssociationsModule.Core.Search;
 using VirtoCommerce.DynamicAssociationsModule.Core.Services;
@@ -187,7 +188,7 @@ namespace VirtoCommerce.DynamicAssociationsModule.Web.Controllers.Api
 
         [HttpPost]
         [Route("preview")]
-        public async Task<ActionResult<string[]>> PreviewDynamicAssociations([FromBody] AssociationConditionEvaluationRequest conditionRequest)
+        public async Task<ActionResult<AssociationConditionEvaluationResult>> PreviewDynamicAssociations([FromBody] AssociationConditionEvaluationRequest conditionRequest)
         {
             ValidateParameters(conditionRequest);
 
