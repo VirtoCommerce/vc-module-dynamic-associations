@@ -1,0 +1,92 @@
+{
+  "DYNAMIC_ASSOCIATIONS": {
+    "MENU": {
+      "TITLE": "Associazioni dinamiche"
+    },
+    "LIST": {
+      "SEARCH": "Parola chiave di ricerca",
+      "EMPTY": "Nessuna regola di associazione dinamica"
+    },
+    "DETAILS": {
+      "NEW": "Nuova regola di associazione dinamica",
+      "GENERAL": "Generale",
+      "MAIN_PARAMETERS": "Parametri principali",
+      "MATCHING": "Prodotti da abbinare",
+      "MATCHING_HINT": "I prodotti per cui vengono mostrate le associazioni",
+      "DISPLAY": "Prodotti da visualizzare",
+      "DISPLAY_HINT": "I prodotti mostrati come associazioni",
+      "DISPLAY_LOCKED": "Definire prima i prodotti da abbinare",
+      "OUTPUT_TUNING": "Regolazione dell'output",
+      "OUTPUT_TUNING_HINT": "Ordinamento e limite dei prodotti da visualizzare",
+      "COUNT": "{count} prodotti nel filtro corrente",
+      "NOT_SET": "Non impostato",
+      "EDIT_RULE": "Modifica regola",
+      "PREVIEW": "Anteprima",
+      "STORE_FIRST": "Selezionare prima un negozio",
+      "SAVE_HINT": "Per salvare, compilare nome, negozio, gruppo e priorità e definire i prodotti da abbinare e da visualizzare"
+    },
+    "RULE": {
+      "TITLE_MATCHING": "Regola per i prodotti da abbinare",
+      "TITLE_DISPLAY": "Regola per i prodotti da visualizzare",
+      "CATEGORIES": "Categorie",
+      "ADD_CATEGORIES": "Aggiungi categorie",
+      "PICK_CATEGORIES": "Seleziona categorie",
+      "NO_CATEGORIES": "Nessuna categoria selezionata",
+      "PROPERTIES": "Valori delle proprietà",
+      "SELECT_PROPERTIES": "Filtra per proprietà",
+      "SELECT_PROPERTIES_PLACEHOLDER": "Seleziona proprietà...",
+      "NO_PROPERTIES": "Le categorie selezionate non hanno proprietà",
+      "PROPERTIES_HINT": "I prodotti devono avere uno dei valori indicati per ciascuna proprietà selezionata"
+    },
+    "PREVIEW": {
+      "TITLE": "Anteprima prodotti",
+      "EMPTY": "Nessun prodotto"
+    },
+    "FIELDS": {
+      "NAME": "Nome",
+      "NAME_PLACEHOLDER": "Nome dell'associazione dinamica",
+      "NAME_HINT": "Inserire un nome che identifichi univocamente l'associazione",
+      "DESCRIPTION": "Descrizione",
+      "GROUP": "Gruppo",
+      "GROUP_PLACEHOLDER": "Seleziona gruppo...",
+      "EDIT_GROUPS": "Modifica gruppi di associazione",
+      "PRIORITY": "Priorità",
+      "PRIORITY_HINT": "Viene applicata la regola di associazione con la priorità più alta",
+      "ACTIVE": "Attivo",
+      "INACTIVE": "Inattivo",
+      "IS_ACTIVE": "Attivo",
+      "IS_ACTIVE_HINT": "Il flag controlla Attivo/Inattivo",
+      "START_DATE": "Data di inizio",
+      "END_DATE": "Data di scadenza",
+      "STORE": "Negozio",
+      "STORE_PLACEHOLDER": "Seleziona negozio...",
+      "STORE_HINT": "Negozio in cui questa regola di associazione sarà attiva",
+      "MODIFIED": "Modificato",
+      "CATEGORIES": "Categorie",
+      "PROPERTIES": "Proprietà",
+      "SORT_BY": "Ordina per proprietà",
+      "SORT_BY_PLACEHOLDER": "Seleziona proprietà...",
+      "DIRECTION": "Direzione",
+      "LIMIT": "Limite di output",
+      "IMAGE": "Immagine",
+      "PRODUCT": "Nome",
+      "CODE": "SKU"
+    },
+    "TOOLBAR": {
+      "REFRESH": "Aggiorna",
+      "ADD": "Aggiungi",
+      "DELETE": "Elimina",
+      "SAVE": "Salva",
+      "CREATE": "Crea",
+      "RESET": "Reimposta",
+      "APPLY": "Applica",
+      "PREVIEW": "Anteprima",
+      "REMOVE": "Rimuovi"
+    },
+    "ALERTS": {
+      "DELETE": "Eliminare le regole di associazione dinamica selezionate?",
+      "CLOSE": "La regola di associazione dinamica è stata modificata. Chiudere senza salvare?",
+      "CLOSE_RULE": "La regola è stata modificata. Chiudere senza applicare?"
+    }
+  }
+}

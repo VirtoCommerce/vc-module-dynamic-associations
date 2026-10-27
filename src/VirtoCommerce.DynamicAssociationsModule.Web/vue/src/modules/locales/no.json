@@ -1,0 +1,92 @@
+{
+  "DYNAMIC_ASSOCIATIONS": {
+    "MENU": {
+      "TITLE": "Dynamiske assosiasjoner"
+    },
+    "LIST": {
+      "SEARCH": "Søkeord",
+      "EMPTY": "Ingen regler for dynamiske assosiasjoner"
+    },
+    "DETAILS": {
+      "NEW": "Ny regel for dynamisk assosiasjon",
+      "GENERAL": "Generelt",
+      "MAIN_PARAMETERS": "Hovedparametere",
+      "MATCHING": "Produkter å matche",
+      "MATCHING_HINT": "Produktene som assosiasjonene vises for",
+      "DISPLAY": "Produkter å vise",
+      "DISPLAY_HINT": "Produktene som vises som assosiasjoner",
+      "DISPLAY_LOCKED": "Definer først produktene som skal matches",
+      "OUTPUT_TUNING": "Utdatainnstilling",
+      "OUTPUT_TUNING_HINT": "Sortering og grense for produktene som skal vises",
+      "COUNT": "{count} produkter i det gjeldende filteret",
+      "NOT_SET": "Ikke angitt",
+      "EDIT_RULE": "Rediger regel",
+      "PREVIEW": "Forhåndsvisning",
+      "STORE_FIRST": "Velg en butikk først",
+      "SAVE_HINT": "For å lagre fyller du ut navn, butikk, gruppe og prioritet og definerer produktene som skal matches og vises"
+    },
+    "RULE": {
+      "TITLE_MATCHING": "Regel for produkter å matche",
+      "TITLE_DISPLAY": "Regel for produkter å vise",
+      "CATEGORIES": "Kategorier",
+      "ADD_CATEGORIES": "Legg til kategorier",
+      "PICK_CATEGORIES": "Velg kategorier",
+      "NO_CATEGORIES": "Ingen kategorier valgt",
+      "PROPERTIES": "Egenskapsverdier",
+      "SELECT_PROPERTIES": "Filtrer etter egenskaper",
+      "SELECT_PROPERTIES_PLACEHOLDER": "Velg egenskaper...",
+      "NO_PROPERTIES": "De valgte kategoriene har ingen egenskaper",
+      "PROPERTIES_HINT": "Produktene må ha én av de angitte verdiene for hver valgte egenskap"
+    },
+    "PREVIEW": {
+      "TITLE": "Forhåndsvisning av produkter",
+      "EMPTY": "Ingen produkter"
+    },
+    "FIELDS": {
+      "NAME": "Navn",
+      "NAME_PLACEHOLDER": "Navn på dynamisk assosiasjon",
+      "NAME_HINT": "Skriv inn et navn som unikt identifiserer assosiasjonen",
+      "DESCRIPTION": "Beskrivelse",
+      "GROUP": "Gruppe",
+      "GROUP_PLACEHOLDER": "Velg gruppe...",
+      "EDIT_GROUPS": "Rediger assosiasjonsgrupper",
+      "PRIORITY": "Prioritet",
+      "PRIORITY_HINT": "Assosiasjonsregelen med høyest prioritet brukes",
+      "ACTIVE": "Aktiv",
+      "INACTIVE": "Inaktiv",
+      "IS_ACTIVE": "Aktiv",
+      "IS_ACTIVE_HINT": "Flagg styrer Aktiv/Inaktiv",
+      "START_DATE": "Startdato",
+      "END_DATE": "Utløpsdato",
+      "STORE": "Butikk",
+      "STORE_PLACEHOLDER": "Velg butikk...",
+      "STORE_HINT": "Butikk der denne assosiasjonsregelen vil være aktiv",
+      "MODIFIED": "Endret",
+      "CATEGORIES": "Kategorier",
+      "PROPERTIES": "Egenskaper",
+      "SORT_BY": "Sorter etter egenskap",
+      "SORT_BY_PLACEHOLDER": "Velg egenskap...",
+      "DIRECTION": "Retning",
+      "LIMIT": "Utdatabegrensning",
+      "IMAGE": "Bilde",
+      "PRODUCT": "Navn",
+      "CODE": "SKU"
+    },
+    "TOOLBAR": {
+      "REFRESH": "Oppdater",
+      "ADD": "Legg til",
+      "DELETE": "Slett",
+      "SAVE": "Lagre",
+      "CREATE": "Opprett",
+      "RESET": "Tilbakestill",
+      "APPLY": "Bruk",
+      "PREVIEW": "Forhåndsvis",
+      "REMOVE": "Fjern"
+    },
+    "ALERTS": {
+      "DELETE": "Er du sikker på at du vil slette de valgte reglene for dynamiske assosiasjoner?",
+      "CLOSE": "Regelen for dynamisk assosiasjon er endret. Lukke uten å lagre?",
+      "CLOSE_RULE": "Regelen er endret. Lukke uten å bruke?"
+    }
+  }
+}

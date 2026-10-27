@@ -1,0 +1,92 @@
+{
+  "DYNAMIC_ASSOCIATIONS": {
+    "MENU": {
+      "TITLE": "Dynamiczne powiązania"
+    },
+    "LIST": {
+      "SEARCH": "Słowo kluczowe wyszukiwania",
+      "EMPTY": "Brak reguł dynamicznych powiązań"
+    },
+    "DETAILS": {
+      "NEW": "Nowa reguła dynamicznego powiązania",
+      "GENERAL": "Ogólne",
+      "MAIN_PARAMETERS": "Główne parametry",
+      "MATCHING": "Produkty do dopasowania",
+      "MATCHING_HINT": "Produkty, dla których wyświetlane są powiązania",
+      "DISPLAY": "Produkty do wyświetlenia",
+      "DISPLAY_HINT": "Produkty wyświetlane jako powiązania",
+      "DISPLAY_LOCKED": "Najpierw zdefiniuj produkty do dopasowania",
+      "OUTPUT_TUNING": "Dostosowanie wyników",
+      "OUTPUT_TUNING_HINT": "Sortowanie i limit produktów do wyświetlenia",
+      "COUNT": "Produkty w bieżącym filtrze: {count}",
+      "NOT_SET": "Nie ustawiono",
+      "EDIT_RULE": "Edytuj regułę",
+      "PREVIEW": "Podgląd",
+      "STORE_FIRST": "Najpierw wybierz sklep",
+      "SAVE_HINT": "Aby zapisać, wypełnij nazwę, sklep, grupę i priorytet oraz zdefiniuj produkty do dopasowania i do wyświetlenia"
+    },
+    "RULE": {
+      "TITLE_MATCHING": "Reguła produktów do dopasowania",
+      "TITLE_DISPLAY": "Reguła produktów do wyświetlenia",
+      "CATEGORIES": "Kategorie",
+      "ADD_CATEGORIES": "Dodaj kategorie",
+      "PICK_CATEGORIES": "Wybierz kategorie",
+      "NO_CATEGORIES": "Nie wybrano kategorii",
+      "PROPERTIES": "Wartości właściwości",
+      "SELECT_PROPERTIES": "Filtruj według właściwości",
+      "SELECT_PROPERTIES_PLACEHOLDER": "Wybierz właściwości...",
+      "NO_PROPERTIES": "Wybrane kategorie nie mają właściwości",
+      "PROPERTIES_HINT": "Produkty muszą mieć jedną z podanych wartości każdej wybranej właściwości"
+    },
+    "PREVIEW": {
+      "TITLE": "Podgląd produktów",
+      "EMPTY": "Brak produktów"
+    },
+    "FIELDS": {
+      "NAME": "Nazwa",
+      "NAME_PLACEHOLDER": "Nazwa dynamicznego powiązania",
+      "NAME_HINT": "Wpisz nazwę, która jednoznacznie identyfikuje powiązanie",
+      "DESCRIPTION": "Opis",
+      "GROUP": "Grupa",
+      "GROUP_PLACEHOLDER": "Wybierz grupę...",
+      "EDIT_GROUPS": "Edytuj grupy powiązań",
+      "PRIORITY": "Priorytet",
+      "PRIORITY_HINT": "Stosowana jest reguła powiązania o najwyższym priorytecie",
+      "ACTIVE": "Aktywna",
+      "INACTIVE": "Nieaktywna",
+      "IS_ACTIVE": "Aktywna",
+      "IS_ACTIVE_HINT": "Flaga kontroluje stan Aktywna/Nieaktywna",
+      "START_DATE": "Data rozpoczęcia",
+      "END_DATE": "Data wygaśnięcia",
+      "STORE": "Sklep",
+      "STORE_PLACEHOLDER": "Wybierz sklep...",
+      "STORE_HINT": "Sklep, w którym ta reguła powiązania będzie aktywna",
+      "MODIFIED": "Zmodyfikowano",
+      "CATEGORIES": "Kategorie",
+      "PROPERTIES": "Właściwości",
+      "SORT_BY": "Sortuj według właściwości",
+      "SORT_BY_PLACEHOLDER": "Wybierz właściwość...",
+      "DIRECTION": "Kierunek",
+      "LIMIT": "Limit wyników",
+      "IMAGE": "Zdjęcie",
+      "PRODUCT": "Nazwa",
+      "CODE": "SKU"
+    },
+    "TOOLBAR": {
+      "REFRESH": "Odśwież",
+      "ADD": "Dodaj",
+      "DELETE": "Usuń",
+      "SAVE": "Zapisz",
+      "CREATE": "Utwórz",
+      "RESET": "Resetuj",
+      "APPLY": "Zastosuj",
+      "PREVIEW": "Podgląd",
+      "REMOVE": "Odłącz"
+    },
+    "ALERTS": {
+      "DELETE": "Czy na pewno chcesz usunąć wybrane reguły dynamicznych powiązań?",
+      "CLOSE": "Reguła dynamicznego powiązania została zmodyfikowana. Zamknąć bez zapisywania?",
+      "CLOSE_RULE": "Reguła została zmodyfikowana. Zamknąć bez zastosowania?"
+    }
+  }
+}
