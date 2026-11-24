@@ -16,6 +16,8 @@
       :pagination="pagination"
       :searchable="true"
       :search-placeholder="$t('DYNAMIC_ASSOCIATIONS.LIST.SEARCH')"
+      search-bar
+      :global-filters="globalFilters"
       state-key="DYNAMIC_ASSOCIATIONS"
       :active-item-id="activeItemId"
       :show-all-columns="!activeItemId"
@@ -25,6 +27,7 @@
       :empty-state="{ icon: 'lucide-git-compare-arrows', title: $t('DYNAMIC_ASSOCIATIONS.LIST.EMPTY') }"
       @row-click="(e: { data: Association }) => openDetails(e.data.id)"
       @pagination-click="pagination.goToPage"
+      @filter="onFilter"
     >
       <VcColumn
         id="name"
@@ -84,13 +87,14 @@ import {
   usePermissions,
   usePopup,
   useTableSearch,
+  type GlobalFilterConfig,
   type IBladeToolbar,
 } from "@vc-shell/framework";
 import { VcBlade, VcColumn, VcDataTable, VcStatus } from "@vc-shell/framework/ui";
 import { computed, ref, watch } from "vue";
 import { useI18n } from "vue-i18n";
 import type { Association } from "../../api_client/virtocommerce.dynamicassociationsmodule";
-import { client } from "../api";
+import { client, searchStores, settingValues, type Store } from "../api";
 
 defineBlade({
   url: "/dynamic-associations",
@@ -121,18 +125,70 @@ const { searchValue } = useTableSearch({ stateKey: "DYNAMIC_ASSOCIATIONS" });
 const pagination = useDataTablePagination({ stateKey: "DYNAMIC_ASSOCIATIONS", pageSize: PAGE_SIZE, totalCount });
 const search = useLatestRequest();
 
+// a merchandiser works on one store's rules, or one group's (e.g. Accessories), or on the rules in effect now;
+// the API takes lists of stores and groups, and isActive=true means active and within the dates (false isn't a useful filter)
+interface Filters {
+  storeIds?: string[];
+  groups?: string[];
+  isActive?: true;
+}
+const filters = ref<Filters>({});
+const stores = ref<Store[]>([]);
+const groups = ref<string[]>([]);
+searchStores(undefined, 0, undefined, 100)
+  .then((r) => (stores.value = r.results ?? []))
+  .catch(() => undefined);
+settingValues("Catalog.AssociationGroups").then((x) => (groups.value = x));
+
+const byLabel = (a: { label: string }, b: { label: string }) => a.label.localeCompare(b.label);
+// VcDataTable types global-filters as GlobalFilterConfig[], which lacks the search bar's toggle field
+const globalFilters = computed(
+  () =>
+    [
+      {
+        id: "storeIds",
+        label: t("DYNAMIC_ASSOCIATIONS.FIELDS.STORE"),
+        filter: { multiple: true, options: stores.value.map((s) => ({ value: s.id, label: s.name || s.id })).sort(byLabel) },
+      },
+      {
+        id: "groups",
+        label: t("DYNAMIC_ASSOCIATIONS.FIELDS.GROUP"),
+        filter: { multiple: true, options: groups.value.map((g) => ({ value: g, label: g })).sort(byLabel) },
+      },
+      { id: "isActive", label: t("DYNAMIC_ASSOCIATIONS.FIELDS.IS_ACTIVE"), filter: { toggle: true } },
+    ] as unknown as GlobalFilterConfig[],
+);
+
+const picked = (value: unknown) => {
+  const list = ([] as string[]).concat((value as string | string[] | undefined) ?? []);
+  return list.length ? list : undefined;
+};
+function onFilter(event: { filters: Record<string, unknown> }) {
+  filters.value = {
+    storeIds: picked(event.filters.storeIds),
+    groups: picked(event.filters.groups),
+    isActive: event.filters.isActive ? true : undefined,
+  };
+}
+
 const { loading, action: load } = useAsync(async () => {
   const r = await search.latest(
-    client.searchAssociation({ keyword: searchValue.value || undefined, sort: sortExpression.value, skip: pagination.skip, take: PAGE_SIZE }),
+    client.searchAssociation({
+      keyword: searchValue.value || undefined,
+      ...filters.value,
+      sort: sortExpression.value,
+      skip: pagination.skip,
+      take: PAGE_SIZE,
+    }),
   );
   if (!r) return;
   items.value = r.results ?? [];
   totalCount.value = r.totalCount ?? 0;
 });
 
-load();
-watch(searchValue, () => pagination.setPage(1));
-watch([sortExpression, searchValue, () => pagination.skip], debounce(load, 300));
+watch([searchValue, filters], () => pagination.setPage(1));
+// the search bar applies saved filters when it mounts: the debounce makes that and the first load one request
+watch([sortExpression, searchValue, filters, () => pagination.skip], debounce(load, 300), { immediate: true });
 
 function openDetails(id?: string) {
   openBlade({
