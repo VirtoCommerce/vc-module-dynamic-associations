@@ -178,8 +178,8 @@ export function getStore(id: string) {
     );
   return storeCache.get(id)!;
 }
-export function searchStores(keyword?: string, skip = 0, ids?: string[]) {
-  return http<{ totalCount?: number; results?: Store[] }>("POST", "/api/stores/search", { keyword, objectIds: ids, skip, take: ids?.length || 20 });
+export function searchStores(keyword?: string, skip = 0, ids?: string[], take = ids?.length || 20) {
+  return http<{ totalCount?: number; results?: Store[] }>("POST", "/api/stores/search", { keyword, objectIds: ids, skip, take });
 }
 
 /**
